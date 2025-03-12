@@ -1,4 +1,3 @@
-<!-- Footer -->
 <template>
     <footer class="footer bg-dark text-white">
         <div class="container">
@@ -78,9 +77,7 @@
 </template>
 
 
-<script setup>
-// Nada especial aqui
-</script>
+<script setup></script>
 
 <style scoped>
 p {
