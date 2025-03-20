@@ -3,7 +3,7 @@
         <div class="container">
             <NuxtLink class="navbar-brand fw-bold" to="/" style="font-family: 'Roboto Mono', monospace;">
                 <img src="/favicon.ico" alt="Logo" class="me-2 rounded" style="margin-top: -6px;" />
-                LoanBank
+                Pedro Ruffo
             </NuxtLink>
 
             <button class="navbar-toggler" type="button" @click="toggleSidebar">
@@ -16,16 +16,13 @@
                         <NuxtLink to="/home" class="nav-link" exact-active-class="active">Início</NuxtLink>
                     </li>
                     <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/emprestimos" class="nav-link" exact-active-class="active">Empréstimos</NuxtLink>
+                        <NuxtLink to="/sobre" class="nav-link" exact-active-class="active">Sobre</NuxtLink>
                     </li>
                     <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/taxas" class="nav-link" exact-active-class="active">Taxas</NuxtLink>
+                        <NuxtLink to="/projetos" class="nav-link" exact-active-class="active">Projetos</NuxtLink>
                     </li>
                     <li class="nav-item me-2 li-style">
                         <NuxtLink to="/contato" class="nav-link" exact-active-class="active">Contato</NuxtLink>
-                    </li>
-                    <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/simulacao" class="nav-link" exact-active-class="active">Simulação</NuxtLink>
                     </li>
                 </ul>
             </div>

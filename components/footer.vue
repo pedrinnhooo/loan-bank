@@ -6,58 +6,58 @@
             <div class="footer-main">
                 <NuxtLink class="footer-brand fw-bold" to="/">
                     <img src="/favicon.ico" alt="Logo" class="footer-logo" />
-                    LoanBank
+                    Pedro Ruffo
                 </NuxtLink>
 
                 <div class="footer-top">
                     <div class="footer-column">
-                        <h4>Produtos</h4>
+                        <h4></h4>
                         <ul>
                             <li>
-                                <NuxtLink to="/emprestimos">Empréstimos</NuxtLink>
+                                <NuxtLink to="/"></NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="/cartoes">Cartões de Crédito</NuxtLink>
+                                <NuxtLink to="/"></NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="/investimentos">Investimentos</NuxtLink>
+                                <NuxtLink to="/"></NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="/seguros">Seguros</NuxtLink>
+                                <NuxtLink to="/"></NuxtLink>
                             </li>
                         </ul>
                     </div>
                     <div class="footer-column">
-                        <h4>Recursos</h4>
+                        <h4></h4>
                         <ul>
                             <li>
-                                <NuxtLink to="/simulacao">Simulação</NuxtLink>
+                                <NuxtLink to="/"></NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="/taxas">Taxas</NuxtLink>
+                                <NuxtLink to="/"></NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="/blog">Blog Financeiro</NuxtLink>
+                                <NuxtLink to="/"></NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="/seguranca">Segurança</NuxtLink>
+                                <NuxtLink to="/"></NuxtLink>
                             </li>
                         </ul>
                     </div>
                     <div class="footer-column">
-                        <h4>Suporte</h4>
+                        <h4>Navegação</h4>
                         <ul>
                             <li>
-                                <NuxtLink to="/contato">Fale Conosco</NuxtLink>
+                                <NuxtLink to="/home">Início</NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="/ajuda">Central de Ajuda</NuxtLink>
+                                <NuxtLink to="/sobre">Sobre</NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="/faq">FAQ</NuxtLink>
+                                <NuxtLink to="/projetos">Projetos</NuxtLink>
                             </li>
                             <li>
-                                <NuxtLink to="/privacidade">Política de Privacidade</NuxtLink>
+                                <NuxtLink to="/contato">Contato</NuxtLink>
                             </li>
                         </ul>
                     </div>
@@ -65,11 +65,30 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 - LoanBank. Todos os direitos reservados.</p>
+                <p>&copy; 2025 - Pedro Ruffo. Todos os direitos reservados.</p>
                 <div class="social-icons">
-                    <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
-                    <a href="#" class="social-icon"><i class="bi bi-discord"></i></a>
-                    <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                    <a href="mailto:pedro.ruffo.dev@gmail.com" class="social-icon" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="bi bi-envelope-fill"></i>
+                    </a>
+
+                    <a href="https://github.com/pedrinnhooo" class="social-icon" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="bi bi-github"></i>
+                    </a>
+
+                    <a href="https://linkedin.com/in/pedro-ruffo-501385181" class="social-icon" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+
+                    <a href="https://discord.gg/NwWySEJF" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-discord"></i>
+                    </a>
+
+                    <a href="https://wa.me/5511912117442" class="social-icon" target="_blank" rel="noopener noreferrer">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -81,7 +100,7 @@
 
 <style scoped>
 p {
-    margin-top: 0 !important; 
+    margin-top: 0 !important;
     margin-bottom: 0;
 }
 
@@ -219,4 +238,5 @@ p {
     .footer-header {
         justify-content: center;
     }
-}</style>
+}
+</style>
