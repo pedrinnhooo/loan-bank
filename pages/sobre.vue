@@ -14,22 +14,6 @@
                 <br>
                 <br>
 
-
-                <h3>Contatos</h3>
-                <ul class="ul-style">
-                    <li><strong>Telefone:</strong> +55 (11) 91211-7442</li>
-                    <li><strong>Email:</strong> <a href="mailto:pedro.ruffo.dev@gmail.com">pedro.ruffo.dev@gmail.com</a>
-                    </li>
-                    <li><strong>Localização:</strong> São Paulo, Brasil</li>
-                    <li><strong>GitHub:</strong> <a href="https://github.com/pedrinnhooo"
-                            target="_blank">github.com/pedrinnhooo</a></li>
-                    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/pedro-ruffo-501385181/"
-                            target="_blank">linkedin.com/in/pedro-ruffo-501385181</a></li>
-                </ul>
-               
-                <br>
-                <br>
-
                 <h3>Formação</h3>
                 <ul class="ul-style">
                     <li><strong>Sistemas de Análise e Desenvolvimento:</strong> FIAP (2021 - 2023)</li>
@@ -233,6 +217,21 @@
                     <li>Marvel App</li>
                 </ul>
 
+                <br>
+                <br>    
+
+                <h3>Contatos</h3>
+                <ul class="ul-style">
+                    <li><strong>Telefone:</strong> +55 (11) 91211-7442</li>
+                    <li><strong>Email:</strong> <a href="mailto:pedro.ruffo.dev@gmail.com">pedro.ruffo.dev@gmail.com</a>
+                    </li>
+                    <li><strong>Localização:</strong> São Paulo, Brasil</li>
+                    <li><strong>GitHub:</strong> <a href="https://github.com/pedrinnhooo"
+                            target="_blank">github.com/pedrinnhooo</a></li>
+                    <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/pedro-ruffo-501385181/"
+                            target="_blank">linkedin.com/in/pedro-ruffo-501385181</a></li>
+                </ul>
+               
             </div>
         </section>
 
