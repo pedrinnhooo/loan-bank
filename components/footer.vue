@@ -140,7 +140,6 @@ p {
     width: 24px;
     height: 24px;
     margin-right: 8px;
-    margin-top: -6px;
 }
 
 .footer-top {
