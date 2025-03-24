@@ -79,7 +79,7 @@
         <section class="presentation-section">
             <div class="container">
                 <div class="presentation-content">
-                    <h2 class="section-w">Por que escolher meus serviços <span style="color: #00dc82;">?</span></h2>
+                    <h2>Por que meus serviços <span style="color: #00dc82;">?</span></h2>
                     <p>
                         Com 7 anos de experiência como Software Engineer, desenvolvo soluções digitais completas e
                         personalizadas — de apps mobile robustos a interfaces web modernas — unindo performance,
