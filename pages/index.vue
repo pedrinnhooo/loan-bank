@@ -14,8 +14,8 @@
                     Mobile Software Engineer - Flutter | Dart | Firebase | Front-end Developer | UI UX Designer
                 </p>
                 <div class="hero-buttons">
-                    <NuxtLink to="#" class="btn btn-white">Projetos</NuxtLink>
-                    <NuxtLink to="#" class="btn btn-outline-white">Fale Comigo</NuxtLink>
+                    <NuxtLink to="/projetos" class="btn btn-white">Projetos</NuxtLink>
+                    <NuxtLink to="https://wa.me/5511912117442" class="btn btn-outline-white">Fale Comigo</NuxtLink>
                 </div>
             </div>
         </section>
