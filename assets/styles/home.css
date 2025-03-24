@@ -215,6 +215,10 @@ li::marker {
     .top-space {
         padding-top: 10%;
     }
+
+    .bottom-space {
+        padding-bottom: 6%;
+    }
 }
 
 

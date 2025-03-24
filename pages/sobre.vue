@@ -14,7 +14,7 @@
                 <br>
                 <br>
 
-                <h3>Formação</h3>
+                <h3 class="bottom-space" >Formação</h3>
                 <ul class="ul-style">
                     <li><strong>Sistemas de Análise e Desenvolvimento:</strong> FIAP (2021 - 2023)</li>
                 </ul>
