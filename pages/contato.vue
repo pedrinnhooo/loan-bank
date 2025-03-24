@@ -1,9 +1,8 @@
 <template>
-  <div class="top-space"></div>
   <div class="dark-home">
     <section class="background-section">
       <div class="container">
-        <h2>Contato</h2>
+        <h2 class="top-space">Contato</h2>
         <p>Entre em contato para discutir seu projeto ou tirar dúvidas:</p>
         <ul class="ul-style">
           <li><strong>Telefone:</strong> +55 (11) 91211-7442</li>

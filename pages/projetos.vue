@@ -3,7 +3,7 @@
     <div class="dark-home">
         <section class="background-section">
             <div class="container">
-                <h2>Projetos</h2>
+                <h2 class="top-space">Projetos</h2>
                 <p>Alguns dos principais projetos em que atuei:</p>
 
                 <div class="projects-grid">

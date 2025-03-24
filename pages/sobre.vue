@@ -3,7 +3,7 @@
     <div class="dark-home">
         <section class="background-section">
             <div class="container">
-                <h2>Sobre Mim</h2>
+                <h2 class="top-space">Sobre Mim</h2>
                 <p>
                     Olá! Eu sou o <strong>Pedro Ruffo</strong>, um desenvolvedor front-end especializado com
                     7 anos de experiência em Flutter, UI/UX Design e áreas relacionadas. Minha paixão é criar
