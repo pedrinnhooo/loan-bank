@@ -48,7 +48,7 @@
                         <h4>Navegação</h4>
                         <ul>
                             <li>
-                                <NuxtLink to="/home">Início</NuxtLink>
+                                <NuxtLink to="/">Início</NuxtLink>
                             </li>
                             <li>
                                 <NuxtLink to="/sobre">Sobre</NuxtLink>
