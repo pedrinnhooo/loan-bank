@@ -33,16 +33,20 @@
                 <button class="close-btn" @click="toggleSidebar">&times;</button>
                 <ul class="sidebar-nav">
                     <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/" class="nav-link" exact-active-class="active">Início</NuxtLink>
+                        <NuxtLink to="/" class="nav-link" exact-active-class="active" @click="toggleSidebar">Início
+                        </NuxtLink>
                     </li>
                     <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/sobre" class="nav-link" exact-active-class="active">Sobre</NuxtLink>
+                        <NuxtLink to="/sobre" class="nav-link" exact-active-class="active" @click="toggleSidebar">Sobre
+                        </NuxtLink>
                     </li>
                     <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/projetos" class="nav-link" exact-active-class="active">Projetos</NuxtLink>
+                        <NuxtLink to="/projetos" class="nav-link" exact-active-class="active" @click="toggleSidebar">
+                            Projetos</NuxtLink>
                     </li>
                     <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/contato" class="nav-link" exact-active-class="active">Contato</NuxtLink>
+                        <NuxtLink to="/contato" class="nav-link" exact-active-class="active" @click="toggleSidebar">
+                            Contato</NuxtLink>
                     </li>
                 </ul>
             </div>
@@ -58,7 +62,7 @@ import { ref } from 'vue';
 const isSidebarOpen = ref(false);
 
 const toggleSidebar = () => {
-    isSidebarOpen.value = !isSidebarOpen;
+    isSidebarOpen.value = !isSidebarOpen.value;
 };
 </script>
 
