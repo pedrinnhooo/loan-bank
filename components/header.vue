@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 85px;">
         <div class="container">
             <NuxtLink class="navbar-brand fw-bold" to="/" style="font-family: 'Roboto Mono', monospace;">
-                <img src="/favicon.ico" alt="Logo" class="me-2 rounded" />
+                <img src="/favicon.ico" alt="Logo" class="me-2 rounded" style="width: 21%;height: auto;"> />
                 Pedro Ruffo
             </NuxtLink>
 
