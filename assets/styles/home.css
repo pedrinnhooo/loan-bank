@@ -207,6 +207,10 @@ li::marker {
     .section-w {
         width: 54%;
     }
+
+    body {
+        text-align: center !important;
+    }
 }
 
 
