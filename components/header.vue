@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/home" class="nav-link" exact-active-class="active">Início</NuxtLink>
+                        <NuxtLink to="/" class="nav-link" exact-active-class="active">Início</NuxtLink>
                     </li>
                     <li class="nav-item me-2 li-style">
                         <NuxtLink to="/sobre" class="nav-link" exact-active-class="active">Sobre</NuxtLink>

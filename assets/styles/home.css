@@ -151,7 +151,7 @@ p {
 }
 
 .presentation-image img {
-    max-width: 75%;
+    max-width: 71%;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
@@ -179,6 +179,21 @@ li::marker {
         gap: 2rem;
     }
 }
+
+@media (max-width: 768px) {
+    .presentation-image img {
+        max-width: 100% !important;
+    }
+
+    .extra-image img {
+        max-width: 100% !important;
+    }
+
+    .btn-mt {
+        margin-top: 9% !important;
+    }
+}
+
 
 /* ---------------------------
      CARDS SECTION
@@ -265,7 +280,7 @@ li::marker {
 }
 
 .extra-image img {
-    max-width: 100%;
+    max-width: 71%;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }

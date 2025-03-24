@@ -232,7 +232,7 @@ p {
     .footer-bottom {
         flex-direction: column;
         text-align: center;
-        gap: 10px;
+        gap: 24px;
     }
 
     .footer-header {
