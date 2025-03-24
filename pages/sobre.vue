@@ -1,6 +1,6 @@
 <template>
+    <div class="top-space"></div>
     <div class="dark-home">
-
         <section class="background-section">
             <div class="container">
                 <h2>Sobre Mim</h2>

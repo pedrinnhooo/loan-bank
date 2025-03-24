@@ -1,4 +1,5 @@
 <template>
+    <div class="top-space"></div>
     <div class="dark-home">
         <section class="background-section">
             <div class="container">

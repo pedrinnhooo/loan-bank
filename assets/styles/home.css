@@ -211,6 +211,10 @@ li::marker {
     body {
         text-align: center !important;
     }
+
+    .top-space {
+        margin-top: 6%;
+    }
 }
 
 
