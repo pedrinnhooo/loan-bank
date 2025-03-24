@@ -32,20 +32,17 @@
             <div v-if="isSidebarOpen" class="sidebar">
                 <button class="close-btn" @click="toggleSidebar">&times;</button>
                 <ul class="sidebar-nav">
-                    <li>
-                        <NuxtLink to="/home" class="nav-link" @click="toggleSidebar">Início</NuxtLink>
+                    <li class="nav-item me-2 li-style">
+                        <NuxtLink to="/" class="nav-link" exact-active-class="active">Início</NuxtLink>
                     </li>
-                    <li>
-                        <NuxtLink to="/emprestimos" class="nav-link" @click="toggleSidebar">Empréstimos</NuxtLink>
+                    <li class="nav-item me-2 li-style">
+                        <NuxtLink to="/sobre" class="nav-link" exact-active-class="active">Sobre</NuxtLink>
                     </li>
-                    <li>
-                        <NuxtLink to="/taxas" class="nav-link" @click="toggleSidebar">Taxas</NuxtLink>
+                    <li class="nav-item me-2 li-style">
+                        <NuxtLink to="/projetos" class="nav-link" exact-active-class="active">Projetos</NuxtLink>
                     </li>
-                    <li>
-                        <NuxtLink to="/contato" class="nav-link" @click="toggleSidebar">Contato</NuxtLink>
-                    </li>
-                    <li>
-                        <NuxtLink to="/simulacao" class="nav-link" @click="toggleSidebar">Simulação</NuxtLink>
+                    <li class="nav-item me-2 li-style">
+                        <NuxtLink to="/contato" class="nav-link" exact-active-class="active">Contato</NuxtLink>
                     </li>
                 </ul>
             </div>
