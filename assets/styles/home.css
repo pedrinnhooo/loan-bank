@@ -203,6 +203,10 @@ li::marker {
         padding: 0rem 0;
         width: 90%;
     }
+
+    .section-w {
+        width: 54%;
+    }
 }
 
 
