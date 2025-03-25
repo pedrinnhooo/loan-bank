@@ -1,4 +1,6 @@
 <template>
+  <Analytics />
+  
   <div class="bg-light text-dark min-vh-100 d-flex flex-column">
     <Header />
 
@@ -11,6 +13,8 @@
 </template>
 
 <script setup>
+import { Analytics } from '@vercel/analytics/nuxt';
+
 import Header from '~/components/header.vue'
 import Footer from '~/components/footer.vue'
 </script>
