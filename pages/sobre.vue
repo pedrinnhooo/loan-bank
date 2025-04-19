@@ -40,7 +40,7 @@
                 <br> 
 
                 <h3>H2 Groupe</h3>
-                <p><em>Março de 2025 – Presente (9 meses)</em></p>
+                <p><em>Março de 2025 – Presente (10 meses)</em></p>
                 <ul class="ul-style">
                     <li>
                         Atuação como Engenheiro de Software Mobile (Flutter), desenvolvendo o projeto de LGPD para o
