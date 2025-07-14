@@ -66,7 +66,7 @@ const projects = ref([
     {
         id: 1,
         name: 'Bnb - Banco do Nordeste',
-        thumbnail: '/images/bnb-thumb.jpg', // Substituir pela imagem real
+        thumbnail: '/images/bnb-thumb.jpg', 
         shortDescription: 'Aplicativo de cartões do Banco do Nordeste, permitindo controle de faturas, limites e muito mais.',
         longDescription: 'Aplicativo desenvolvido para o Banco do Nordeste, focado em gerenciamento de cartões de crédito. Implementações incluem controle de faturas, acompanhamento de gastos em tempo real, definição de limites, etc. O app foi desenvolvido em Flutter com arquitetura limpa, garantindo escalabilidade e fácil manutenção.',
         technologies: 'Flutter, Firebase, Clean Architecture, GitLab',
@@ -76,7 +76,7 @@ const projects = ref([
     {
         id: 2,
         name: 'Banpara - Banco do Pará',
-        thumbnail: '/images/banpara-thumb.jpg', // Substituir pela imagem real
+        thumbnail: '/images/banpara-thumb.jpg', 
         shortDescription: 'Solução de cartão de crédito e controle de gastos para clientes Banpara, com múltiplas funcionalidades.',
         longDescription: 'Aplicativo de cartão de crédito Banpara, desenvolvido com Flutter. Funcionalidades incluem gerenciamento de fatura, notificação de compras em tempo real, ajuste de limite e integração com carteiras digitais (Apple Pay, Google Pay).',
         technologies: 'Flutter, .NET, Firebase, Docker, Nuxt.js',
@@ -140,7 +140,7 @@ const projects = ref([
         shortDescription: 'Aplicativo do Banco BlueC, integrando carteiras digitais para pagamento imediato.',
         longDescription: 'Integração de carteiras digitais (Apple Pay, Google Pay, Samsung Pay) ao app BlueC, facilitando pagamentos sem contato e gerenciamento de transações em tempo real.',
         technologies: 'Flutter, Docker, Google Pay, Apple Pay, Firebase',
-        appleLink: null,  // Exemplo: não tem link Apple Store
+        appleLink: null, 
         googleLink: 'https://play.google.com/store/apps/details?id=br.com.csu.baas&hl=pt_BR'
     },
     {

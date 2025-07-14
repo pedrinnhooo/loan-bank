@@ -14,24 +14,6 @@
           <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/pedro-ruffo-501385181/"
               target="_blank">linkedin.com/in/pedro-ruffo-501385181</a></li>
         </ul>
-
-        <!-- Exemplo de formulário (opcional) 
-          <form>
-            <div>
-              <label for="nome">Nome</label>
-              <input type="text" id="nome" />
-            </div>
-            <div>
-              <label for="email">E-mail</label>
-              <input type="email" id="email" />
-            </div>
-            <div>
-              <label for="mensagem">Mensagem</label>
-              <textarea id="mensagem"></textarea>
-            </div>
-            <button type="submit">Enviar</button>
-          </form>
-          -->
       </div>
     </section>
   </div>
