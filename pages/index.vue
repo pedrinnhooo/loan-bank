@@ -11,7 +11,8 @@
             <div class="hero-content container">
                 <h1 class="hero-title">Desenvolvedor de Soluções Digitais</h1>
                 <p class="hero-subtitle">
-                    Mobile Software Engineer - Flutter | Dart | Firebase | Front-end Developer | UI UX Designer
+                    {{ $t('Eu') }}
+                    <!-- Mobile Software Engineer - Flutter | Dart | Firebase | Front-end Developer | UI UX Designer -->
                 </p>
                 <div class="hero-buttons">
                     <NuxtLink to="/projetos" class="btn btn-white">Projetos</NuxtLink>

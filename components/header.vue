@@ -26,6 +26,10 @@
                     </li>
                 </ul>
             </div>
+
+            <button class="btn btn-primary mt-3" @click="toggleLang">
+                {{ $t('changeLanguage') }}
+            </button>
         </div>
 
         <transition name="slide">
@@ -64,6 +68,14 @@ const isSidebarOpen = ref(false);
 const toggleSidebar = () => {
     isSidebarOpen.value = !isSidebarOpen.value;
 };
+</script>
+
+<script setup>
+const { locale } = useI18n()
+
+function toggleLang() {
+  locale.value = locale.value === 'pt' ? 'en' : 'pt'
+}
 </script>
 
 <style scoped>

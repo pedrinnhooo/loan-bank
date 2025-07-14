@@ -3,8 +3,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   css: [
-    '/node_modules/bootstrap/dist/css/bootstrap.min.css',
-    '/node_modules/bootstrap-icons/font/bootstrap-icons.min.css',
+    'bootstrap/dist/css/bootstrap.min.css',
+    'bootstrap-icons/font/bootstrap-icons.min.css',
     '@/assets/styles/home.css'
   ],
+
+  modules: ['@nuxtjs/i18n'],
 })
