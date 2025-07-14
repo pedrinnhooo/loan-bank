@@ -68,9 +68,9 @@ const isSidebarOpen = ref(false);
 const toggleSidebar = () => {
     isSidebarOpen.value = !isSidebarOpen.value;
 };
-</script>
 
-<script setup>
+
+// i18n
 const { locale } = useI18n()
 
 function toggleLang() {
