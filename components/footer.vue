@@ -1,94 +1,123 @@
 <template>
-    <footer class="footer bg-dark text-white">
-        <div class="container">
-            <hr class="footer-divider" />
+    <footer class="apple-footer">
+        <div class="container-apple">
+            <!-- Footer Content -->
+            <div class="footer-content">
+                <!-- Brand Section -->
+                <div class="footer-brand-section">
+                    <NuxtLink to="/" class="footer-brand">
+                        <AppleLogo size="large" variant="blue" />
+                        <span class="brand-text">Pedro Ruffo</span>
+                    </NuxtLink>
+                    <p class="brand-description">
+                        Desenvolvedor especializado em soluções digitais modernas, 
+                        criando experiências excepcionais com Flutter, Vue.js e tecnologias de ponta.
+                    </p>
+                </div>
 
-            <div class="footer-main">
-                <NuxtLink class="footer-brand fw-bold" to="/">
-                    <img src="/favicon.ico" alt="Logo" class="footer-logo" />
-                    Pedro Ruffo
-                </NuxtLink>
-
-                <div class="footer-top">
-                    <div class="footer-column">
-                        <h4></h4>
-                        <ul>
-                            <li>
-                                <NuxtLink to="/"></NuxtLink>
-                            </li>
-                            <li>
-                                <NuxtLink to="/"></NuxtLink>
-                            </li>
-                            <li>
-                                <NuxtLink to="/"></NuxtLink>
-                            </li>
-                            <li>
-                                <NuxtLink to="/"></NuxtLink>
-                            </li>
+                <!-- Navigation Links -->
+                <div class="footer-nav">
+                    <div class="nav-column">
+                        <h4 class="nav-title">Navegação</h4>
+                        <ul class="nav-list">
+                            <li><NuxtLink to="/" class="nav-link">Início</NuxtLink></li>
+                            <li><NuxtLink to="/sobre" class="nav-link">Sobre</NuxtLink></li>
+                            <li><NuxtLink to="/projetos" class="nav-link">Projetos</NuxtLink></li>
+                            <li><NuxtLink to="/contato" class="nav-link">Contato</NuxtLink></li>
                         </ul>
                     </div>
-                    <div class="footer-column">
-                        <h4></h4>
-                        <ul>
-                            <li>
-                                <NuxtLink to="/"></NuxtLink>
-                            </li>
-                            <li>
-                                <NuxtLink to="/"></NuxtLink>
-                            </li>
-                            <li>
-                                <NuxtLink to="/"></NuxtLink>
-                            </li>
-                            <li>
-                                <NuxtLink to="/"></NuxtLink>
-                            </li>
+
+                    <div class="nav-column">
+                        <h4 class="nav-title">Serviços</h4>
+                        <ul class="nav-list">
+                            <li><span class="nav-link">Desenvolvimento Mobile</span></li>
+                            <li><span class="nav-link">Desenvolvimento Web</span></li>
+                            <li><span class="nav-link">UI/UX Design</span></li>
+                            <li><span class="nav-link">Consultoria Tech</span></li>
                         </ul>
                     </div>
-                    <div class="footer-column">
-                        <h4>Navegação</h4>
-                        <ul>
+
+                    <div class="nav-column">
+                        <h4 class="nav-title">Tecnologias</h4>
+                        <ul class="nav-list">
+                            <li><span class="nav-link">Flutter & Dart</span></li>
+                            <li><span class="nav-link">Vue.js & Nuxt.js</span></li>
+                            <li><span class="nav-link">Firebase</span></li>
+                            <li><span class="nav-link">Clean Architecture</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-column">
+                        <h4 class="nav-title">Contato</h4>
+                        <ul class="nav-list">
                             <li>
-                                <NuxtLink to="/">Início</NuxtLink>
+                                <a href="mailto:pedro.ruffo.dev@gmail.com" class="nav-link">
+                                    pedro.ruffo.dev@gmail.com
+                                </a>
                             </li>
                             <li>
-                                <NuxtLink to="/sobre">Sobre</NuxtLink>
+                                <a href="tel:+5511912117442" class="nav-link">
+                                    +55 (11) 91211-7442
+                                </a>
                             </li>
-                            <li>
-                                <NuxtLink to="/projetos">Projetos</NuxtLink>
-                            </li>
-                            <li>
-                                <NuxtLink to="/contato">Contato</NuxtLink>
-                            </li>
+                            <li><span class="nav-link">São Paulo, Brasil</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
 
+            <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p>&copy; 2025 - Pedro Ruffo. Todos os direitos reservados.</p>
-                <div class="social-icons">
-                    <a href="mailto:pedro.ruffo.dev@gmail.com" class="social-icon" target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="bi bi-envelope-fill"></i>
-                    </a>
+                <div class="footer-bottom-content">
+                    <div class="copyright">
+                        <p>&copy; {{ currentYear }} Pedro Ruffo. Todos os direitos reservados.</p>
+                    </div>
 
-                    <a href="https://github.com/pedrinnhooo" class="social-icon" target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="bi bi-github"></i>
-                    </a>
-
-                    <a href="https://linkedin.com/in/pedro-ruffo-501385181" class="social-icon" target="_blank"
-                        rel="noopener noreferrer">
-                        <i class="bi bi-linkedin"></i>
-                    </a>
-
-                    <a href="https://discord.gg/NwWySEJF" class="social-icon" target="_blank" rel="noopener noreferrer">
-                        <i class="bi bi-discord"></i>
-                    </a>
-
-                    <a href="https://wa.me/5511912117442" class="social-icon" target="_blank" rel="noopener noreferrer">
-                        <i class="bi bi-whatsapp"></i>
-                    </a>
+                    <div class="social-links">
+                        <a 
+                            href="https://github.com/pedrinnhooo" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="social-link"
+                            aria-label="GitHub"
+                        >
+                            <i class="bi bi-github"></i>
+                        </a>
+                        <a 
+                            href="https://linkedin.com/in/pedro-ruffo-501385181" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="social-link"
+                            aria-label="LinkedIn"
+                        >
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a 
+                            href="https://wa.me/5511912117442" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="social-link"
+                            aria-label="WhatsApp"
+                        >
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                        <a 
+                            href="https://discord.gg/NwWySEJF" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="social-link"
+                            aria-label="Discord"
+                        >
+                            <i class="bi bi-discord"></i>
+                        </a>
+                        <a 
+                            href="mailto:pedro.ruffo.dev@gmail.com" 
+                            class="social-link"
+                            aria-label="Email"
+                        >
+                            <i class="bi bi-envelope"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,146 +125,187 @@
 </template>
 
 
-<script setup></script>
+<script setup>
+import { computed } from 'vue'
+
+const currentYear = computed(() => new Date().getFullYear())
+</script>
 
 <style scoped>
-p {
-    margin-top: 0 !important;
-    margin-bottom: 0;
+.apple-footer {
+    background: var(--apple-surface);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    margin-top: auto;
 }
 
-.footer {
-    background-color: #000;
-    padding: 40px 0;
-    font-size: 14px;
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-3xl);
+    margin-bottom: var(--spacing-3xl);
 }
 
-.footer-main {
-    padding: 3% 0;
-}
-
-.footer-divider {
-    border: 0;
-    height: 2px;
-    background: #00dc82;
-    margin-bottom: 15px;
-}
-
-.footer-header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 20px;
+.footer-brand-section {
+    max-width: 400px;
 }
 
 .footer-brand {
-    align-items: center;
-    font-family: 'Roboto Mono', monospace;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.footer-logo {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-}
-
-.footer-top {
-    margin-top: -19px;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-bottom: 20px;
+    align-items: center;
+    gap: var(--spacing-md);
+    text-decoration: none;
+    color: var(--apple-text-primary);
+    margin-bottom: var(--spacing-lg);
 }
 
-.footer-column {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: 20px;
-    text-align: right;
+/* Brand logo styles removed - now using AppleLogo component */
+
+.brand-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--apple-text-primary);
 }
 
-.footer-column h4 {
-    color: #00dc82;
-    font-size: 16px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
+.brand-description {
+    color: var(--apple-text-secondary);
+    line-height: 1.6;
+    margin: 0;
 }
 
-.footer-column ul {
+.footer-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.nav-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--apple-text-primary);
+    margin-bottom: var(--spacing-md);
+    margin-top: 0;
+}
+
+.nav-list {
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
 }
 
-.footer-column ul li {
-    margin-bottom: 8px;
-}
-
-.footer-column ul li a {
-    color: rgba(255, 255, 255, 0.521);
+.nav-link {
+    color: var(--apple-text-secondary);
     text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-column ul li a:hover {
-    color: #00dc82;
-}
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 22px;
-    border-radius: 20px;
-    border: 1px solid #00dc8059;
-    background-color: #021009;
-}
-
-.footer-bottom:hover {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 22px;
-    border-radius: 20px;
-    border: 1px solid #00dc82;
-    background-color: #021009;
+    font-size: 0.875rem;
+    transition: color var(--transition-normal);
     cursor: pointer;
 }
 
-.social-icons {
+.nav-link:hover {
+    color: var(--apple-blue);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-xl);
+}
+
+.footer-bottom-content {
     display: flex;
-    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
 }
 
-.social-icon {
-    padding-left: 10px;
+.copyright p {
+    margin: 0;
+    color: var(--apple-text-tertiary);
+    font-size: 0.875rem;
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--apple-text-secondary);
+    text-decoration: none;
+    font-size: 1.125rem;
+    transition: all var(--transition-normal);
+}
+
+.social-link:hover {
+    background: var(--apple-blue);
+    border-color: var(--apple-blue);
     color: white;
-    font-size: 18px;
-    transition: color 0.3s ease;
+    transform: translateY(-2px);
 }
 
-.social-icon:hover {
-    color: #00dc82;
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+    
+    .footer-nav {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
-    .footer-top {
+    .apple-footer {
+        padding: var(--spacing-2xl) 0 var(--spacing-lg);
+    }
+    
+    .footer-nav {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .footer-bottom-content {
         flex-direction: column;
         text-align: center;
+        gap: var(--spacing-md);
     }
-
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-        gap: 24px;
-    }
-
-    .footer-header {
+    
+    .social-links {
         justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-brand {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-md);
+    }
+    
+    .brand-text {
+        font-size: 1.25rem;
+    }
+    
+    .social-links {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
     }
 }
 </style>

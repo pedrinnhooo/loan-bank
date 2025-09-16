@@ -1,30 +1,71 @@
 <template>
-    <div class="dark-home">
-        <section class="background-section">
-            <div class="container">
-                <h2 class="top-space">Projetos</h2>
-                <p>Alguns dos principais projetos em que atuei:</p>
+    <div class="apple-projects">
+        <!-- Hero Section -->
+        <section class="projects-hero section-padding">
+            <div class="container-apple">
+                <div class="hero-content text-center scroll-animate">
+                    <h1 class="text-large-title gradient-text mb-lg">Meus Projetos</h1>
+                    <p class="text-title-3 mb-xl" style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">
+                        Uma coleção dos principais projetos que desenvolvi ao longo da minha carreira, 
+                        desde aplicativos bancários até soluções empresariais complexas.
+                    </p>
+                </div>
+            </div>
+        </section>
 
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="container-apple">
+                <div class="filter-tabs scroll-animate">
+                    <button 
+                        v-for="category in categories" 
+                        :key="category"
+                        @click="selectedCategory = category"
+                        class="filter-tab"
+                        :class="{ 'active': selectedCategory === category }"
+                    >
+                        {{ category }}
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="projects-section section-padding">
+            <div class="container-apple">
                 <div class="projects-grid">
-                    <div v-for="project in projects" :key="project.id" class="card-project" @click="openModal(project)">
-                        <img :src="project.thumbnail" class="card-image" :alt="project.name" />
-
-                        <div class="card-content">
-                            <h3 class="card-title">{{ project.name }}</h3>
-                            <p class="card-desc">
+                    <div 
+                        v-for="(project, index) in filteredProjects" 
+                        :key="project.id" 
+                        class="project-card glass-card scroll-animate"
+                        :style="{ animationDelay: `${index * 0.1}s` }"
+                        @click="openProjectModal(project)"
+                    >
+                        <div class="project-image">
+                            <img :src="project.thumbnail" :alt="project.name" />
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a v-if="project.appleLink" :href="project.appleLink" target="_blank" @click.stop>
+                                        <i class="bi bi-apple"></i>
+                                    </a>
+                                    <a v-if="project.googleLink" :href="project.googleLink" target="_blank" @click.stop>
+                                        <i class="bi bi-google-play"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3 class="text-headline mb-sm">{{ project.name }}</h3>
+                                <span class="project-category">{{ project.category }}</span>
+                            </div>
+                            <p class="text-subhead mb-md" style="color: var(--apple-text-secondary);">
                                 {{ project.shortDescription }}
                             </p>
-
-                            <div class="store-icons">
-                                <a v-if="project.appleLink" :href="project.appleLink" target="_blank" @click.stop
-                                    class="icon-link">
-                                    <i class="bi bi-apple"></i>
-                                </a>
-
-                                <a v-if="project.googleLink" :href="project.googleLink" target="_blank" @click.stop
-                                    class="icon-link" style="display: flex; align-items: center; gap: 2px;">
-                                    <i class="bi bi-google"></i>
-                                </a>
+                            <div class="project-tech">
+                                <span v-for="tech in project.technologies.split(', ').slice(0, 4)" :key="tech" class="tech-tag">
+                                    {{ tech }}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -32,15 +73,39 @@
             </div>
         </section>
 
-        <transition name="fade">
-            <div v-if="selectedProject" class="modal-overlay" @click="closeModal">
-                <div class="modal-content" @click.stop>
-                    <button class="modal-close" @click="closeModal">&times;</button>
-                    <h2>{{ selectedProject.name }}</h2>
-                    <p>{{ selectedProject.longDescription }}</p>
-
-                    <h4>Tecnologias Utilizadas:</h4>
-                    <p>{{ selectedProject.technologies }}</p>
+        <!-- Project Modal -->
+        <transition name="modal">
+            <div v-if="selectedProject" class="modal-overlay" @click="closeProjectModal">
+                <div class="modal-content glass-card" @click.stop>
+                    <button class="modal-close" @click="closeProjectModal">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                    <div class="modal-header">
+                        <img :src="selectedProject.thumbnail" :alt="selectedProject.name" class="modal-image">
+                        <div class="modal-info">
+                            <h3 class="text-title-2 mb-sm">{{ selectedProject.name }}</h3>
+                            <span class="modal-category">{{ selectedProject.category }}</span>
+                            <p class="text-body mt-md" style="color: var(--apple-text-secondary);">
+                                {{ selectedProject.longDescription }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="text-headline mb-md">Tecnologias Utilizadas</h4>
+                        <div class="modal-tech">
+                            <span v-for="tech in selectedProject.technologies.split(', ')" :key="tech" class="tech-tag">
+                                {{ tech }}
+                            </span>
+                        </div>
+                        <div class="modal-links mt-lg" v-if="selectedProject.appleLink || selectedProject.googleLink">
+                            <a v-if="selectedProject.appleLink" :href="selectedProject.appleLink" target="_blank" class="btn-apple btn-apple-secondary">
+                                <i class="bi bi-apple"></i> App Store
+                            </a>
+                            <a v-if="selectedProject.googleLink" :href="selectedProject.googleLink" target="_blank" class="btn-apple btn-apple-secondary">
+                                <i class="bi bi-google-play"></i> Google Play
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </transition>
@@ -48,21 +113,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue'
+import { useScrollAnimation } from '~/composables/useAnimations'
 
-const selectedProject = ref(null);
+// Initialize scroll animations
+useScrollAnimation()
+
+const selectedProject = ref(null)
+const selectedCategory = ref('Todos')
+
+const categories = ['Todos', 'Mobile', 'Web', 'Fintech', 'Enterprise']
 
 const projects = ref([
-    {
-        id: 8,
-        name: 'HeiClub - Heineken',
-        thumbnail: '/images/heineken-thumb.jpg',
-        shortDescription: 'Projeto privado para clientes Heineken, com pontos e integração de pagamentos digitais.',
-        longDescription: 'Desenvolvimento de plataforma interna para Heineken, englobando programa de fidelidade (resgate de pontos) e integração com métodos de pagamento digital. Acesso restrito a clientes e funcionários.',
-        technologies: 'Flutter, .NET, Docker, UI/UX',
-        appleLink: null,
-        googleLink: null
-    },
     {
         id: 1,
         name: 'Bnb - Banco do Nordeste',
@@ -70,6 +132,7 @@ const projects = ref([
         shortDescription: 'Aplicativo de cartões do Banco do Nordeste, permitindo controle de faturas, limites e muito mais.',
         longDescription: 'Aplicativo desenvolvido para o Banco do Nordeste, focado em gerenciamento de cartões de crédito. Implementações incluem controle de faturas, acompanhamento de gastos em tempo real, definição de limites, etc. O app foi desenvolvido em Flutter com arquitetura limpa, garantindo escalabilidade e fácil manutenção.',
         technologies: 'Flutter, Firebase, Clean Architecture, GitLab',
+        category: 'Fintech',
         appleLink: 'https://apps.apple.com/br/app/bnb-cartões/id1435796374',
         googleLink: 'https://play.google.com/store/apps/details?id=com.csu.bnb&hl=pt'
     },
@@ -80,6 +143,7 @@ const projects = ref([
         shortDescription: 'Solução de cartão de crédito e controle de gastos para clientes Banpara, com múltiplas funcionalidades.',
         longDescription: 'Aplicativo de cartão de crédito Banpara, desenvolvido com Flutter. Funcionalidades incluem gerenciamento de fatura, notificação de compras em tempo real, ajuste de limite e integração com carteiras digitais (Apple Pay, Google Pay).',
         technologies: 'Flutter, .NET, Firebase, Docker, Nuxt.js',
+        category: 'Fintech',
         appleLink: 'https://apps.apple.com/br/app/banpará-cartões/id1526688256',
         googleLink: 'https://play.google.com/store/apps/details?id=com.csu.banpara&hl=pt'
     },
@@ -90,8 +154,31 @@ const projects = ref([
         shortDescription: 'Aplicativo Losango para gerenciamento de cartão, controle de gastos e parcelamentos flexíveis.',
         longDescription: 'Desenvolvimento de app para o Banco Losango, oferecendo aos usuários acompanhamento de despesas, parcelamentos e suporte direto. Integrado a uma arquitetura white-label que permitiu adaptação rápida para outros bancos.',
         technologies: 'Flutter, Vue.js, Clean Architecture, BigQuery',
+        category: 'Fintech',
         appleLink: 'https://apps.apple.com/br/app/losango/id1456294810?l=en-GB',
         googleLink: 'https://play.google.com/store/apps/details?id=com.csu.losango&hl=pt_BR'
+    },
+    {
+        id: 4,
+        name: 'H2 Club - Groupe H2',
+        thumbnail: '/images/h2club-thumb.png',
+        shortDescription: 'App para gerenciamento de torneios, agenda e informações do clube H2, com push notifications.',
+        longDescription: 'Aplicativo para membros do H2 Club, exibindo calendário de torneios, resultados, reservas e integração de notificações push segmentadas. Implementa reconhecimento facial/documental para cadastro e compliance com LGPD.',
+        technologies: 'Flutter, BigQuery, JWT, Docker, PHP',
+        category: 'Mobile',
+        appleLink: 'https://apps.apple.com/br/app/h2-club/id6466628886',
+        googleLink: 'https://play.google.com/store/apps/details?id=com.h2.app&hl=pt_BR&pli=1'
+    },
+    {
+        id: 5,
+        name: 'BlueC - Banco BlueC',
+        thumbnail: '/images/bluec-thumb.avif',
+        shortDescription: 'Aplicativo do Banco BlueC, integrando carteiras digitais para pagamento imediato.',
+        longDescription: 'Integração de carteiras digitais (Apple Pay, Google Pay, Samsung Pay) ao app BlueC, facilitando pagamentos sem contato e gerenciamento de transações em tempo real.',
+        technologies: 'Flutter, Docker, Google Pay, Apple Pay, Firebase',
+        category: 'Fintech',
+        appleLink: null, 
+        googleLink: 'https://play.google.com/store/apps/details?id=br.com.csu.baas&hl=pt_BR'
     },
     {
         id: 6,
@@ -100,8 +187,31 @@ const projects = ref([
         shortDescription: 'Banco Afinz com recursos de banco digital, controle de cartão e interface intuitiva.',
         longDescription: 'Criação do aplicativo para o Banco Afinz, focado em funcionalidades de um banco digital completo: abertura de conta, cartões de crédito, pagamentos de boletos e recarga de serviços. Forte ênfase em UI/UX.',
         technologies: 'Flutter, Firebase, Vue.js, UI/UX, JWT',
+        category: 'Fintech',
         appleLink: 'https://apps.apple.com/br/app/afinz/id1416167782',
         googleLink: 'https://play.google.com/store/apps/details?id=br.com.sorocred.sorocredapp&hl=en_US'
+    },
+    {
+        id: 7,
+        name: 'Komus - Seguro Mobile',
+        thumbnail: '/images/komus-thumb.jpeg',
+        shortDescription: 'Aplicativo de seguro para celular, com planos e suporte integrado. Marca fundida com Pitz Insurance.',
+        longDescription: 'App desenvolvido para oferecer planos de seguro móvel, com funcionalidades de registro de sinistros, acompanhamento de reparos e canal de suporte 24h. Posteriormente, a marca Komus foi incorporada à Pitz Insurance.',
+        technologies: 'Flutter, Vue.js, Node.js, TypeScript, UI/UX',
+        category: 'Mobile',
+        appleLink: null,
+        googleLink: null
+    },
+    {
+        id: 8,
+        name: 'HeiClub - Heineken',
+        thumbnail: '/images/heineken-thumb.jpg',
+        shortDescription: 'Projeto privado para clientes Heineken, com pontos e integração de pagamentos digitais.',
+        longDescription: 'Desenvolvimento de plataforma interna para Heineken, englobando programa de fidelidade (resgate de pontos) e integração com métodos de pagamento digital. Acesso restrito a clientes e funcionários.',
+        technologies: 'Flutter, .NET, Docker, UI/UX',
+        category: 'Enterprise',
+        appleLink: null,
+        googleLink: null
     },
     {
         id: 9,
@@ -110,6 +220,7 @@ const projects = ref([
         shortDescription: 'Sistema de gerenciamento de usuários e exportação/importação de dados em XLSX/CSV.',
         longDescription: 'Projeto interno para a Prudential, incluindo interface administrativa para cadastro e controle de usuários. Permite exportar dados em planilhas, além de importação e mapeamento automático de grandes volumes de informações.',
         technologies: 'Flutter Web, Firebase, Docker, XLSX',
+        category: 'Web',
         appleLink: null,
         googleLink: null
     },
@@ -120,158 +231,385 @@ const projects = ref([
         shortDescription: 'Dashboard de controle de vendas e PDV móvel para lojas, com métricas em tempo real.',
         longDescription: 'Solução voltada para o controle de vendas, permitindo que vendedores realizem atendimentos fora do caixa (PDV móvel) e acompanhem metas e métricas através de um dashboard web intuitivo.',
         technologies: 'Flutter, Vue.js, Node.js, HTML/CSS, UI/UX',
+        category: 'Web',
         appleLink: null,
         googleLink: null
-    },
-    {
-        id: 7,
-        name: 'Komus - Seguro Mobile',
-        thumbnail: '/images/komus-thumb.jpeg',
-        shortDescription: 'Aplicativo de seguro para celular, com planos e suporte integrado. Marca fundida com Pitz Insurance.',
-        longDescription: 'App desenvolvido para oferecer planos de seguro móvel, com funcionalidades de registro de sinistros, acompanhamento de reparos e canal de suporte 24h. Posteriormente, a marca Komus foi incorporada à Pitz Insurance.',
-        technologies: 'Flutter, Vue.js, Node.js, TypeScript, UI/UX',
-        appleLink: null,
-        googleLink: null
-    },
-    {
-        id: 5,
-        name: 'BlueC - Banco BlueC',
-        thumbnail: '/images/bluec-thumb.avif',
-        shortDescription: 'Aplicativo do Banco BlueC, integrando carteiras digitais para pagamento imediato.',
-        longDescription: 'Integração de carteiras digitais (Apple Pay, Google Pay, Samsung Pay) ao app BlueC, facilitando pagamentos sem contato e gerenciamento de transações em tempo real.',
-        technologies: 'Flutter, Docker, Google Pay, Apple Pay, Firebase',
-        appleLink: null, 
-        googleLink: 'https://play.google.com/store/apps/details?id=br.com.csu.baas&hl=pt_BR'
-    },
-    {
-        id: 4,
-        name: 'H2 Club - Groupe H2',
-        thumbnail: '/images/h2club-thumb.png',
-        shortDescription: 'App para gerenciamento de torneios, agenda e informações do clube H2, com push notifications.',
-        longDescription: 'Aplicativo para membros do H2 Club, exibindo calendário de torneios, resultados, reservas e integração de notificações push segmentadas. Implementa reconhecimento facial/documental para cadastro e compliance com LGPD.',
-        technologies: 'Flutter, BigQuery, JWT, Docker, PHP',
-        appleLink: 'https://apps.apple.com/br/app/h2-club/id6466628886',
-        googleLink: 'https://play.google.com/store/apps/details?id=com.h2.app&hl=pt_BR&pli=1'
-    },
-]);
+    }
+])
 
-function openModal(project) {
-    selectedProject.value = project;
+const filteredProjects = computed(() => {
+    if (selectedCategory.value === 'Todos') {
+        return projects.value
+    }
+    return projects.value.filter(project => project.category === selectedCategory.value)
+})
+
+const openProjectModal = (project) => {
+    selectedProject.value = project
+    document.body.style.overflow = 'hidden'
 }
 
-function closeModal() {
-    selectedProject.value = null;
+const closeProjectModal = () => {
+    selectedProject.value = null
+    document.body.style.overflow = ''
 }
 </script>
 
 <style scoped>
+.apple-projects {
+    background: var(--apple-background);
+}
+
+.projects-hero {
+    background: linear-gradient(135deg, 
+        var(--apple-dark-1) 0%, 
+        var(--apple-dark-2) 50%, 
+        var(--apple-dark-3) 100%
+    );
+    position: relative;
+    overflow: hidden;
+    padding-top: 120px; /* Account for fixed header with extra spacing */
+}
+
+.projects-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 122, 255, 0.1) 0%,
+        rgba(175, 82, 222, 0.05) 50%,
+        transparent 70%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.filter-section {
+    background: var(--apple-surface);
+    padding: var(--spacing-lg) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-xl);
+    color: var(--apple-text-secondary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.filter-tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--apple-text-primary);
+}
+
+.filter-tab.active {
+    background: var(--apple-blue);
+    border-color: var(--apple-blue);
+    color: white;
+}
+
+.projects-section {
+    background: var(--apple-background);
+}
+
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: var(--spacing-xl);
 }
 
-.card-project {
-    background-color: var(--color-card-bg);
-    border: 1px solid #8080804d;
-    border-radius: 10px;
-    overflow: hidden;
+.project-card {
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-project:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
-}
-
-.card-image {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.card-title {
-    font-size: 1.1rem;
-    color: #fff;
-}
-
-.card-desc {
-    color: var(--color-text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.4;
-    display: -webkit-box;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
     overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.store-icons {
-    margin-top: auto;
+    transition: all var(--transition-normal);
+    min-height: 450px;
     display: flex;
-    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 122, 255, 0.2);
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
     align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
 }
 
-.icon-link img {
-    color: green;
-    width: 24px;
-    height: auto;
+.project-card:hover .project-overlay {
+    opacity: 1;
 }
 
+.project-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.project-links a {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
+}
+
+.project-links a:hover {
+    background: var(--apple-blue);
+    transform: scale(1.1);
+}
+
+.project-content {
+    padding: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+    gap: var(--spacing-sm);
+}
+
+.project-category {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(0, 122, 255, 0.1);
+    border: 1px solid rgba(0, 122, 255, 0.3);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    color: var(--apple-blue);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: auto;
+}
+
+.tech-tag {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    color: var(--apple-text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Modal Styles */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 9999;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2000;
+    padding: var(--spacing-lg);
 }
 
 .modal-content {
-    background-color: var(--color-bg-darker);
-    border-radius: 8px;
-    max-width: 600px;
-    width: 90%;
-    padding: 2rem;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
     position: relative;
-    color: #fff;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
 }
 
 .modal-close {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 1.5rem;
-    background: none;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
     border: none;
-    color: #fff;
+    border-radius: 50%;
+    color: var(--apple-text-primary);
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    z-index: 1;
 }
 
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.3s;
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.modal-header {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.modal-image {
+    width: 140px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+}
+
+.modal-info {
+    flex: 1;
+}
+
+.modal-category {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(0, 122, 255, 0.1);
+    border: 1px solid rgba(0, 122, 255, 0.3);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    color: var(--apple-blue);
+    font-weight: 500;
+    display: inline-block;
+}
+
+.modal-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.modal-links {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.modal-links .btn-apple {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+/* Modal Transitions */
+.modal-enter-active,
+.modal-leave-active {
+    transition: all var(--transition-normal);
+}
+
+.modal-enter-from,
+.modal-leave-to {
     opacity: 0;
+    transform: scale(0.9);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .project-card {
+        min-height: 400px;
+    }
+    
+    .project-image {
+        height: 200px;
+    }
+    
+    .filter-tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: var(--spacing-sm);
+    }
+    
+    .filter-tab {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    
+    .modal-header {
+        flex-direction: column;
+    }
+    
+    .modal-image {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .modal-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-overlay {
+        padding: var(--spacing-md);
+    }
+    
+    .project-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 </style>

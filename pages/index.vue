@@ -1,139 +1,187 @@
 <template>
-    <div class="dark-home">
-
-        <section class="hero-section">
-            <img class="hero-video-bg" src="/images/capa.jpg" alt="Pessoa fazendo empréstimo" style="z-index: 0;" />
-
-            <!-- <video class="hero-video-bg" src="/video/v6.mp4" autoplay muted loop playsinline></video> -->
-
-            <div class="hero-overlay"></div>
-
-            <div class="hero-content container">
-                <h1 class="hero-title">Desenvolvedor de Soluções Digitais</h1>
-                <p class="hero-subtitle">
-                    Mobile Software Engineer - Flutter | Dart | Firebase | Front-end Developer | UI UX Designer
-                </p>
-                <div class="hero-buttons">
-                    <NuxtLink to="/projetos" class="btn btn-white">Projetos</NuxtLink>
-                    <NuxtLink to="https://wa.me/5511912117442" class="btn btn-outline-white">Fale Comigo</NuxtLink>
+    <div class="apple-home">
+        <!-- Hero Section -->
+        <section class="hero-section parallax-container">
+            <div class="hero-background parallax-element">
+                <div class="hero-gradient"></div>
+                <div class="floating-elements">
+                    <div class="floating-element" v-for="i in 6" :key="i" :style="getFloatingStyle(i)"></div>
+                </div>
+            </div>
+            
+            <div class="container-apple">
+                <div class="hero-content">
+                    <div class="hero-text scroll-animate">
+                        <h1 class="text-large-title gradient-text mb-lg">
+                            {{ displayText }}
+                            <span class="cursor" :class="{ 'blink': !isTypewriterComplete }">|</span>
+                        </h1>
+                        <p class="text-title-3 mb-xl" style="color: var(--apple-text-secondary);">
+                            Mobile Software Engineer especializado em Flutter, Dart, Firebase e desenvolvimento web moderno
+                        </p>
+                        <div class="hero-buttons">
+                            <NuxtLink to="/projetos" class="btn-apple btn-apple-primary">
+                                Ver Projetos
+                            </NuxtLink>
+                            <NuxtLink to="/contato" class="btn-apple btn-apple-secondary">
+                                Fale Comigo
+                            </NuxtLink>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <br>
-        <br>
-        <br>
+        <!-- Stats Section -->
+        <section class="stats-section section-padding">
+            <div class="container-apple">
+                <div class="stats-grid grid-apple grid-3">
+                    <div class="stat-card glass-card scroll-animate" v-for="stat in stats" :key="stat.label">
+                        <div class="stat-number text-title-1 gradient-text">{{ stat.displayValue }}+</div>
+                        <div class="stat-label text-callout">{{ stat.label }}</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="dark-home">
-            <section class="background-section">
-                <div class="container">
-                    <h2>Projetos</h2>
-                    <p>Alguns dos principais projetos em que atuei:</p>
+        <!-- Projects Section -->
+        <section class="projects-section section-padding">
+            <div class="container-apple">
+                <div class="section-header text-center mb-2xl scroll-animate">
+                    <h2 class="text-title-1 mb-md">Projetos em Destaque</h2>
+                    <p class="text-body" style="color: var(--apple-text-secondary);">
+                        Alguns dos principais projetos que desenvolvi ao longo da minha carreira
+                    </p>
+                </div>
 
-                    <div class="projects-grid">
-                        <div v-for="project in projects" :key="project.id" class="card-project"
-                            @click="openModal(project)">
-                            <img :src="project.thumbnail" class="card-image" :alt="project.name" />
-
-                            <div class="card-content">
-                                <h3 class="card-title">{{ project.name }}</h3>
-                                <p class="card-desc">
-                                    {{ project.shortDescription }}
-                                </p>
-
-                                <div class="store-icons">
-                                    <a v-if="project.appleLink" :href="project.appleLink" target="_blank" @click.stop
-                                        class="icon-link">
+                <div class="projects-grid grid-apple grid-3">
+                    <div 
+                        v-for="(project, index) in featuredProjects" 
+                        :key="project.id" 
+                        class="project-card glass-card scroll-animate"
+                        :style="{ animationDelay: `${index * 0.1}s` }"
+                        @click="openProjectModal(project)"
+                    >
+                        <div class="project-image">
+                            <img :src="project.thumbnail" :alt="project.name" />
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a v-if="project.appleLink" :href="project.appleLink" target="_blank" @click.stop>
                                         <i class="bi bi-apple"></i>
                                     </a>
-
-                                    <a v-if="project.googleLink" :href="project.googleLink" target="_blank" @click.stop
-                                        class="icon-link" style="display: flex; align-items: center; gap: 2px;">
-                                        <i class="bi bi-google"></i>
+                                    <a v-if="project.googleLink" :href="project.googleLink" target="_blank" @click.stop>
+                                        <i class="bi bi-google-play"></i>
                                     </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="text-headline mb-sm">{{ project.name }}</h3>
+                            <p class="text-subhead mb-md" style="color: var(--apple-text-secondary);">
+                                {{ project.shortDescription }}
+                            </p>
+                            <div class="project-tech">
+                                <span v-for="tech in project.technologies.split(', ').slice(0, 3)" :key="tech" class="tech-tag">
+                                    {{ tech }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-xl">
+                    <NuxtLink to="/projetos" class="btn-apple btn-apple-secondary">
+                        Ver Todos os Projetos
+                    </NuxtLink>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section section-padding">
+            <div class="container-apple">
+                <div class="services-content">
+                    <div class="services-text scroll-animate">
+                        <h2 class="text-title-1 mb-lg">
+                            Por que escolher meus <span class="gradient-text">serviços</span>?
+                        </h2>
+                        <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
+                            Com 7 anos de experiência como Software Engineer, desenvolvo soluções digitais completas e 
+                            personalizadas — de apps mobile robustos a interfaces web modernas — unindo performance, 
+                            inovação e design intuitivo.
+                        </p>
+                        
+                        <div class="services-list">
+                            <div v-for="service in services" :key="service.title" class="service-item scroll-animate">
+                                <div class="service-icon">
+                                    <i :class="service.icon"></i>
+                                </div>
+                                <div class="service-content">
+                                    <h4 class="text-callout mb-sm">{{ service.title }}</h4>
+                                    <p class="text-subhead" style="color: var(--apple-text-secondary);">
+                                        {{ service.description }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <transition name="fade">
-                <div v-if="selectedProject" class="modal-overlay" @click="closeModal">
-                    <div class="modal-content" @click.stop>
-                        <button class="modal-close" @click="closeModal">&times;</button>
-                        <h2>{{ selectedProject.name }}</h2>
-                        <p>{{ selectedProject.longDescription }}</p>
+        <!-- CTA Section -->
+        <section class="cta-section section-padding">
+            <div class="container-apple">
+                <div class="cta-content glass-card text-center scroll-animate">
+                    <h2 class="text-title-1 mb-lg">
+                        Pronto para dar o próximo passo no seu <span class="gradient-text">projeto</span>?
+                    </h2>
+                    <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
+                        Quer desenvolver um aplicativo do zero, modernizar sua plataforma ou criar uma experiência digital 
+                        completa? Vamos conversar e descobrir como posso ajudar você a alcançar seus objetivos.
+                    </p>
+                    <NuxtLink to="/contato" class="btn-apple btn-apple-primary">
+                        Fale Comigo Agora
+                    </NuxtLink>
+                </div>
+            </div>
+        </section>
 
-                        <h4>Tecnologias Utilizadas:</h4>
-                        <p>{{ selectedProject.technologies }}</p>
+        <!-- Project Modal -->
+        <transition name="modal">
+            <div v-if="selectedProject" class="modal-overlay" @click="closeProjectModal">
+                <div class="modal-content glass-card" @click.stop>
+                    <button class="modal-close" @click="closeProjectModal">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                    <div class="modal-header">
+                        <img :src="selectedProject.thumbnail" :alt="selectedProject.name" class="modal-image">
+                        <div class="modal-info">
+                            <h3 class="text-title-2 mb-sm">{{ selectedProject.name }}</h3>
+                            <p class="text-body" style="color: var(--apple-text-secondary);">
+                                {{ selectedProject.longDescription }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="text-headline mb-md">Tecnologias Utilizadas</h4>
+                        <div class="modal-tech">
+                            <span v-for="tech in selectedProject.technologies.split(', ')" :key="tech" class="tech-tag">
+                                {{ tech }}
+                            </span>
+                        </div>
+                        <div class="modal-links mt-lg" v-if="selectedProject.appleLink || selectedProject.googleLink">
+                            <a v-if="selectedProject.appleLink" :href="selectedProject.appleLink" target="_blank" class="btn-apple btn-apple-secondary">
+                                <i class="bi bi-apple"></i> App Store
+                            </a>
+                            <a v-if="selectedProject.googleLink" :href="selectedProject.googleLink" target="_blank" class="btn-apple btn-apple-secondary">
+                                <i class="bi bi-google-play"></i> Google Play
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </transition>
-        </div>
-
-        <br>
-        <br>
-        <br>
-
-        <section class="presentation-section">
-            <div class="container">
-                <div class="presentation-content">
-                    <h2>Por que meus serviços <span style="color: #00dc82;">?</span></h2>
-                    <p>
-                        Com 7 anos de experiência como Software Engineer, desenvolvo soluções digitais completas e
-                        personalizadas — de apps mobile robustos a interfaces web modernas — unindo performance,
-                        inovação e design intuitivo.
-                    </p>
-                    <ul class="ul-style">
-                        <li><strong>Mobile:</strong> Flutter, Dart, GetX, MobX, MVVM e metodologias ágeis para apps
-                            escaláveis;</li>
-                        <li><strong>Web:</strong> Vue.js, Nuxt.js, JavaScript, TypeScript, HTML e CSS para interfaces
-                            dinâmicas;</li>
-                        <li><strong>Arquitetura:</strong> Clean Architecture e Microfrontend para organização e
-                            manutenção eficiente;</li>
-                        <li><strong>Integrações:</strong> Firebase, .Net, PHP, BigQuery e SQL para backends seguros e
-                            performáticos;</li>
-                        <li><strong>UI/UX:</strong> Figma e Marvel App, com foco total na experiência do usuário.</li>
-                    </ul>
-
-                </div>
             </div>
-        </section>
-
-        <br>
-        <br>
-
-        <section class="extra-section">
-            <div class="container extra-content">
-                <div class="extra-text">
-                    <h2>Quem se beneficia <span style="color: #00dc82;">?</span></h2>
-                    <p>
-                        Empresas de qualquer segmento, startups em busca de inovação, microempreendedores e até
-                        profissionais autônomos que desejam otimizar processos, lançar produtos digitais ou melhorar
-                        a experiência de seus clientes. Meu foco é fornecer soluções tecnológicas sob medida,
-                        escaláveis e eficientes, para ajudar a concretizar suas ideias.
-                    </p>
-                </div>
-                <div class="extra-image">
-                    <img src="/images/t2.webp" alt="Clientes satisfeitos com soluções digitais" />
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section">
-            <div class="container cta-content">
-                <h2 class="cta-title">Pronto para dar o próximo passo no seu projeto <span
-                        style="color: #00dc82;">?</span></h2>
-                <p class="cta-text">
-                    Quer desenvolver um aplicativo do zero, modernizar sua plataforma ou criar uma experiência digital
-                    completa? Vamos conversar e descobrir como posso ajudar você a alcançar seus objetivos de forma
-                    inovadora e eficiente.
-                </p>
-                <NuxtLink to="#" class="btn btn-white btn-mt" style="margin-top: 4%;">Fale Comigo Agora</NuxtLink>
-            </div>
-        </section>
-
+        </transition>
     </div>
 </template>
 
@@ -253,24 +301,56 @@
 
 
 <script setup>
-import '@/assets/styles/home.css';
+import { ref, onMounted, computed } from 'vue'
+import { useScrollAnimation, useTypewriter, useCountUp } from '~/composables/useAnimations'
 
+// Scroll animations
+useScrollAnimation()
 
-import { ref } from 'vue';
+// Typewriter effect
+const { displayText, isComplete: isTypewriterComplete, startTypewriter } = useTypewriter(
+    'Desenvolvedor de Soluções Digitais', 
+    100
+)
 
-const selectedProject = ref(null);
+// Stats with count up animation
+const stats = ref([
+    { label: 'Anos de Experiência', value: 7, displayValue: 0 },
+    { label: 'Projetos Concluídos', value: 50, displayValue: 0 },
+    { label: 'Clientes Satisfeitos', value: 30, displayValue: 0 }
+])
 
-const projects = ref([
+// Services data
+const services = ref([
     {
-        id: 8,
-        name: 'HeiClub - Heineken',
-        thumbnail: '/images/heineken-thumb.jpg',
-        shortDescription: 'Projeto privado para clientes Heineken, com pontos e integração de pagamentos digitais.',
-        longDescription: 'Desenvolvimento de plataforma interna para Heineken, englobando programa de fidelidade (resgate de pontos) e integração com métodos de pagamento digital. Acesso restrito a clientes e funcionários.',
-        technologies: 'Flutter, .NET, Docker, UI/UX',
-        appleLink: null,
-        googleLink: null
+        title: 'Desenvolvimento Mobile',
+        description: 'Flutter, Dart, GetX, MobX, MVVM e metodologias ágeis para apps escaláveis',
+        icon: 'bi bi-phone'
     },
+    {
+        title: 'Desenvolvimento Web',
+        description: 'Vue.js, Nuxt.js, JavaScript, TypeScript, HTML e CSS para interfaces dinâmicas',
+        icon: 'bi bi-laptop'
+    },
+    {
+        title: 'Arquitetura de Software',
+        description: 'Clean Architecture e Microfrontend para organização e manutenção eficiente',
+        icon: 'bi bi-diagram-3'
+    },
+    {
+        title: 'Integrações Backend',
+        description: 'Firebase, .Net, PHP, BigQuery e SQL para backends seguros e performáticos',
+        icon: 'bi bi-server'
+    },
+    {
+        title: 'UI/UX Design',
+        description: 'Figma e Marvel App, com foco total na experiência do usuário',
+        icon: 'bi bi-palette'
+    }
+])
+
+// Projects data
+const projects = ref([
     {
         id: 1,
         name: 'Bnb - Banco do Nordeste',
@@ -312,6 +392,16 @@ const projects = ref([
         googleLink: 'https://play.google.com/store/apps/details?id=br.com.sorocred.sorocredapp&hl=en_US'
     },
     {
+        id: 8,
+        name: 'HeiClub - Heineken',
+        thumbnail: '/images/heineken-thumb.jpg',
+        shortDescription: 'Projeto privado para clientes Heineken, com pontos e integração de pagamentos digitais.',
+        longDescription: 'Desenvolvimento de plataforma interna para Heineken, englobando programa de fidelidade (resgate de pontos) e integração com métodos de pagamento digital. Acesso restrito a clientes e funcionários.',
+        technologies: 'Flutter, .NET, Docker, UI/UX',
+        appleLink: null,
+        googleLink: null
+    },
+    {
         id: 9,
         name: 'BackOffice - Prudential',
         thumbnail: '/images/prudential-thumb.jpeg',
@@ -320,34 +410,478 @@ const projects = ref([
         technologies: 'Flutter Web, Firebase, Docker, XLSX',
         appleLink: null,
         googleLink: null
-    },
-    {
-        id: 10,
-        name: 'NeoPDV - Dashboard',
-        thumbnail: '/images/neopdv-thumb.jpg',
-        shortDescription: 'Dashboard de controle de vendas e PDV móvel para lojas, com métricas em tempo real.',
-        longDescription: 'Solução voltada para o controle de vendas, permitindo que vendedores realizem atendimentos fora do caixa (PDV móvel) e acompanhem metas e métricas através de um dashboard web intuitivo.',
-        technologies: 'Flutter, Vue.js, Node.js, HTML/CSS, UI/UX',
-        appleLink: null,
-        googleLink: null
-    },
-    {
-        id: 7,
-        name: 'Komus - Seguro Mobile',
-        thumbnail: '/images/komus-thumb.jpeg',
-        shortDescription: 'Aplicativo de seguro para celular, com planos e suporte integrado. Marca fundida com Pitz Insurance.',
-        longDescription: 'App desenvolvido para oferecer planos de seguro móvel, com funcionalidades de registro de sinistros, acompanhamento de reparos e canal de suporte 24h. Posteriormente, a marca Komus foi incorporada à Pitz Insurance.',
-        technologies: 'Flutter, Vue.js, Node.js, TypeScript, UI/UX',
-        appleLink: null,
-        googleLink: null
-    },
-]);
+    }
+])
 
-function openModal(project) {
-    selectedProject.value = project;
+// Featured projects (first 6)
+const featuredProjects = computed(() => projects.value.slice(0, 6))
+
+// Modal state
+const selectedProject = ref(null)
+
+// Methods
+const openProjectModal = (project) => {
+    selectedProject.value = project
+    document.body.style.overflow = 'hidden'
 }
 
-function closeModal() {
-    selectedProject.value = null;
+const closeProjectModal = () => {
+    selectedProject.value = null
+    document.body.style.overflow = ''
 }
+
+const getFloatingStyle = (index) => {
+    const positions = [
+        { top: '20%', left: '10%', animationDelay: '0s' },
+        { top: '60%', left: '80%', animationDelay: '1s' },
+        { top: '30%', left: '70%', animationDelay: '2s' },
+        { top: '80%', left: '20%', animationDelay: '0.5s' },
+        { top: '10%', left: '60%', animationDelay: '1.5s' },
+        { top: '70%', left: '50%', animationDelay: '2.5s' }
+    ]
+    return positions[index - 1] || {}
+}
+
+// Initialize animations on mount
+onMounted(() => {
+    setTimeout(() => {
+        startTypewriter()
+    }, 500)
+    
+    // Start count up animations for stats
+    setTimeout(() => {
+        stats.value.forEach((stat, index) => {
+            const { current, startCountUp } = useCountUp(stat.value, 2000)
+            setTimeout(() => {
+                startCountUp()
+                // Update the reactive value
+                const updateStat = () => {
+                    stat.displayValue = current.value
+                    if (current.value < stat.value) {
+                        requestAnimationFrame(updateStat)
+                    }
+                }
+                updateStat()
+            }, index * 200)
+        })
+    }, 1000)
+})
 </script>
+
+<style scoped>
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    /* No padding-top needed as header is transparent over hero */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        var(--apple-dark-1) 0%, 
+        var(--apple-dark-2) 50%, 
+        var(--apple-dark-3) 100%
+    );
+}
+
+.hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 122, 255, 0.1) 0%,
+        rgba(175, 82, 222, 0.05) 50%,
+        transparent 70%
+    );
+}
+
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.floating-element {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--apple-blue), var(--apple-purple));
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float 6s ease-in-out infinite;
+    filter: blur(40px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: var(--spacing-3xl) 0;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cursor {
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.cursor.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Stats Section */
+.stats-section {
+    background: var(--apple-surface);
+}
+
+.stats-grid {
+    gap: var(--spacing-xl);
+}
+
+.stat-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.stat-number {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+}
+
+.stat-label {
+    color: var(--apple-text-secondary);
+}
+
+/* Projects Section */
+.projects-section {
+    background: var(--apple-background);
+}
+
+.projects-grid {
+    gap: var(--spacing-xl);
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.project-card {
+    cursor: pointer;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 122, 255, 0.2);
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal);
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.project-links a {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    backdrop-filter: blur(10px);
+}
+
+.project-links a:hover {
+    background: var(--apple-blue);
+    transform: scale(1.1);
+}
+
+.project-content {
+    padding: var(--spacing-md);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.tech-tag {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    color: var(--apple-text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Services Section */
+.services-section {
+    background: var(--apple-surface);
+}
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+.service-item {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+}
+
+.service-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--apple-blue), var(--apple-purple));
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.service-content {
+    flex: 1;
+}
+
+/* CTA Section */
+.cta-section {
+    background: var(--apple-background);
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-3xl);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: var(--spacing-lg);
+}
+
+.modal-content {
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: var(--apple-text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    z-index: 1;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.modal-image {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    flex-shrink: 0;
+}
+
+.modal-info {
+    flex: 1;
+}
+
+.modal-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.modal-links {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.modal-links .btn-apple {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+/* Modal Transitions */
+.modal-enter-active,
+.modal-leave-active {
+    transition: all var(--transition-normal);
+}
+
+.modal-enter-from,
+.modal-leave-to {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .project-card {
+        min-height: 350px;
+    }
+    
+    .project-image {
+        height: 200px;
+    }
+    
+    .service-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .modal-header {
+        flex-direction: column;
+    }
+    
+    .modal-image {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .modal-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta-content {
+        padding: var(--spacing-xl);
+    }
+    
+    .modal-overlay {
+        padding: var(--spacing-md);
+    }
+}
+</style>

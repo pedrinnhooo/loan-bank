@@ -1,12 +1,14 @@
 <template>
   <Analytics />
   
-  <div class="bg-light text-dark min-vh-100 d-flex flex-column">
+  <div class="apple-app">
     <Header />
 
-    <transition name="fade" mode="out-in">
-      <NuxtPage />
-    </transition>
+    <main class="main-content">
+      <transition name="page" mode="out-in">
+        <NuxtPage />
+      </transition>
+    </main>
 
     <Footer />
   </div>
@@ -20,39 +22,59 @@ import Footer from '~/components/footer.vue'
 </script>
 
 <style>
-@font-face {
-  font-family: 'Roboto Mono';
-  src: url('/fonts/Ubuntu-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+.apple-app {
+  min-height: 100vh;
+  background-color: var(--apple-background);
+  color: var(--apple-text-primary);
+  font-family: var(--font-system);
 }
 
-* {
-  font-family: 'Roboto Mono', monospace;
+.main-content {
+  /* Removed padding-top to allow header to be truly transparent over content */
 }
 
-.bg-dark {
-  --bs-bg-opacity: 1;
-  background-color: rgb(0 0 0) !important;
+/* Page Transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
-}
-
-.fade-enter-from,
-.fade-leave-to {
+.page-enter-from {
   opacity: 0;
+  transform: translateY(20px);
 }
 
-html,
-body,
-#__nuxt {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-  overscroll-behavior: none;
-  background-color: #000;
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Global Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--apple-dark-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--apple-dark-5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--apple-dark-6);
+}
+
+/* Selection */
+::selection {
+  background: var(--apple-blue);
+  color: white;
+}
+
+::-moz-selection {
+  background: var(--apple-blue);
+  color: white;
 }
 </style>

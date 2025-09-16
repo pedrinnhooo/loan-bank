@@ -1,180 +1,310 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 85px;">
-        <div class="container">
-            <NuxtLink class="navbar-brand fw-bold" to="/" style="font-family: 'Roboto Mono', monospace;">
-                <img src="/public/favicon.ico" alt="Logo" class="me-2 rounded" style="width: 21%;height: auto;">
-                Pedro Ruffo
-            </NuxtLink>
+    <header class="apple-header" :class="{ 'scrolled': isScrolled }">
+        <nav class="header-nav">
+            <div class="container-apple">
+                <div class="nav-content">
+                    <!-- Logo -->
+                    <NuxtLink to="/" class="logo-link">
+                        <div class="logo">
+                            <AppleLogo size="medium" variant="gradient" />
+                            <span class="logo-text">Pedro Ruffo</span>
+                        </div>
+                    </NuxtLink>
 
-            <button class="navbar-toggler" type="button" @click="toggleSidebar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                    <!-- Desktop Navigation -->
+                    <div class="nav-links desktop-nav">
+                        <NuxtLink 
+                            v-for="link in navLinks" 
+                            :key="link.path"
+                            :to="link.path" 
+                            class="nav-link"
+                            :class="{ 'active': $route.path === link.path }"
+                        >
+                            {{ link.name }}
+                        </NuxtLink>
+                    </div>
 
-            <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/" class="nav-link" exact-active-class="active">Início</NuxtLink>
-                    </li>
-                    <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/sobre" class="nav-link" exact-active-class="active">Sobre</NuxtLink>
-                    </li>
-                    <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/projetos" class="nav-link" exact-active-class="active">Projetos</NuxtLink>
-                    </li>
-                    <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/contato" class="nav-link" exact-active-class="active">Contato</NuxtLink>
-                    </li>
-                </ul>
+                    <!-- Mobile Menu Button -->
+                    <button 
+                        class="mobile-menu-btn"
+                        @click="toggleMobileMenu"
+                        :class="{ 'active': isMobileMenuOpen }"
+                    >
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
             </div>
-        </div>
+        </nav>
 
-        <transition name="slide">
-            <div v-if="isSidebarOpen" class="sidebar">
-                <button class="close-btn" @click="toggleSidebar">&times;</button>
-                <ul class="sidebar-nav">
-                    <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/" class="nav-link" exact-active-class="active" @click="toggleSidebar">Início
+        <!-- Mobile Menu -->
+        <transition name="mobile-menu">
+            <div v-if="isMobileMenuOpen" class="mobile-menu">
+                <div class="mobile-menu-content">
+                    <div class="mobile-nav-links">
+                        <NuxtLink 
+                            v-for="link in navLinks" 
+                            :key="link.path"
+                            :to="link.path" 
+                            class="mobile-nav-link"
+                            @click="closeMobileMenu"
+                        >
+                            {{ link.name }}
                         </NuxtLink>
-                    </li>
-                    <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/sobre" class="nav-link" exact-active-class="active" @click="toggleSidebar">Sobre
-                        </NuxtLink>
-                    </li>
-                    <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/projetos" class="nav-link" exact-active-class="active" @click="toggleSidebar">
-                            Projetos</NuxtLink>
-                    </li>
-                    <li class="nav-item me-2 li-style">
-                        <NuxtLink to="/contato" class="nav-link" exact-active-class="active" @click="toggleSidebar">
-                            Contato</NuxtLink>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </transition>
 
-        <div v-if="isSidebarOpen" class="overlay" @click="toggleSidebar"></div>
-    </nav>
+        <!-- Mobile Menu Overlay -->
+        <div 
+            v-if="isMobileMenuOpen" 
+            class="mobile-menu-overlay"
+            @click="closeMobileMenu"
+        ></div>
+    </header>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const isSidebarOpen = ref(false);
+const isMobileMenuOpen = ref(false)
+const isScrolled = ref(false)
 
-const toggleSidebar = () => {
-    isSidebarOpen.value = !isSidebarOpen.value;
-};
+const navLinks = [
+    { name: 'Início', path: '/' },
+    { name: 'Sobre', path: '/sobre' },
+    { name: 'Projetos', path: '/projetos' },
+    { name: 'Contato', path: '/contato' }
+]
+
+const toggleMobileMenu = () => {
+    isMobileMenuOpen.value = !isMobileMenuOpen.value
+    
+    // Prevent body scroll when menu is open
+    if (isMobileMenuOpen.value) {
+        document.body.style.overflow = 'hidden'
+    } else {
+        document.body.style.overflow = ''
+    }
+}
+
+const closeMobileMenu = () => {
+    isMobileMenuOpen.value = false
+    document.body.style.overflow = ''
+}
+
+const handleScroll = () => {
+    isScrolled.value = window.scrollY > 50
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+    document.body.style.overflow = ''
+})
 </script>
 
 <style scoped>
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 280px;
-    height: 100%;
-    background-color: #000;
-    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.5);
-    padding-top: 60px;
-    transition: transform 0.4s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    z-index: 1050;
-}
-
-.slide-enter-active,
-.slide-leave-active {
-    transition: transform 0.4s ease-in-out;
-}
-
-.slide-enter-from,
-.slide-leave-to {
-    transform: translateX(100%);
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.close-btn:hover {
-    color: #00dc82;
-}
-
-.sidebar-nav {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
-
-.sidebar-nav li {
-    margin: 15px 0;
-}
-
-.sidebar-nav li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 15px;
-    display: block;
-    transition: background 0.3s ease;
-}
-
-.sidebar-nav li a:hover {
-    background-color: #00dc82;
-    border-radius: 8px;
-}
-
-.overlay {
+.apple-header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1040;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition-normal);
 }
 
-.li-style {
-    padding: 0px 5px;
-    font-size: 14px;
-    background-color: transparent;
-    border-radius: 45px;
+.apple-header.scrolled {
+    background: linear-gradient(135deg, 
+        rgba(0, 0, 0, 0.9) 0%, 
+        rgba(28, 28, 30, 0.9) 50%, 
+        rgba(44, 44, 46, 0.9) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.header-nav {
+    padding: var(--spacing-md) 0;
+    background: transparent;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+/* Logo image styles removed - now using AppleLogo component */
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--apple-text-primary);
+}
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.nav-link {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    color: var(--apple-text-secondary);
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    position: relative;
     border: 1px solid transparent;
 }
 
-.li-style .nav-link {
-    display: block;
-    padding: 7px 40px;
+.nav-link:hover {
+    color: var(--apple-text-primary);
+    background: rgba(0, 122, 255, 0.1);
+    border: 1px solid rgba(0, 122, 255, 0.2);
+}
+
+.nav-link.active {
+    color: var(--apple-text-primary);
+    background: rgba(0, 122, 255, 0.2);
+    border: 1px solid rgba(0, 122, 255, 0.3);
+}
+
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger-line {
+    width: 20px;
+    height: 2px;
+    background: var(--apple-text-primary);
+    margin: 2px 0;
+    transition: all var(--transition-normal);
+    border-radius: 1px;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-btn.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 999;
+}
+
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: var(--spacing-xl);
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
     text-align: center;
-    color: grey;
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 45px;
-    transition: all 0.3s ease;
 }
 
-.li-style .nav-link.active {
-    color: white;
-    background-color: #272f2c70;
-    border: 1px solid #00dc82;
+.mobile-nav-link {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--apple-text-primary);
+    text-decoration: none;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
 }
 
-.li-style .nav-link:hover:not(.active) {
-    color: white !important;
-    background-color: #272f2c70;
-    border: 1px solid #00dc82;
+.mobile-nav-link:hover {
+    background: rgba(0, 122, 255, 0.2);
+    transform: scale(1.05);
 }
 
-@media (min-width: 992px) {
-    .sidebar {
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+
+/* Transitions */
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+    transition: all var(--transition-normal);
+}
+
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-menu {
         display: none;
     }
 }

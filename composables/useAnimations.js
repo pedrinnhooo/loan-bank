@@ -1,0 +1,133 @@
+import { ref, onMounted, onUnmounted } from 'vue'
+
+export const useScrollAnimation = () => {
+  const elements = ref([])
+  
+  const observeElements = () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view')
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    )
+    
+    elements.value = document.querySelectorAll('.scroll-animate')
+    elements.value.forEach((el) => observer.observe(el))
+    
+    return observer
+  }
+  
+  onMounted(() => {
+    observeElements()
+  })
+  
+  return {
+    elements
+  }
+}
+
+export const useParallax = () => {
+  const parallaxElements = ref([])
+  
+  const updateParallax = () => {
+    const scrolled = window.pageYOffset
+    
+    parallaxElements.value.forEach((element) => {
+      const rate = scrolled * -0.5
+      element.style.transform = `translateY(${rate}px)`
+    })
+  }
+  
+  onMounted(() => {
+    parallaxElements.value = document.querySelectorAll('.parallax-element')
+    window.addEventListener('scroll', updateParallax)
+  })
+  
+  onUnmounted(() => {
+    window.removeEventListener('scroll', updateParallax)
+  })
+  
+  return {
+    parallaxElements
+  }
+}
+
+export const useMouseTracker = () => {
+  const mouseX = ref(0)
+  const mouseY = ref(0)
+  
+  const updateMouse = (event) => {
+    mouseX.value = event.clientX
+    mouseY.value = event.clientY
+  }
+  
+  onMounted(() => {
+    window.addEventListener('mousemove', updateMouse)
+  })
+  
+  onUnmounted(() => {
+    window.removeEventListener('mousemove', updateMouse)
+  })
+  
+  return {
+    mouseX,
+    mouseY
+  }
+}
+
+export const useTypewriter = (text, speed = 100) => {
+  const displayText = ref('')
+  const isComplete = ref(false)
+  
+  const startTypewriter = () => {
+    let i = 0
+    const timer = setInterval(() => {
+      if (i < text.length) {
+        displayText.value += text.charAt(i)
+        i++
+      } else {
+        clearInterval(timer)
+        isComplete.value = true
+      }
+    }, speed)
+  }
+  
+  return {
+    displayText,
+    isComplete,
+    startTypewriter
+  }
+}
+
+export const useCountUp = (target, duration = 2000) => {
+  const current = ref(0)
+  
+  const startCountUp = () => {
+    const start = Date.now()
+    const end = start + duration
+    
+    const timer = setInterval(() => {
+      const now = Date.now()
+      const remaining = Math.max((end - now) / duration, 0)
+      const progress = 1 - remaining
+      
+      current.value = Math.round(progress * target)
+      
+      if (progress === 1) {
+        clearInterval(timer)
+      }
+    }, 16)
+  }
+  
+  return {
+    current,
+    startCountUp
+  }
+}
