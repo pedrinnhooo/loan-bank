@@ -9,9 +9,8 @@
                 </div>
             </div>
             
-            <div class="container-apple">
-                <div class="hero-content">
-                    <div class="hero-text scroll-animate">
+            <div class="hero-content">
+                <div class="hero-text scroll-animate">
                         <h1 class="text-large-title gradient-text mb-lg">
                             {{ displayText }}
                             <span class="cursor" :class="{ 'blink': !isTypewriterComplete }">|</span>
@@ -29,7 +28,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <!-- Stats Section -->
@@ -471,9 +469,10 @@ onMounted(() => {
 <style scoped>
 /* Hero Section */
 .hero-section {
-    min-height: 100vh;
+    height: 111.11vh; /* Compensa o zoom 0.9 (100 / 0.9 = 111.11) */
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
     /* No padding-top needed as header is transparent over hero */
@@ -530,7 +529,9 @@ onMounted(() => {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: var(--spacing-3xl) 0;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 var(--spacing-lg);
 }
 
 .hero-buttons {
@@ -830,7 +831,7 @@ onMounted(() => {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-content {
-        padding: var(--spacing-2xl) 0;
+        padding: 0 var(--spacing-md);
     }
     
     .hero-buttons {
