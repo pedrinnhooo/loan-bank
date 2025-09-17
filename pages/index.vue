@@ -104,7 +104,8 @@
                             Por que escolher meus <span class="gradient-text">serviços</span>?
                         </h2>
                         <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
-                            Com 7 anos de experiência como Software Engineer, desenvolvo soluções digitais completas e
+                            Com mais de 6 anos de experiência como Software Engineer, desenvolvo soluções digitais
+                            completas e
                             personalizadas — de apps mobile robustos a interfaces web modernas — unindo performance,
                             inovação e design intuitivo.
                         </p>
@@ -207,9 +208,9 @@ const { displayText, isComplete: isTypewriterComplete, startTypewriter } = useTy
 
 // Stats with count up animation
 const stats = ref([
-    { label: 'Anos de Experiência', value: 7, displayValue: 0 },
+    { label: 'Anos de Experiência', value: 6, displayValue: 0 },
     { label: 'Projetos Concluídos', value: 50, displayValue: 0 },
-    { label: 'Clientes Satisfeitos', value: 30, displayValue: 0 }
+    { label: 'Clientes Satisfeitos', value: 200, displayValue: 0 }
 ])
 
 // Services data
@@ -463,11 +464,10 @@ onMounted(() => {
 
 /* Stats Section */
 .stats-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .stats-grid {
@@ -490,11 +490,10 @@ onMounted(() => {
 
 /* Projects Section */
 .projects-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .projects-grid {
@@ -625,11 +624,10 @@ onMounted(() => {
 
 /* Services Section */
 .services-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .services-list {
@@ -663,11 +661,10 @@ onMounted(() => {
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .cta-content {

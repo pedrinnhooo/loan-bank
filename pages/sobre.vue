@@ -5,39 +5,43 @@
             <div class="container-apple">
                 <div class="hero-content text-center scroll-animate">
                     <h1 class="text-large-title gradient-text mb-lg">Sobre Mim</h1>
-                    <p class="text-title-3 mb-xl" style="color: var(--apple-text-secondary); max-width: 800px; margin: 0 auto;">
+                    <p class="text-title-3 mb-xl"
+                        style="color: var(--apple-text-secondary); max-width: 800px; margin: 0 auto;">
                         Olá! Eu sou o <strong>Pedro Ruffo</strong>, um desenvolvedor especializado com
-                        7 anos de experiência em Flutter, UI/UX Design e desenvolvimento web. Minha paixão é criar
+                        6 anos de experiência em Flutter, UI/UX Design e desenvolvimento web. Minha paixão é criar
                         interfaces modernas e funcionais, entregando experiências excepcionais.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Education Section -->
-        <section class="education-section section-padding">
+        <!-- Education & Summary Section -->
+        <section class="education-summary-section section-padding">
             <div class="container-apple">
-                <div class="glass-card scroll-animate">
-                    <h2 class="text-title-1 mb-lg gradient-text">Formação</h2>
-                    <div class="education-item">
-                        <h3 class="text-headline mb-sm">Sistemas de Análise e Desenvolvimento</h3>
-                        <p class="text-callout" style="color: var(--apple-blue);">FIAP (2021 - 2023)</p>
+                <div class="education-summary-grid">
+                    <!-- Formação Card -->
+                    <div class="glass-card scroll-animate">
+                        <h2 class="text-title-1 mb-lg" style="color: var(--apple-text-primary);">Formação</h2>
+                        <div class="education-item">
+                            <h3 class="text-headline mb-sm">Sistemas de Análise e Desenvolvimento</h3>
+                            <p class="text-callout" style="color: var(--apple-blue);">FIAP (2021 - 2023)</p>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Summary Section -->
-        <section class="summary-section section-padding">
-            <div class="container-apple">
-                <div class="glass-card scroll-animate">
-                    <h2 class="text-title-1 mb-lg">Resumo Profissional</h2>
-                    <p class="text-body" style="color: var(--apple-text-secondary); line-height: 1.8;">
-                        <strong style="color: var(--apple-text-primary);">Mobile Software Engineer - Flutter | Dart | Firebase | Front-end Developer | UI/UX Designer</strong><br><br>
-                        Tenho 7 anos de experiência em desenvolvimento, especialmente com Flutter e foco em UI/UX.
-                        Sou apaixonado por criar interfaces modernas, funcionais e altamente envolventes para os usuários,
-                        garantindo performance e qualidade em cada projeto.
-                    </p>
+                    <!-- Resumo Card -->
+                    <div class="glass-card scroll-animate">
+                        <h2 class="text-title-1 mb-lg" style="color: var(--apple-text-primary);">Resumo Profissional
+                        </h2>
+                        <p class="text-body" style="color: var(--apple-text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--apple-text-primary);">Mobile Software Engineer - Flutter | Dart
+                                |
+                                Firebase | Front-end Developer | UI/UX Designer</strong><br><br>
+                            Tenho 6 anos de experiência em desenvolvimento, especialmente com Flutter e foco em UI/UX.
+                            Sou apaixonado por criar interfaces modernas, funcionais e altamente envolventes para os
+                            usuários,
+                            garantindo performance e qualidade em cada projeto.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -46,7 +50,7 @@
         <section class="experience-section section-padding">
             <div class="container-apple">
                 <h2 class="text-title-1 text-center mb-2xl scroll-animate">Experiência Profissional</h2>
-                
+
                 <div class="experience-timeline">
                     <div class="experience-item glass-card scroll-animate">
                         <div class="experience-header">
@@ -55,9 +59,12 @@
                         </div>
                         <div class="experience-content">
                             <ul class="experience-list">
-                                <li>Atuação como Engenheiro de Software Mobile (Flutter), desenvolvendo o projeto de LGPD para o Grupo H2</li>
-                                <li>Implementação de push notifications segmentadas no app da H2 via Flutter + BigQuery + tokens FCM</li>
-                                <li>Desenvolvimento do site de eventos do Grupo H2 e estrutura de segurança JWT do aplicativo mobile</li>
+                                <li>Atuação como Engenheiro de Software Mobile (Flutter), desenvolvendo o projeto de
+                                    LGPD para o Grupo H2</li>
+                                <li>Implementação de push notifications segmentadas no app da H2 via Flutter + BigQuery
+                                    + tokens FCM</li>
+                                <li>Desenvolvimento do site de eventos do Grupo H2 e estrutura de segurança JWT do
+                                    aplicativo mobile</li>
                                 <li>Responsável pelo aplicativo H2 Club (agenda de torneios e dados pessoais)</li>
                             </ul>
                             <div class="tech-tags">
@@ -79,9 +86,12 @@
                         </div>
                         <div class="experience-content">
                             <ul class="experience-list">
-                                <li>Desenvolvimento de aplicativo de cartão de crédito em estrutura white-label para Banpara, BNB e Losango</li>
-                                <li>Integração de carteiras digitais (Apple Pay, Google Pay, Samsung Pay) no app BlueC</li>
-                                <li>Projeto HeiClub (Heineken) com recursos para resgate de pontos e pagamentos digitais</li>
+                                <li>Desenvolvimento de aplicativo de cartão de crédito em estrutura white-label para
+                                    Banpara, BNB e Losango</li>
+                                <li>Integração de carteiras digitais (Apple Pay, Google Pay, Samsung Pay) no app BlueC
+                                </li>
+                                <li>Projeto HeiClub (Heineken) com recursos para resgate de pontos e pagamentos digitais
+                                </li>
                                 <li>Sistema interno de back-office para Prudential com Flutter Web</li>
                             </ul>
                             <div class="tech-tags">
@@ -101,8 +111,10 @@
                         </div>
                         <div class="experience-content">
                             <ul class="experience-list">
-                                <li>Criação de aplicativo de banco digital para o Banco AFINZ, incluindo telas de UI/UX</li>
-                                <li>Desenvolvimento de aplicativo para o Banco do Brasil, focado em funcionalidades de cartão de crédito</li>
+                                <li>Criação de aplicativo de banco digital para o Banco AFINZ, incluindo telas de UI/UX
+                                </li>
+                                <li>Desenvolvimento de aplicativo para o Banco do Brasil, focado em funcionalidades de
+                                    cartão de crédito</li>
                             </ul>
                             <div class="tech-tags">
                                 <span class="tech-tag">Flutter</span>
@@ -120,7 +132,8 @@
                         <div class="experience-content">
                             <ul class="experience-list">
                                 <li>Criação de apps web e mobile (Flutter, Nuxt.js, Vue.js, Node.js)</li>
-                                <li>Desenvolvimento de aplicativo de seguro para celular (planos, sinistros, suporte)</li>
+                                <li>Desenvolvimento de aplicativo de seguro para celular (planos, sinistros, suporte)
+                                </li>
                             </ul>
                             <div class="tech-tags">
                                 <span class="tech-tag">Flutter</span>
@@ -156,7 +169,7 @@
         <section class="skills-section section-padding">
             <div class="container-apple">
                 <h2 class="text-title-1 text-center mb-2xl scroll-animate">Habilidades Técnicas</h2>
-                
+
                 <div class="skills-grid grid-apple grid-3">
                     <div class="skill-category glass-card scroll-animate">
                         <div class="skill-icon">
@@ -260,7 +273,7 @@
                                 <p class="text-subhead">+55 (11) 91211-7442</p>
                             </div>
                         </div>
-                        
+
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="bi bi-envelope"></i>
@@ -274,7 +287,7 @@
                                 </p>
                             </div>
                         </div>
-                        
+
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="bi bi-geo-alt"></i>
@@ -284,7 +297,7 @@
                                 <p class="text-subhead">São Paulo, Brasil</p>
                             </div>
                         </div>
-                        
+
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="bi bi-github"></i>
@@ -292,14 +305,15 @@
                             <div class="contact-details">
                                 <h4 class="text-callout">GitHub</h4>
                                 <p class="text-subhead">
-                                    <a href="https://github.com/pedrinnhooo" target="_blank" style="color: var(--apple-blue);">
+                                    <a href="https://github.com/pedrinnhooo" target="_blank"
+                                        style="color: var(--apple-blue);">
                                         github.com/pedrinnhooo
                                     </a>
                                 </p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="mt-xl">
                         <NuxtLink to="/contato" class="btn-apple btn-apple-primary">
                             Entre em Contato
@@ -321,25 +335,32 @@ useScrollAnimation()
 
 <style scoped>
 .apple-about {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
+}
+
+.title-gradient {
+    background: linear-gradient(135deg, #007AFF, #AF52DE) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
 }
 
 .about-hero {
-    height: 125vh; /* Compensa o zoom 0.8 (100 / 0.8 = 125) */
+    height: 125vh;
+    /* Compensa o zoom 0.8 (100 / 0.8 = 125) */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .about-hero::before {
@@ -349,12 +370,10 @@ useScrollAnimation()
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(
-        ellipse at center,
-        rgba(0, 122, 255, 0.1) 0%,
-        rgba(175, 82, 222, 0.05) 50%,
-        transparent 70%
-    );
+    background: radial-gradient(ellipse at center,
+            rgba(0, 122, 255, 0.1) 0%,
+            rgba(175, 82, 222, 0.05) 50%,
+            transparent 70%);
 }
 
 .hero-content {
@@ -362,28 +381,24 @@ useScrollAnimation()
     z-index: 2;
 }
 
-.education-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+.education-summary-section {
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
-.summary-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+.education-summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
 }
 
 .experience-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .experience-timeline {
@@ -457,11 +472,10 @@ useScrollAnimation()
 }
 
 .skills-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .skills-grid {
@@ -508,11 +522,10 @@ useScrollAnimation()
 }
 
 .contact-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .contact-card {
@@ -558,32 +571,38 @@ useScrollAnimation()
 
 /* Responsive */
 @media (max-width: 768px) {
+    .education-summary-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
     .experience-header {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .skills-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
-    
+
     .contact-info {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
-    
+
     .contact-card {
         padding: var(--spacing-xl);
     }
 }
 
 @media (max-width: 480px) {
+
     .tech-tags,
     .skill-tags {
         justify-content: center;
     }
-    
+
     .contact-item {
         flex-direction: column;
         text-align: center;
