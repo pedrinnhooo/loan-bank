@@ -5,42 +5,24 @@
             <div class="container-apple">
                 <div class="hero-content text-center scroll-animate">
                     <h1 class="text-large-title gradient-text mb-lg">Meus Projetos</h1>
-                    <p class="text-title-3 mb-xl" style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">
-                        Uma coleção dos principais projetos que desenvolvi ao longo da minha carreira, 
+                    <p class="text-title-3 mb-xl"
+                        style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">
+                        Uma coleção dos principais projetos que desenvolvi ao longo da minha carreira,
                         desde aplicativos bancários até soluções empresariais complexas.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Filter Section -->
-        <section class="filter-section">
-            <div class="container-apple">
-                <div class="filter-tabs scroll-animate">
-                    <button 
-                        v-for="category in categories" 
-                        :key="category"
-                        @click="selectedCategory = category"
-                        class="filter-tab"
-                        :class="{ 'active': selectedCategory === category }"
-                    >
-                        {{ category }}
-                    </button>
-                </div>
-            </div>
-        </section>
+
 
         <!-- Projects Grid -->
         <section class="projects-section section-padding">
             <div class="container-apple">
                 <div class="projects-grid">
-                    <div 
-                        v-for="(project, index) in filteredProjects" 
-                        :key="project.id" 
-                        class="project-card glass-card scroll-animate"
-                        :style="{ animationDelay: `${index * 0.1}s` }"
-                        @click="openProjectModal(project)"
-                    >
+                    <div v-for="(project, index) in projects" :key="project.id"
+                        class="project-card glass-card scroll-animate" :style="{ animationDelay: `${index * 0.1}s` }"
+                        @click="openProjectModal(project)">
                         <div class="project-image">
                             <img :src="project.thumbnail" :alt="project.name" />
                             <div class="project-overlay">
@@ -63,7 +45,8 @@
                                 {{ project.shortDescription }}
                             </p>
                             <div class="project-tech">
-                                <span v-for="tech in project.technologies.split(', ').slice(0, 4)" :key="tech" class="tech-tag">
+                                <span v-for="tech in project.technologies.split(', ').slice(0, 4)" :key="tech"
+                                    class="tech-tag">
                                     {{ tech }}
                                 </span>
                             </div>
@@ -98,10 +81,12 @@
                             </span>
                         </div>
                         <div class="modal-links mt-lg" v-if="selectedProject.appleLink || selectedProject.googleLink">
-                            <a v-if="selectedProject.appleLink" :href="selectedProject.appleLink" target="_blank" class="btn-apple btn-apple-secondary">
+                            <a v-if="selectedProject.appleLink" :href="selectedProject.appleLink" target="_blank"
+                                class="btn-apple btn-apple-secondary">
                                 <i class="bi bi-apple"></i> App Store
                             </a>
-                            <a v-if="selectedProject.googleLink" :href="selectedProject.googleLink" target="_blank" class="btn-apple btn-apple-secondary">
+                            <a v-if="selectedProject.googleLink" :href="selectedProject.googleLink" target="_blank"
+                                class="btn-apple btn-apple-secondary">
                                 <i class="bi bi-google-play"></i> Google Play
                             </a>
                         </div>
@@ -113,37 +98,36 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { useScrollAnimation } from '~/composables/useAnimations'
 
 // Initialize scroll animations
 useScrollAnimation()
 
 const selectedProject = ref(null)
-const selectedCategory = ref('Todos')
-
-const categories = ['Todos', 'Mobile', 'Web', 'Fintech', 'Enterprise']
 
 const projects = ref([
     {
         id: 1,
         name: 'Bnb - Banco do Nordeste',
-        thumbnail: '/images/bnb-thumb.jpg', 
+        thumbnail: '/images/bnb-thumb.jpg',
         shortDescription: 'Aplicativo de cartões do Banco do Nordeste, permitindo controle de faturas, limites e muito mais.',
         longDescription: 'Aplicativo desenvolvido para o Banco do Nordeste, focado em gerenciamento de cartões de crédito. Implementações incluem controle de faturas, acompanhamento de gastos em tempo real, definição de limites, etc. O app foi desenvolvido em Flutter com arquitetura limpa, garantindo escalabilidade e fácil manutenção.',
         technologies: 'Flutter, Firebase, Clean Architecture, GitLab',
-        category: 'Fintech',
+        categories: ['Mobile', 'Fintech'],
+        category: 'Mobile',
         appleLink: 'https://apps.apple.com/br/app/bnb-cartões/id1435796374',
         googleLink: 'https://play.google.com/store/apps/details?id=com.csu.bnb&hl=pt'
     },
     {
         id: 2,
         name: 'Banpara - Banco do Pará',
-        thumbnail: '/images/banpara-thumb.jpg', 
+        thumbnail: '/images/banpara-thumb.jpg',
         shortDescription: 'Solução de cartão de crédito e controle de gastos para clientes Banpara, com múltiplas funcionalidades.',
         longDescription: 'Aplicativo de cartão de crédito Banpara, desenvolvido com Flutter. Funcionalidades incluem gerenciamento de fatura, notificação de compras em tempo real, ajuste de limite e integração com carteiras digitais (Apple Pay, Google Pay).',
         technologies: 'Flutter, .NET, Firebase, Docker, Nuxt.js',
-        category: 'Fintech',
+        categories: ['Mobile', 'Fintech'],
+        category: 'Mobile',
         appleLink: 'https://apps.apple.com/br/app/banpará-cartões/id1526688256',
         googleLink: 'https://play.google.com/store/apps/details?id=com.csu.banpara&hl=pt'
     },
@@ -154,7 +138,8 @@ const projects = ref([
         shortDescription: 'Aplicativo Losango para gerenciamento de cartão, controle de gastos e parcelamentos flexíveis.',
         longDescription: 'Desenvolvimento de app para o Banco Losango, oferecendo aos usuários acompanhamento de despesas, parcelamentos e suporte direto. Integrado a uma arquitetura white-label que permitiu adaptação rápida para outros bancos.',
         technologies: 'Flutter, Vue.js, Clean Architecture, BigQuery',
-        category: 'Fintech',
+        categories: ['Mobile', 'Fintech'],
+        category: 'Mobile',
         appleLink: 'https://apps.apple.com/br/app/losango/id1456294810?l=en-GB',
         googleLink: 'https://play.google.com/store/apps/details?id=com.csu.losango&hl=pt_BR'
     },
@@ -165,6 +150,7 @@ const projects = ref([
         shortDescription: 'App para gerenciamento de torneios, agenda e informações do clube H2, com push notifications.',
         longDescription: 'Aplicativo para membros do H2 Club, exibindo calendário de torneios, resultados, reservas e integração de notificações push segmentadas. Implementa reconhecimento facial/documental para cadastro e compliance com LGPD.',
         technologies: 'Flutter, BigQuery, JWT, Docker, PHP',
+        categories: ['Mobile'],
         category: 'Mobile',
         appleLink: 'https://apps.apple.com/br/app/h2-club/id6466628886',
         googleLink: 'https://play.google.com/store/apps/details?id=com.h2.app&hl=pt_BR&pli=1'
@@ -176,8 +162,9 @@ const projects = ref([
         shortDescription: 'Aplicativo do Banco BlueC, integrando carteiras digitais para pagamento imediato.',
         longDescription: 'Integração de carteiras digitais (Apple Pay, Google Pay, Samsung Pay) ao app BlueC, facilitando pagamentos sem contato e gerenciamento de transações em tempo real.',
         technologies: 'Flutter, Docker, Google Pay, Apple Pay, Firebase',
-        category: 'Fintech',
-        appleLink: null, 
+        categories: ['Mobile', 'Fintech'],
+        category: 'Mobile',
+        appleLink: null,
         googleLink: 'https://play.google.com/store/apps/details?id=br.com.csu.baas&hl=pt_BR'
     },
     {
@@ -187,7 +174,8 @@ const projects = ref([
         shortDescription: 'Banco Afinz com recursos de banco digital, controle de cartão e interface intuitiva.',
         longDescription: 'Criação do aplicativo para o Banco Afinz, focado em funcionalidades de um banco digital completo: abertura de conta, cartões de crédito, pagamentos de boletos e recarga de serviços. Forte ênfase em UI/UX.',
         technologies: 'Flutter, Firebase, Vue.js, UI/UX, JWT',
-        category: 'Fintech',
+        categories: ['Mobile', 'Fintech'],
+        category: 'Mobile',
         appleLink: 'https://apps.apple.com/br/app/afinz/id1416167782',
         googleLink: 'https://play.google.com/store/apps/details?id=br.com.sorocred.sorocredapp&hl=en_US'
     },
@@ -198,6 +186,7 @@ const projects = ref([
         shortDescription: 'Aplicativo de seguro para celular, com planos e suporte integrado. Marca fundida com Pitz Insurance.',
         longDescription: 'App desenvolvido para oferecer planos de seguro móvel, com funcionalidades de registro de sinistros, acompanhamento de reparos e canal de suporte 24h. Posteriormente, a marca Komus foi incorporada à Pitz Insurance.',
         technologies: 'Flutter, Vue.js, Node.js, TypeScript, UI/UX',
+        categories: ['Mobile', 'Web'],
         category: 'Mobile',
         appleLink: null,
         googleLink: null
@@ -209,7 +198,8 @@ const projects = ref([
         shortDescription: 'Projeto privado para clientes Heineken, com pontos e integração de pagamentos digitais.',
         longDescription: 'Desenvolvimento de plataforma interna para Heineken, englobando programa de fidelidade (resgate de pontos) e integração com métodos de pagamento digital. Acesso restrito a clientes e funcionários.',
         technologies: 'Flutter, .NET, Docker, UI/UX',
-        category: 'Enterprise',
+        categories: ['Web', 'Enterprise'],
+        category: 'Web',
         appleLink: null,
         googleLink: null
     },
@@ -220,6 +210,7 @@ const projects = ref([
         shortDescription: 'Sistema de gerenciamento de usuários e exportação/importação de dados em XLSX/CSV.',
         longDescription: 'Projeto interno para a Prudential, incluindo interface administrativa para cadastro e controle de usuários. Permite exportar dados em planilhas, além de importação e mapeamento automático de grandes volumes de informações.',
         technologies: 'Flutter Web, Firebase, Docker, XLSX',
+        categories: ['Web', 'Enterprise'],
         category: 'Web',
         appleLink: null,
         googleLink: null
@@ -231,18 +222,14 @@ const projects = ref([
         shortDescription: 'Dashboard de controle de vendas e PDV móvel para lojas, com métricas em tempo real.',
         longDescription: 'Solução voltada para o controle de vendas, permitindo que vendedores realizem atendimentos fora do caixa (PDV móvel) e acompanhem metas e métricas através de um dashboard web intuitivo.',
         technologies: 'Flutter, Vue.js, Node.js, HTML/CSS, UI/UX',
+        categories: ['Web', 'Mobile'],
         category: 'Web',
         appleLink: null,
         googleLink: null
     }
 ])
 
-const filteredProjects = computed(() => {
-    if (selectedCategory.value === 'Todos') {
-        return projects.value
-    }
-    return projects.value.filter(project => project.category === selectedCategory.value)
-})
+
 
 const openProjectModal = (project) => {
     selectedProject.value = project
@@ -253,22 +240,30 @@ const closeProjectModal = () => {
     selectedProject.value = null
     document.body.style.overflow = ''
 }
+
+
 </script>
 
 <style scoped>
 .apple-projects {
-    background: var(--apple-background);
-}
-
-.projects-hero {
     background: linear-gradient(135deg, 
         var(--apple-dark-1) 0%, 
         var(--apple-dark-2) 50%, 
         var(--apple-dark-3) 100%
     );
+}
+
+.projects-hero {
+    height: 111.11vh; /* Compensa o zoom 0.9 (100 / 0.9 = 111.11) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
-    padding-top: 120px; /* Account for fixed header with extra spacing */
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .projects-hero::before {
@@ -278,12 +273,10 @@ const closeProjectModal = () => {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(
-        ellipse at center,
-        rgba(0, 122, 255, 0.1) 0%,
-        rgba(175, 82, 222, 0.05) 50%,
-        transparent 70%
-    );
+    background: radial-gradient(ellipse at center,
+            rgba(0, 122, 255, 0.1) 0%,
+            rgba(175, 82, 222, 0.05) 50%,
+            transparent 70%);
 }
 
 .hero-content {
@@ -291,48 +284,21 @@ const closeProjectModal = () => {
     z-index: 2;
 }
 
-.filter-section {
-    background: var(--apple-surface);
-    padding: var(--spacing-lg) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
 
-.filter-tabs {
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-sm);
-    flex-wrap: wrap;
-}
 
-.filter-tab {
-    padding: var(--spacing-sm) var(--spacing-lg);
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: var(--radius-xl);
-    color: var(--apple-text-secondary);
-    font-weight: 500;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-}
 
-.filter-tab:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--apple-text-primary);
-}
-
-.filter-tab.active {
-    background: var(--apple-blue);
-    border-color: var(--apple-blue);
-    color: white;
-}
 
 .projects-section {
-    background: var(--apple-background);
+    background: linear-gradient(135deg, 
+        var(--apple-dark-1) 0%, 
+        var(--apple-dark-2) 50%, 
+        var(--apple-dark-3) 100%
+    );
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-xl);
 }
 
@@ -563,40 +529,47 @@ const closeProjectModal = () => {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+}
+
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
     }
-    
+
     .project-card {
         min-height: 400px;
     }
-    
+
     .project-image {
         height: 200px;
     }
-    
+
     .filter-tabs {
         justify-content: flex-start;
         overflow-x: auto;
         padding-bottom: var(--spacing-sm);
     }
-    
+
     .filter-tab {
         white-space: nowrap;
         flex-shrink: 0;
     }
-    
+
     .modal-header {
         flex-direction: column;
     }
-    
+
     .modal-image {
         width: 100%;
         height: 200px;
     }
-    
+
     .modal-links {
         justify-content: center;
     }
@@ -606,7 +579,7 @@ const closeProjectModal = () => {
     .modal-overlay {
         padding: var(--spacing-md);
     }
-    
+
     .project-header {
         flex-direction: column;
         align-items: flex-start;

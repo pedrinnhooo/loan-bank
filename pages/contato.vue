@@ -473,18 +473,25 @@ watch(() => form.value.countryCode, () => {
 
 <style scoped>
 .apple-contact {
-    background: var(--apple-background);
-}
-
-.contact-hero {
     background: linear-gradient(135deg, 
         var(--apple-dark-1) 0%, 
         var(--apple-dark-2) 50%, 
         var(--apple-dark-3) 100%
     );
+}
+
+.contact-hero {
+    height: 111.11vh; /* Compensa o zoom 0.9 (100 / 0.9 = 111.11) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
-    padding-top: 120px; /* Account for fixed header with extra spacing */
+    background: linear-gradient(135deg, 
+        var(--apple-dark-1) 0%, 
+        var(--apple-dark-2) 50%, 
+        var(--apple-dark-3) 100%
+    );
 }
 
 .contact-hero::before {
@@ -508,7 +515,11 @@ watch(() => form.value.countryCode, () => {
 }
 
 .contact-methods {
-    background: var(--apple-surface);
+    background: linear-gradient(135deg, 
+        var(--apple-dark-1) 0%, 
+        var(--apple-dark-2) 50%, 
+        var(--apple-dark-3) 100%
+    );
 }
 
 .contact-grid {
@@ -694,7 +705,11 @@ select.form-input option:checked {
 }
 
 .social-section {
-    background: var(--apple-background);
+    background: linear-gradient(135deg, 
+        var(--apple-dark-1) 0%, 
+        var(--apple-dark-2) 50%, 
+        var(--apple-dark-3) 100%
+    );
 }
 
 .social-links {
