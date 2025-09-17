@@ -481,7 +481,7 @@ watch(() => form.value.countryCode, () => {
 }
 
 .contact-hero {
-    height: 111.11vh; /* Compensa o zoom 0.9 (100 / 0.9 = 111.11) */
+    height: 125vh; /* Compensa o zoom 0.8 (100 / 0.8 = 125) */
     display: flex;
     align-items: center;
     justify-content: center;
