@@ -19,6 +19,17 @@ import { Analytics } from '@vercel/analytics/nuxt';
 
 import Header from '~/components/header.vue'
 import Footer from '~/components/footer.vue'
+
+// Speed Insights via script direto
+useHead({
+  script: [
+    {
+      src: 'https://va.vercel-scripts.com/v1/speed-insights/script.js',
+      defer: true,
+      'data-endpoint': '/api/_vercel/speed-insights'
+    }
+  ]
+})
 </script>
 
 <style>
