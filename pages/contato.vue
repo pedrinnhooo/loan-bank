@@ -5,8 +5,10 @@
             <div class="container-apple">
                 <div class="hero-content text-center scroll-animate">
                     <h1 class="text-large-title gradient-text mb-lg">Vamos Conversar?</h1>
-                    <p class="text-title-3 mb-xl" style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">
-                        Pronto para transformar sua ideia em realidade? Entre em contato e vamos discutir como posso ajudar 
+                    <p class="text-title-3 mb-xl"
+                        style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">
+                        Pronto para transformar sua ideia em realidade? Entre em contato e vamos discutir como posso
+                        ajudar
                         no seu próximo projeto.
                     </p>
                 </div>
@@ -21,7 +23,7 @@
                     <div class="contact-info scroll-animate">
                         <h2 class="text-title-1 mb-lg">Entre em Contato</h2>
                         <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
-                            Estou sempre disponível para discutir novos projetos, oportunidades de colaboração 
+                            Estou sempre disponível para discutir novos projetos, oportunidades de colaboração
                             ou simplesmente trocar ideias sobre tecnologia.
                         </p>
 
@@ -87,35 +89,20 @@
                             <form @submit.prevent="submitForm" class="contact-form">
                                 <div class="form-group">
                                     <label for="name" class="form-label">Nome</label>
-                                    <input 
-                                        type="text" 
-                                        id="name" 
-                                        v-model="form.name"
-                                        class="form-input"
-                                        placeholder="Seu nome completo"
-                                        required
-                                    >
+                                    <input type="text" id="name" v-model="form.name" class="form-input"
+                                        placeholder="Seu nome completo" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="email" class="form-label">Email</label>
-                                    <input 
-                                        type="email" 
-                                        id="email" 
-                                        v-model="form.email"
-                                        class="form-input"
-                                        placeholder="seu@email.com"
-                                        required
-                                    >
+                                    <input type="email" id="email" v-model="form.email" class="form-input"
+                                        placeholder="seu@email.com" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="phone" class="form-label">Telefone</label>
                                     <div class="phone-input-container">
-                                        <select 
-                                            v-model="form.countryCode"
-                                            class="form-input country-select"
-                                        >
+                                        <select v-model="form.countryCode" class="form-input country-select">
                                             <option value="+55" selected>🇧🇷 +55</option>
                                             <option value="+1">🇺🇸 +1</option>
                                             <option value="+44">🇬🇧 +44</option>
@@ -127,28 +114,15 @@
                                             <option value="+54">🇦🇷 +54</option>
                                             <option value="+52">🇲🇽 +52</option>
                                         </select>
-                                        <input 
-                                            type="tel" 
-                                            id="phone" 
-                                            v-model="form.phone"
-                                            @input="formatPhoneNumber"
-                                            @keypress="validatePhoneInput"
-                                            class="form-input phone-input"
-                                            :placeholder="getPhonePlaceholder()"
-                                            :maxlength="getMaxLength()"
-                                            required
-                                        >
+                                        <input type="tel" id="phone" v-model="form.phone" @input="formatPhoneNumber"
+                                            @keypress="validatePhoneInput" class="form-input phone-input"
+                                            :placeholder="getPhonePlaceholder()" :maxlength="getMaxLength()" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="subject" class="form-label">Assunto</label>
-                                    <select 
-                                        id="subject" 
-                                        v-model="form.subject"
-                                        class="form-input form-select"
-                                        required
-                                    >
+                                    <select id="subject" v-model="form.subject" class="form-input form-select" required>
                                         <option value="" disabled>Selecione um assunto</option>
                                         <option value="projeto">Novo Projeto</option>
                                         <option value="consultoria">Consultoria</option>
@@ -159,21 +133,12 @@
 
                                 <div class="form-group">
                                     <label for="message" class="form-label">Mensagem</label>
-                                    <textarea 
-                                        id="message" 
-                                        v-model="form.message"
-                                        class="form-textarea"
-                                        placeholder="Conte-me sobre seu projeto ou dúvida..."
-                                        rows="5"
-                                        required
-                                    ></textarea>
+                                    <textarea id="message" v-model="form.message" class="form-textarea"
+                                        placeholder="Conte-me sobre seu projeto ou dúvida..." rows="5"
+                                        required></textarea>
                                 </div>
 
-                                <button 
-                                    type="submit" 
-                                    class="btn-apple btn-apple-primary"
-                                    :disabled="isSubmitting"
-                                >
+                                <button type="submit" class="btn-apple btn-apple-primary" :disabled="isSubmitting">
                                     <span v-if="!isSubmitting">
                                         <i class="bi bi-send"></i> Enviar Mensagem
                                     </span>
@@ -196,14 +161,10 @@
                     <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
                         Acompanhe meu trabalho e conecte-se comigo nas redes sociais
                     </p>
-                    
+
                     <div class="social-links">
-                        <a 
-                            href="https://github.com/pedrinnhooo" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="social-link"
-                        >
+                        <a href="https://github.com/pedrinnhooo" target="_blank" rel="noopener noreferrer"
+                            class="social-link">
                             <div class="social-icon">
                                 <i class="bi bi-github"></i>
                             </div>
@@ -213,12 +174,8 @@
                             </div>
                         </a>
 
-                        <a 
-                            href="https://linkedin.com/in/pedro-ruffo-501385181" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="social-link"
-                        >
+                        <a href="https://linkedin.com/in/pedro-ruffo-501385181" target="_blank"
+                            rel="noopener noreferrer" class="social-link">
                             <div class="social-icon">
                                 <i class="bi bi-linkedin"></i>
                             </div>
@@ -228,12 +185,8 @@
                             </div>
                         </a>
 
-                        <a 
-                            href="https://wa.me/5511912117442" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="social-link"
-                        >
+                        <a href="https://wa.me/5511912117442" target="_blank" rel="noopener noreferrer"
+                            class="social-link">
                             <div class="social-icon">
                                 <i class="bi bi-whatsapp"></i>
                             </div>
@@ -243,12 +196,8 @@
                             </div>
                         </a>
 
-                        <a 
-                            href="https://discord.gg/NwWySEJF" 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            class="social-link"
-                        >
+                        <a href="https://discord.gg/NwWySEJF" target="_blank" rel="noopener noreferrer"
+                            class="social-link">
                             <div class="social-icon">
                                 <i class="bi bi-discord"></i>
                             </div>
@@ -303,7 +252,7 @@ const showSuccessModal = ref(false)
 
 const submitForm = async () => {
     isSubmitting.value = true
-    
+
     try {
         // Enviar dados para a API
         const response = await $fetch('/api/send-contact', {
@@ -316,7 +265,7 @@ const submitForm = async () => {
                 message: form.value.message
             }
         })
-        
+
         if (response.success) {
             // Reset form
             form.value = {
@@ -327,12 +276,12 @@ const submitForm = async () => {
                 subject: '',
                 message: ''
             }
-            
+
             showSuccessModal.value = true
         } else {
             throw new Error('Falha no envio')
         }
-        
+
     } catch (error) {
         console.error('Erro ao enviar formulário:', error)
         alert('Erro ao enviar mensagem. Tente novamente.')
@@ -360,7 +309,7 @@ const closeSuccessModal = () => {
 // Função para formatar o número de telefone
 const formatPhoneNumber = (event) => {
     let value = event.target.value.replace(/\D/g, '') // Remove tudo que não é dígito
-    
+
     // Limita o número de dígitos baseado no país
     const maxDigits = {
         '+55': 11, // Brasil
@@ -374,12 +323,12 @@ const formatPhoneNumber = (event) => {
         '+54': 10, // Argentina
         '+52': 10  // México
     }
-    
+
     const maxDigit = maxDigits[form.value.countryCode] || 11
     value = value.slice(0, maxDigit)
-    
+
     let formattedValue = ''
-    
+
     // Aplica máscara baseada no país selecionado
     if (form.value.countryCode === '+55') {
         // Brasil: (11) 99999-9999 ou (11) 9999-9999
@@ -417,7 +366,7 @@ const formatPhoneNumber = (event) => {
             formattedValue = value
         }
     }
-    
+
     form.value.phone = formattedValue || value
 }
 
@@ -473,25 +422,24 @@ watch(() => form.value.countryCode, () => {
 
 <style scoped>
 .apple-contact {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .contact-hero {
-    height: 125vh; /* Compensa o zoom 0.8 (100 / 0.8 = 125) */
+    height: 80vh;
+    /* Compensa o zoom 0.8 (100 / 0.8 = 125) */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .contact-hero::before {
@@ -501,12 +449,10 @@ watch(() => form.value.countryCode, () => {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(
-        ellipse at center,
-        rgba(0, 122, 255, 0.1) 0%,
-        rgba(175, 82, 222, 0.05) 50%,
-        transparent 70%
-    );
+    background: radial-gradient(ellipse at center,
+            rgba(0, 122, 255, 0.1) 0%,
+            rgba(175, 82, 222, 0.05) 50%,
+            transparent 70%);
 }
 
 .hero-content {
@@ -515,11 +461,10 @@ watch(() => form.value.countryCode, () => {
 }
 
 .contact-methods {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .contact-grid {
@@ -608,7 +553,8 @@ watch(() => form.value.countryCode, () => {
 
 /* Estilos específicos para todos os selects */
 select.form-input {
-    padding-right: calc(var(--spacing-xl) + 8px); /* Mais espaço para a seta */
+    padding-right: calc(var(--spacing-xl) + 8px);
+    /* Mais espaço para a seta */
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23AEAEB2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right var(--spacing-md) center;
@@ -705,16 +651,15 @@ select.form-input option:checked {
 }
 
 .social-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .social-links {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
     gap: var(--spacing-lg);
     max-width: 800px;
     margin: 0 auto;
@@ -752,6 +697,12 @@ select.form-input option:checked {
     color: white;
     font-size: 1.25rem;
     flex-shrink: 0;
+}
+
+.social-info {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
 }
 
 .social-info h4 {
@@ -817,16 +768,16 @@ select.form-input option:checked {
         grid-template-columns: 1fr;
         gap: var(--spacing-2xl);
     }
-    
+
     .contact-form-container {
         position: static;
     }
-    
+
     .social-links {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
-    
+
     .social-link {
         flex-direction: column;
         text-align: center;
@@ -839,15 +790,15 @@ select.form-input option:checked {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .modal-overlay {
         padding: var(--spacing-md);
     }
-    
+
     .modal-content {
         padding: var(--spacing-xl);
     }
-    
+
 
 }
 </style>
