@@ -762,6 +762,37 @@ select.form-input option:checked {
     transform: scale(0.9);
 }
 
+/* Estilos para autocomplete - mantém a aparência original */
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:hover,
+.form-input:-webkit-autofill:focus,
+.form-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    -webkit-text-fill-color: var(--apple-text-primary) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.form-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.08) inset !important;
+    border-color: var(--apple-blue) !important;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1), 0 0 0 30px rgba(255, 255, 255, 0.08) inset !important;
+}
+
+/* Para Firefox */
+.form-input:-moz-autofill {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: var(--apple-text-primary) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.form-input:-moz-autofill:focus {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--apple-blue) !important;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1) !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .contact-grid {
