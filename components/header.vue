@@ -7,7 +7,7 @@
                     <NuxtLink to="/" class="logo-link">
                         <div class="logo">
                             <AppleLogo size="medium" variant="gradient" />
-                            <span class="logo-text">Pedro Ruffo</span>
+                            <span class="logo-text">{{ t('header.brand') }}</span>
                         </div>
                     </NuxtLink>
 
@@ -22,6 +22,7 @@
                         >
                             {{ link.name }}
                         </NuxtLink>
+                        <LanguageSelector />
                     </div>
 
                     <!-- Mobile Menu Button -->
@@ -41,6 +42,11 @@
         <!-- Mobile Menu -->
         <transition name="mobile-menu">
             <div v-if="isMobileMenuOpen" class="mobile-menu">
+                <!-- Close Button -->
+                <button class="mobile-close-btn" @click="closeMobileMenu">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+                
                 <div class="mobile-menu-content">
                     <div class="mobile-nav-links">
                         <NuxtLink 
@@ -52,6 +58,29 @@
                         >
                             {{ link.name }}
                         </NuxtLink>
+                        
+                        <!-- Mobile Language Selector -->
+                        <div class="mobile-language-section">
+                            <h4 class="mobile-language-title">{{ t('common.language') || 'Idioma' }}</h4>
+                            <div class="mobile-language-options">
+                                <button 
+                                    class="mobile-language-btn"
+                                    :class="{ 'active': locale === 'pt' }"
+                                    @click="selectLanguage('pt')"
+                                >
+                                    <span class="flag-emoji">🇧🇷</span>
+                                    <span>Português</span>
+                                </button>
+                                <button 
+                                    class="mobile-language-btn"
+                                    :class="{ 'active': locale === 'en' }"
+                                    @click="selectLanguage('en')"
+                                >
+                                    <span class="flag-emoji">🇺🇸</span>
+                                    <span>English</span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,17 +96,19 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+
+const { t, locale, setLocale } = useI18n()
 
 const isMobileMenuOpen = ref(false)
 const isScrolled = ref(false)
 
-const navLinks = [
-    { name: 'Início', path: '/' },
-    { name: 'Sobre', path: '/sobre' },
-    { name: 'Projetos', path: '/projetos' },
-    { name: 'Contato', path: '/contato' }
-]
+const navLinks = computed(() => [
+    { name: t('header.links.home'), path: '/' },
+    { name: t('header.links.about'), path: '/sobre' },
+    { name: t('header.links.projects'), path: '/projetos' },
+    { name: t('header.links.contact'), path: '/contato' }
+])
 
 const toggleMobileMenu = () => {
     isMobileMenuOpen.value = !isMobileMenuOpen.value
@@ -93,6 +124,11 @@ const toggleMobileMenu = () => {
 const closeMobileMenu = () => {
     isMobileMenuOpen.value = false
     document.body.style.overflow = ''
+}
+
+const selectLanguage = (lang) => {
+    setLocale(lang)
+    closeMobileMenu()
 }
 
 const handleScroll = () => {
@@ -204,6 +240,8 @@ onUnmounted(() => {
     border: none;
     cursor: pointer;
     padding: 0;
+    position: relative;
+    z-index: 1001;
 }
 
 .hamburger-line {
@@ -239,6 +277,31 @@ onUnmounted(() => {
     z-index: 999;
 }
 
+.mobile-close-btn {
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: var(--apple-text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    transition: all var(--transition-normal);
+    z-index: 1001;
+}
+
+.mobile-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
 .mobile-menu-content {
     display: flex;
     flex-direction: column;
@@ -268,6 +331,59 @@ onUnmounted(() => {
 .mobile-nav-link:hover {
     background: rgba(0, 122, 255, 0.2);
     transform: scale(1.05);
+}
+
+.mobile-language-section {
+    margin-top: var(--spacing-2xl);
+    text-align: center;
+}
+
+.mobile-language-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--apple-text-secondary);
+    margin-bottom: var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mobile-language-options {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+.mobile-language-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    color: var(--apple-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-size: 1rem;
+    font-weight: 500;
+    min-width: 120px;
+}
+
+.mobile-language-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--apple-text-primary);
+    transform: translateY(-2px);
+}
+
+.mobile-language-btn.active {
+    background: rgba(0, 122, 255, 0.2);
+    border-color: rgba(0, 122, 255, 0.4);
+    color: var(--apple-text-primary);
+}
+
+.mobile-language-btn .flag-emoji {
+    font-size: 1.2rem;
 }
 
 .mobile-menu-overlay {

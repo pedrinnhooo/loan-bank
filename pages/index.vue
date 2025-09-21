@@ -16,14 +16,14 @@
                         <span class="cursor" :class="{ 'blink': !isTypewriterComplete }">|</span>
                     </h1>
                     <p class="text-title-3 mb-xl" style="color: var(--apple-text-secondary);">
-                        Mobile Software Engineer especializado em Flutter, Dart, Firebase e desenvolvimento web moderno
+                        {{ t('home.hero.subtitle') }}
                     </p>
                     <div class="hero-buttons">
                         <NuxtLink to="/projetos" class="btn-apple btn-apple-primary">
-                            Ver Projetos
+                            {{ t('home.hero.buttons.viewProjects') }}
                         </NuxtLink>
                         <NuxtLink to="/contato" class="btn-apple btn-apple-secondary">
-                            Fale Comigo
+                            {{ t('home.hero.buttons.talkToMe') }}
                         </NuxtLink>
                     </div>
                 </div>
@@ -34,8 +34,8 @@
         <section class="stats-section section-padding">
             <div class="container-apple">
                 <div class="stats-grid grid-apple grid-3">
-                    <div class="stat-card glass-card scroll-animate" v-for="stat in stats" :key="stat.label">
-                        <div class="stat-number text-title-1 gradient-text">{{ stat.displayValue }}+</div>
+                    <div class="stat-card glass-card scroll-animate" v-for="stat in stats" :key="stat.key">
+                        <div class="stat-number text-title-1 gradient-text">{{ stat.displayValue.value }}+</div>
                         <div class="stat-label text-callout">{{ stat.label }}</div>
                     </div>
                 </div>
@@ -46,14 +46,14 @@
         <section class="projects-section section-padding">
             <div class="container-apple">
                 <div class="section-header text-center mb-2xl scroll-animate">
-                    <h2 class="text-title-1 mb-md">Projetos em Destaque</h2>
+                    <h2 class="text-title-1 mb-md">{{ t('home.projects.title') }}</h2>
                     <p class="text-body" style="color: var(--apple-text-secondary);">
-                        Alguns dos principais projetos que desenvolvi ao longo da minha carreira
+                        {{ t('home.projects.subtitle') }}
                     </p>
                 </div>
 
                 <div class="projects-grid">
-                    <div v-for="(project, index) in featuredProjects" :key="project.id"
+                    <div v-for="(project, index) in featuredProjects" :key="`featured-${project.id}`"
                         class="project-card glass-card scroll-animate" :style="{ animationDelay: `${index * 0.1}s` }"
                         @click="openProjectModal(project)">
                         <div class="project-image">
@@ -89,7 +89,7 @@
 
                 <div class="text-center mt-xl">
                     <NuxtLink to="/projetos" class="btn-apple btn-apple-secondary">
-                        Ver Todos os Projetos
+                        {{ t('home.projects.viewAll') }}
                     </NuxtLink>
                 </div>
             </div>
@@ -101,17 +101,15 @@
                 <div class="services-content">
                     <div class="services-text scroll-animate">
                         <h2 class="text-title-1 mb-lg">
-                            Por que escolher meus <span class="gradient-text">serviços</span>?
+                            {{ t('home.services.title') }} <span class="gradient-text">{{
+                                t('home.services.titleHighlight') }}</span>{{ t('home.services.titleEnd') }}
                         </h2>
                         <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
-                            Com mais de 6 anos de experiência como Software Engineer, desenvolvo soluções digitais
-                            completas e
-                            personalizadas — de apps mobile robustos a interfaces web modernas — unindo performance,
-                            inovação e design intuitivo.
+                            {{ t('home.services.description') }}
                         </p>
 
                         <div class="services-list">
-                            <div v-for="service in services" :key="service.title" class="service-item scroll-animate">
+                            <div v-for="service in services" :key="service.key" class="service-item scroll-animate">
                                 <div class="service-icon">
                                     <i :class="service.icon"></i>
                                 </div>
@@ -133,15 +131,14 @@
             <div class="container-apple">
                 <div class="cta-content glass-card text-center scroll-animate">
                     <h2 class="text-title-1 mb-lg">
-                        Pronto para dar o próximo passo no seu <span class="gradient-text">projeto</span>?
+                        {{ t('home.cta.title') }} <span class="gradient-text">{{ t('home.cta.titleHighlight')
+                        }}</span>{{ t('home.cta.titleEnd') }}
                     </h2>
                     <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
-                        Quer desenvolver um aplicativo do zero, modernizar sua plataforma ou criar uma experiência
-                        digital
-                        completa? Vamos conversar e descobrir como posso ajudar você a alcançar seus objetivos.
+                        {{ t('home.cta.subtitle') }}
                     </p>
                     <NuxtLink to="/contato" class="btn-apple btn-apple-primary">
-                        Fale Comigo Agora
+                        {{ t('home.cta.button') }}
                     </NuxtLink>
                 </div>
             </div>
@@ -165,7 +162,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <h4 class="text-headline mb-md">Tecnologias Utilizadas</h4>
+                        <h4 class="text-headline mb-md">{{ t('home.modal.techTitle') }}</h4>
                         <div class="modal-tech">
                             <span v-for="tech in selectedProject.technologies.split(', ')" :key="tech" class="tech-tag">
                                 {{ tech }}
@@ -174,11 +171,11 @@
                         <div class="modal-links mt-lg" v-if="selectedProject.appleLink || selectedProject.googleLink">
                             <a v-if="selectedProject.appleLink" :href="selectedProject.appleLink" target="_blank"
                                 class="btn-apple btn-apple-secondary">
-                                <i class="bi bi-apple"></i> App Store
+                                <i class="bi bi-apple"></i> {{ t('home.modal.appStore') }}
                             </a>
                             <a v-if="selectedProject.googleLink" :href="selectedProject.googleLink" target="_blank"
                                 class="btn-apple btn-apple-secondary">
-                                <i class="bi bi-google-play"></i> Google Play
+                                <i class="bi bi-google-play"></i> {{ t('home.modal.googlePlay') }}
                             </a>
                         </div>
                     </div>
@@ -194,126 +191,57 @@
 
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue'
 import { useScrollAnimation, useTypewriter, useCountUp } from '~/composables/useAnimations'
 
 // Scroll animations
 useScrollAnimation()
 
+const { t, locale } = useI18n()
+
 // Typewriter effect
-const { displayText, isComplete: isTypewriterComplete, startTypewriter } = useTypewriter(
-    'Desenvolvedor de Soluções Digitais',
+const typewriterText = computed(() => t('home.typewriter'))
+const { displayText, isComplete: isTypewriterComplete, startTypewriter, cleanup } = useTypewriter(
+    typewriterText,
     100
 )
 
 // Stats with count up animation
-const stats = ref([
-    { label: 'Anos de Experiência', value: 6, displayValue: 0 },
-    { label: 'Projetos Concluídos', value: 50, displayValue: 0 },
-    { label: 'Clientes Satisfeitos', value: 200, displayValue: 0 }
-])
+const statsData = [
+    { key: 'yearsExperience', value: 6, displayValue: ref(0) },
+    { key: 'projectsDone', value: 50, displayValue: ref(0) },
+    { key: 'happyClients', value: 200, displayValue: ref(0) }
+]
+
+const stats = computed(() =>
+    statsData.map(stat => ({
+        ...stat,
+        label: t(`home.stats.${stat.key}`)
+    }))
+)
 
 // Services data
-const services = ref([
-    {
-        title: 'Desenvolvimento Mobile',
-        description: 'Flutter, Dart, GetX, MobX, MVVM e metodologias ágeis para apps escaláveis',
-        icon: 'bi bi-phone'
-    },
-    {
-        title: 'Desenvolvimento Web',
-        description: 'Vue.js, Nuxt.js, JavaScript, TypeScript, HTML e CSS para interfaces dinâmicas',
-        icon: 'bi bi-laptop'
-    },
-    {
-        title: 'Arquitetura de Software',
-        description: 'Clean Architecture e Microfrontend para organização e manutenção eficiente',
-        icon: 'bi bi-diagram-3'
-    },
-    {
-        title: 'Integrações Backend',
-        description: 'Firebase, .Net, PHP, BigQuery e SQL para backends seguros e performáticos',
-        icon: 'bi bi-server'
-    },
-    {
-        title: 'UI/UX Design',
-        description: 'Figma e Marvel App, com foco total na experiência do usuário',
-        icon: 'bi bi-palette'
-    }
-])
+const servicesData = [
+    { key: 'mobile', icon: 'bi bi-phone' },
+    { key: 'web', icon: 'bi bi-laptop' },
+    { key: 'architecture', icon: 'bi bi-diagram-3' },
+    { key: 'backend', icon: 'bi bi-server' },
+    { key: 'design', icon: 'bi bi-palette' }
+]
+
+const services = computed(() => {
+    // Force reactivity by accessing locale
+    const currentLocale = locale.value
+
+    return servicesData.map(service => ({
+        ...service,
+        title: t(`home.services.items.${service.key}.title`),
+        description: t(`home.services.items.${service.key}.description`)
+    }))
+})
 
 // Projects data
-const projects = ref([
-    {
-        id: 1,
-        name: 'Bnb - Banco do Nordeste',
-        thumbnail: '/images/bnb-thumb.jpg',
-        shortDescription: 'Aplicativo de cartões do Banco do Nordeste, permitindo controle de faturas, limites e muito mais.',
-        longDescription: 'Aplicativo desenvolvido para o Banco do Nordeste, focado em gerenciamento de cartões de crédito. Implementações incluem controle de faturas, acompanhamento de gastos em tempo real, definição de limites, etc. O app foi desenvolvido em Flutter com arquitetura limpa, garantindo escalabilidade e fácil manutenção.',
-        technologies: 'Flutter, Firebase, Clean Architecture, GitLab',
-        category: 'Fintech',
-        appleLink: 'https://apps.apple.com/br/app/bnb-cartões/id1435796374',
-        googleLink: 'https://play.google.com/store/apps/details?id=com.csu.bnb&hl=pt'
-    },
-    {
-        id: 2,
-        name: 'Banpara - Banco do Pará',
-        thumbnail: '/images/banpara-thumb.jpg',
-        shortDescription: 'Solução de cartão de crédito e controle de gastos para clientes Banpara, com múltiplas funcionalidades.',
-        longDescription: 'Aplicativo de cartão de crédito Banpara, desenvolvido com Flutter. Funcionalidades incluem gerenciamento de fatura, notificação de compras em tempo real, ajuste de limite e integração com carteiras digitais (Apple Pay, Google Pay).',
-        technologies: 'Flutter, .NET, Firebase, Docker, Nuxt.js',
-        category: 'Fintech',
-        appleLink: 'https://apps.apple.com/br/app/banpará-cartões/id1526688256',
-        googleLink: 'https://play.google.com/store/apps/details?id=com.csu.banpara&hl=pt'
-    },
-    {
-        id: 3,
-        name: 'Losango - Banco Losango',
-        thumbnail: '/images/losango-thumb.jpg',
-        shortDescription: 'Aplicativo Losango para gerenciamento de cartão, controle de gastos e parcelamentos flexíveis.',
-        longDescription: 'Desenvolvimento de app para o Banco Losango, oferecendo aos usuários acompanhamento de despesas, parcelamentos e suporte direto. Integrado a uma arquitetura white-label que permitiu adaptação rápida para outros bancos.',
-        technologies: 'Flutter, Vue.js, Clean Architecture, BigQuery',
-        category: 'Fintech',
-        appleLink: 'https://apps.apple.com/br/app/losango/id1456294810?l=en-GB',
-        googleLink: 'https://play.google.com/store/apps/details?id=com.csu.losango&hl=pt_BR'
-    },
-    {
-        id: 6,
-        name: 'Afinz - Banco Afinz',
-        thumbnail: '/images/afinz-thumb.png',
-        shortDescription: 'Banco Afinz com recursos de banco digital, controle de cartão e interface intuitiva.',
-        longDescription: 'Criação do aplicativo para o Banco Afinz, focado em funcionalidades de um banco digital completo: abertura de conta, cartões de crédito, pagamentos de boletos e recarga de serviços. Forte ênfase em UI/UX.',
-        technologies: 'Flutter, Firebase, Vue.js, UI/UX, JWT',
-        category: 'Fintech',
-        appleLink: 'https://apps.apple.com/br/app/afinz/id1416167782',
-        googleLink: 'https://play.google.com/store/apps/details?id=br.com.sorocred.sorocredapp&hl=en_US'
-    },
-    {
-        id: 8,
-        name: 'HeiClub - Heineken',
-        thumbnail: '/images/heineken-thumb.jpg',
-        shortDescription: 'Projeto privado para clientes Heineken, com pontos e integração de pagamentos digitais.',
-        longDescription: 'Desenvolvimento de plataforma interna para Heineken, englobando programa de fidelidade (resgate de pontos) e integração com métodos de pagamento digital. Acesso restrito a clientes e funcionários.',
-        technologies: 'Flutter, .NET, Docker, UI/UX',
-        category: 'Enterprise',
-        appleLink: null,
-        googleLink: null
-    },
-    {
-        id: 9,
-        name: 'BackOffice - Prudential',
-        thumbnail: '/images/prudential-thumb.jpeg',
-        shortDescription: 'Sistema de gerenciamento de usuários e exportação/importação de dados em XLSX/CSV.',
-        longDescription: 'Projeto interno para a Prudential, incluindo interface administrativa para cadastro e controle de usuários. Permite exportar dados em planilhas, além de importação e mapeamento automático de grandes volumes de informações.',
-        technologies: 'Flutter Web, Firebase, Docker, XLSX',
-        category: 'Web',
-        appleLink: null,
-        googleLink: null
-    }
-])
-
-// Featured projects (first 6)
-const featuredProjects = computed(() => projects.value.slice(0, 6))
+const { featuredProjects } = useProjects()
 
 // Modal state
 const selectedProject = ref(null)
@@ -341,6 +269,15 @@ const getFloatingStyle = (index) => {
     return positions[index - 1] || {}
 }
 
+// Watch for language changes and restart typewriter
+watch(typewriterText, (newText) => {
+    if (newText) {
+        setTimeout(() => {
+            startTypewriter()
+        }, 100)
+    }
+}, { immediate: false })
+
 // Initialize animations on mount
 onMounted(() => {
     setTimeout(() => {
@@ -349,13 +286,13 @@ onMounted(() => {
 
     // Start count up animations for stats
     setTimeout(() => {
-        stats.value.forEach((stat, index) => {
+        statsData.forEach((stat, index) => {
             const { current, startCountUp } = useCountUp(stat.value, 2000)
             setTimeout(() => {
                 startCountUp()
                 // Update the reactive value
                 const updateStat = () => {
-                    stat.displayValue = current.value
+                    stat.displayValue.value = current.value
                     if (current.value < stat.value) {
                         requestAnimationFrame(updateStat)
                     }
@@ -364,6 +301,10 @@ onMounted(() => {
             }, index * 200)
         })
     }, 1000)
+})
+
+onUnmounted(() => {
+    cleanup()
 })
 </script>
 

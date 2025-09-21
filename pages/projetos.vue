@@ -4,11 +4,10 @@
         <section class="projects-hero section-padding">
             <div class="container-apple">
                 <div class="hero-content text-center scroll-animate">
-                    <h1 class="text-large-title gradient-text mb-lg">Meus Projetos</h1>
+                    <h1 class="text-large-title gradient-text mb-lg">{{ t('projects.hero.title') }}</h1>
                     <p class="text-title-3 mb-xl"
                         style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">
-                        Uma coleção dos principais projetos que desenvolvi ao longo da minha carreira,
-                        desde aplicativos bancários até soluções empresariais complexas.
+                        {{ t('projects.hero.subtitle') }}
                     </p>
                 </div>
             </div>
@@ -20,7 +19,7 @@
         <section class="projects-section section-padding">
             <div class="container-apple">
                 <div class="projects-grid">
-                    <div v-for="(project, index) in projects" :key="project.id"
+                    <div v-for="(project, index) in projects" :key="`project-${project.id}`"
                         class="project-card glass-card scroll-animate" :style="{ animationDelay: `${index * 0.1}s` }"
                         @click="openProjectModal(project)">
                         <div class="project-image">
@@ -74,7 +73,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <h4 class="text-headline mb-md">Tecnologias Utilizadas</h4>
+                        <h4 class="text-headline mb-md">{{ t('projects.modal.techTitle') }}</h4>
                         <div class="modal-tech">
                             <span v-for="tech in selectedProject.technologies.split(', ')" :key="tech" class="tech-tag">
                                 {{ tech }}
@@ -83,11 +82,11 @@
                         <div class="modal-links mt-lg" v-if="selectedProject.appleLink || selectedProject.googleLink">
                             <a v-if="selectedProject.appleLink" :href="selectedProject.appleLink" target="_blank"
                                 class="btn-apple btn-apple-secondary">
-                                <i class="bi bi-apple"></i> App Store
+                                <i class="bi bi-apple"></i> {{ t('projects.modal.appStore') }}
                             </a>
                             <a v-if="selectedProject.googleLink" :href="selectedProject.googleLink" target="_blank"
                                 class="btn-apple btn-apple-secondary">
-                                <i class="bi bi-google-play"></i> Google Play
+                                <i class="bi bi-google-play"></i> {{ t('projects.modal.googlePlay') }}
                             </a>
                         </div>
                     </div>
@@ -101,133 +100,14 @@
 import { ref } from 'vue'
 import { useScrollAnimation } from '~/composables/useAnimations'
 
+const { t } = useI18n()
+
 // Initialize scroll animations
 useScrollAnimation()
 
 const selectedProject = ref(null)
 
-const projects = ref([
-    {
-        id: 1,
-        name: 'Bnb - Banco do Nordeste',
-        thumbnail: '/images/bnb-thumb.jpg',
-        shortDescription: 'Aplicativo de cartões do Banco do Nordeste, permitindo controle de faturas, limites e muito mais.',
-        longDescription: 'Aplicativo desenvolvido para o Banco do Nordeste, focado em gerenciamento de cartões de crédito. Implementações incluem controle de faturas, acompanhamento de gastos em tempo real, definição de limites, etc. O app foi desenvolvido em Flutter com arquitetura limpa, garantindo escalabilidade e fácil manutenção.',
-        technologies: 'Flutter, Firebase, Clean Architecture, GitLab',
-        categories: ['Mobile', 'Fintech'],
-        category: 'Mobile',
-        appleLink: 'https://apps.apple.com/br/app/bnb-cartões/id1435796374',
-        googleLink: 'https://play.google.com/store/apps/details?id=com.csu.bnb&hl=pt'
-    },
-    {
-        id: 2,
-        name: 'Banpara - Banco do Pará',
-        thumbnail: '/images/banpara-thumb.jpg',
-        shortDescription: 'Solução de cartão de crédito e controle de gastos para clientes Banpara, com múltiplas funcionalidades.',
-        longDescription: 'Aplicativo de cartão de crédito Banpara, desenvolvido com Flutter. Funcionalidades incluem gerenciamento de fatura, notificação de compras em tempo real, ajuste de limite e integração com carteiras digitais (Apple Pay, Google Pay).',
-        technologies: 'Flutter, .NET, Firebase, Docker, Nuxt.js',
-        categories: ['Mobile', 'Fintech'],
-        category: 'Mobile',
-        appleLink: 'https://apps.apple.com/br/app/banpará-cartões/id1526688256',
-        googleLink: 'https://play.google.com/store/apps/details?id=com.csu.banpara&hl=pt'
-    },
-    {
-        id: 3,
-        name: 'Losango - Banco Losango',
-        thumbnail: '/images/losango-thumb.jpg',
-        shortDescription: 'Aplicativo Losango para gerenciamento de cartão, controle de gastos e parcelamentos flexíveis.',
-        longDescription: 'Desenvolvimento de app para o Banco Losango, oferecendo aos usuários acompanhamento de despesas, parcelamentos e suporte direto. Integrado a uma arquitetura white-label que permitiu adaptação rápida para outros bancos.',
-        technologies: 'Flutter, Vue.js, Clean Architecture, BigQuery',
-        categories: ['Mobile', 'Fintech'],
-        category: 'Mobile',
-        appleLink: 'https://apps.apple.com/br/app/losango/id1456294810?l=en-GB',
-        googleLink: 'https://play.google.com/store/apps/details?id=com.csu.losango&hl=pt_BR'
-    },
-    {
-        id: 4,
-        name: 'H2 Club - Groupe H2',
-        thumbnail: '/images/h2club-thumb.png',
-        shortDescription: 'App para gerenciamento de torneios, agenda e informações do clube H2, com push notifications.',
-        longDescription: 'Aplicativo para membros do H2 Club, exibindo calendário de torneios, resultados, reservas e integração de notificações push segmentadas. Implementa reconhecimento facial/documental para cadastro e compliance com LGPD.',
-        technologies: 'Flutter, BigQuery, JWT, Docker, PHP',
-        categories: ['Mobile'],
-        category: 'Mobile',
-        appleLink: 'https://apps.apple.com/br/app/h2-club/id6466628886',
-        googleLink: 'https://play.google.com/store/apps/details?id=com.h2.app&hl=pt_BR&pli=1'
-    },
-    {
-        id: 5,
-        name: 'BlueC - Banco BlueC',
-        thumbnail: '/images/bluec-thumb.avif',
-        shortDescription: 'Aplicativo do Banco BlueC, integrando carteiras digitais para pagamento imediato.',
-        longDescription: 'Integração de carteiras digitais (Apple Pay, Google Pay, Samsung Pay) ao app BlueC, facilitando pagamentos sem contato e gerenciamento de transações em tempo real.',
-        technologies: 'Flutter, Docker, Google Pay, Apple Pay, Firebase',
-        categories: ['Mobile', 'Fintech'],
-        category: 'Mobile',
-        appleLink: null,
-        googleLink: 'https://play.google.com/store/apps/details?id=br.com.csu.baas&hl=pt_BR'
-    },
-    {
-        id: 6,
-        name: 'Afinz - Banco Afinz',
-        thumbnail: '/images/afinz-thumb.png',
-        shortDescription: 'Banco Afinz com recursos de banco digital, controle de cartão e interface intuitiva.',
-        longDescription: 'Criação do aplicativo para o Banco Afinz, focado em funcionalidades de um banco digital completo: abertura de conta, cartões de crédito, pagamentos de boletos e recarga de serviços. Forte ênfase em UI/UX.',
-        technologies: 'Flutter, Firebase, Vue.js, UI/UX, JWT',
-        categories: ['Mobile', 'Fintech'],
-        category: 'Mobile',
-        appleLink: 'https://apps.apple.com/br/app/afinz/id1416167782',
-        googleLink: 'https://play.google.com/store/apps/details?id=br.com.sorocred.sorocredapp&hl=en_US'
-    },
-    {
-        id: 7,
-        name: 'Komus - Seguro Mobile',
-        thumbnail: '/images/komus-thumb.jpeg',
-        shortDescription: 'Aplicativo de seguro para celular, com planos e suporte integrado. Marca fundida com Pitz Insurance.',
-        longDescription: 'App desenvolvido para oferecer planos de seguro móvel, com funcionalidades de registro de sinistros, acompanhamento de reparos e canal de suporte 24h. Posteriormente, a marca Komus foi incorporada à Pitz Insurance.',
-        technologies: 'Flutter, Vue.js, Node.js, TypeScript, UI/UX',
-        categories: ['Mobile', 'Web'],
-        category: 'Mobile',
-        appleLink: null,
-        googleLink: null
-    },
-    {
-        id: 8,
-        name: 'HeiClub - Heineken',
-        thumbnail: '/images/heineken-thumb.jpg',
-        shortDescription: 'Projeto privado para clientes Heineken, com pontos e integração de pagamentos digitais.',
-        longDescription: 'Desenvolvimento de plataforma interna para Heineken, englobando programa de fidelidade (resgate de pontos) e integração com métodos de pagamento digital. Acesso restrito a clientes e funcionários.',
-        technologies: 'Flutter, .NET, Docker, UI/UX',
-        categories: ['Web', 'Enterprise'],
-        category: 'Web',
-        appleLink: null,
-        googleLink: null
-    },
-    {
-        id: 9,
-        name: 'BackOffice - Prudential',
-        thumbnail: '/images/prudential-thumb.jpeg',
-        shortDescription: 'Sistema de gerenciamento de usuários e exportação/importação de dados em XLSX/CSV.',
-        longDescription: 'Projeto interno para a Prudential, incluindo interface administrativa para cadastro e controle de usuários. Permite exportar dados em planilhas, além de importação e mapeamento automático de grandes volumes de informações.',
-        technologies: 'Flutter Web, Firebase, Docker, XLSX',
-        categories: ['Web', 'Enterprise'],
-        category: 'Web',
-        appleLink: null,
-        googleLink: null
-    },
-    {
-        id: 10,
-        name: 'NeoPDV - Dashboard',
-        thumbnail: '/images/neopdv-thumb.jpg',
-        shortDescription: 'Dashboard de controle de vendas e PDV móvel para lojas, com métricas em tempo real.',
-        longDescription: 'Solução voltada para o controle de vendas, permitindo que vendedores realizem atendimentos fora do caixa (PDV móvel) e acompanhem metas e métricas através de um dashboard web intuitivo.',
-        technologies: 'Flutter, Vue.js, Node.js, HTML/CSS, UI/UX',
-        categories: ['Web', 'Mobile'],
-        category: 'Web',
-        appleLink: null,
-        googleLink: null
-    }
-])
+const { projects } = useProjects()
 
 
 
@@ -246,15 +126,15 @@ const closeProjectModal = () => {
 
 <style scoped>
 .apple-projects {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .projects-hero {
-    height: 88vh; /* Compensa o zoom 0.8 (100 / 0.8 = 125) */
+    height: 88vh;
+    /* Compensa o zoom 0.8 (100 / 0.8 = 125) */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -289,11 +169,10 @@ const closeProjectModal = () => {
 
 
 .projects-section {
-    background: linear-gradient(135deg, 
-        var(--apple-dark-1) 0%, 
-        var(--apple-dark-2) 50%, 
-        var(--apple-dark-3) 100%
-    );
+    background: linear-gradient(135deg,
+            var(--apple-dark-1) 0%,
+            var(--apple-dark-2) 50%,
+            var(--apple-dark-3) 100%);
 }
 
 .projects-grid {

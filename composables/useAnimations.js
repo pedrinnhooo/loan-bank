@@ -85,24 +85,57 @@ export const useMouseTracker = () => {
 export const useTypewriter = (text, speed = 100) => {
   const displayText = ref('')
   const isComplete = ref(false)
+  let currentTimer = null
   
   const startTypewriter = () => {
+    // Clear any existing timer
+    if (currentTimer) {
+      clearInterval(currentTimer)
+      currentTimer = null
+    }
+    
+    // Reset state
+    displayText.value = ''
+    isComplete.value = false
+    
+    // Get current text value (handle computed refs)
+    let currentText = ''
+    if (typeof text === 'function') {
+      currentText = text()
+    } else if (text && typeof text === 'object' && text.value !== undefined) {
+      currentText = text.value
+    } else {
+      currentText = text || ''
+    }
+    
+    if (!currentText) return
+    
     let i = 0
-    const timer = setInterval(() => {
-      if (i < text.length) {
-        displayText.value += text.charAt(i)
+    currentTimer = setInterval(() => {
+      if (i < currentText.length) {
+        displayText.value += currentText.charAt(i)
         i++
       } else {
-        clearInterval(timer)
+        clearInterval(currentTimer)
+        currentTimer = null
         isComplete.value = true
       }
     }, speed)
   }
   
+  // Cleanup function
+  const cleanup = () => {
+    if (currentTimer) {
+      clearInterval(currentTimer)
+      currentTimer = null
+    }
+  }
+  
   return {
     displayText,
     isComplete,
-    startTypewriter
+    startTypewriter,
+    cleanup
   }
 }
 

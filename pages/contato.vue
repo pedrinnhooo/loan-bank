@@ -1,239 +1,252 @@
-<template>
-    <div class="apple-contact">
-        <!-- Hero Section -->
-        <section class="contact-hero section-padding">
-            <div class="container-apple">
-                <div class="hero-content text-center scroll-animate">
-                    <h1 class="text-large-title gradient-text mb-lg">Vamos Conversar?</h1>
-                    <p class="text-title-3 mb-xl"
-                        style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">
-                        Pronto para transformar sua ideia em realidade? Entre em contato e vamos discutir como posso
-                        ajudar
-                        no seu próximo projeto.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Methods -->
-        <section class="contact-methods section-padding">
-            <div class="container-apple">
-                <div class="contact-grid grid-apple grid-2">
-                    <!-- Contact Info -->
-                    <div class="contact-info scroll-animate">
-                        <h2 class="text-title-1 mb-lg">Entre em Contato</h2>
-                        <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
-                            Estou sempre disponível para discutir novos projetos, oportunidades de colaboração
-                            ou simplesmente trocar ideias sobre tecnologia.
+    <template>
+        <div class="apple-contact">
+            <!-- Hero Section -->
+            <section class="contact-hero section-padding">
+                <div class="container-apple">
+                    <div class="hero-content text-center scroll-animate">
+                        <h1 class="text-large-title gradient-text mb-lg">{{ t('contact.hero.title') }}</h1>
+                        <p class="text-title-3 mb-xl"
+                            style="color: var(--apple-text-secondary); max-width: 600px; margin: 0 auto;">
+                            {{ t('contact.hero.subtitle') }}
                         </p>
-
-                        <div class="contact-items">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="bi bi-telephone"></i>
-                                </div>
-                                <div class="contact-details">
-                                    <h4 class="text-callout mb-sm">Telefone</h4>
-                                    <p class="text-subhead">
-                                        <a href="tel:+5511912117442" style="color: var(--apple-blue);">
-                                            +55 (11) 91211-7442
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="bi bi-envelope"></i>
-                                </div>
-                                <div class="contact-details">
-                                    <h4 class="text-callout mb-sm">Email</h4>
-                                    <p class="text-subhead">
-                                        <a href="mailto:pedro.ruffo.dev@gmail.com" style="color: var(--apple-blue);">
-                                            pedro.ruffo.dev@gmail.com
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="bi bi-geo-alt"></i>
-                                </div>
-                                <div class="contact-details">
-                                    <h4 class="text-callout mb-sm">Localização</h4>
-                                    <p class="text-subhead" style="color: var(--apple-text-secondary);">
-                                        São Paulo, Brasil
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="bi bi-clock"></i>
-                                </div>
-                                <div class="contact-details">
-                                    <h4 class="text-callout mb-sm">Disponibilidade</h4>
-                                    <p class="text-subhead" style="color: var(--apple-text-secondary);">
-                                        Segunda à Sexta, 9h às 18h
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                </div>
+            </section>
 
-                    <!-- Contact Form -->
-                    <div class="contact-form-container scroll-animate">
-                        <div class="glass-card">
-                            <h3 class="text-title-2 mb-lg">Envie uma Mensagem</h3>
-                            <form @submit.prevent="submitForm" class="contact-form">
-                                <div class="form-group">
-                                    <label for="name" class="form-label">Nome</label>
-                                    <input type="text" id="name" v-model="form.name" class="form-input"
-                                        placeholder="Seu nome completo" required>
-                                </div>
+            <!-- Contact Methods -->
+            <section class="contact-methods section-padding">
+                <div class="container-apple">
+                    <div class="contact-grid grid-apple grid-2">
+                        <!-- Contact Info -->
+                        <div class="contact-info scroll-animate">
+                            <h2 class="text-title-1 mb-lg">{{ t('contact.info.title') }}</h2>
+                            <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
+                                {{ t('contact.info.description') }}
+                            </p>
 
-                                <div class="form-group">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" id="email" v-model="form.email" class="form-input"
-                                        placeholder="seu@email.com" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="phone" class="form-label">Telefone</label>
-                                    <div class="phone-input-container">
-                                        <select v-model="form.countryCode" class="form-input country-select">
-                                            <option value="+55" selected>🇧🇷 +55</option>
-                                            <option value="+1">🇺🇸 +1</option>
-                                            <option value="+44">🇬🇧 +44</option>
-                                            <option value="+33">🇫🇷 +33</option>
-                                            <option value="+49">🇩🇪 +49</option>
-                                            <option value="+34">🇪🇸 +34</option>
-                                            <option value="+39">🇮🇹 +39</option>
-                                            <option value="+351">🇵🇹 +351</option>
-                                            <option value="+54">🇦🇷 +54</option>
-                                            <option value="+52">🇲🇽 +52</option>
-                                        </select>
-                                        <input type="tel" id="phone" v-model="form.phone" @input="formatPhoneNumber"
-                                            @keypress="validatePhoneInput" class="form-input phone-input"
-                                            :placeholder="getPhonePlaceholder()" :maxlength="getMaxLength()" required>
+                            <div class="contact-items">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="bi bi-telephone"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4 class="text-callout mb-sm">{{ t('contact.info.items.phone.label') }}</h4>
+                                        <p class="text-subhead">
+                                            <a href="tel:+5511912117442" style="color: var(--apple-blue);">
+                                                {{ t('contact.info.items.phone.value') }}
+                                            </a>
+                                        </p>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="subject" class="form-label">Assunto</label>
-                                    <select id="subject" v-model="form.subject" class="form-input form-select" required>
-                                        <option value="" disabled>Selecione um assunto</option>
-                                        <option value="projeto">Novo Projeto</option>
-                                        <option value="consultoria">Consultoria</option>
-                                        <option value="colaboracao">Colaboração</option>
-                                        <option value="outros">Outros</option>
-                                    </select>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="bi bi-envelope"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4 class="text-callout mb-sm">{{ t('contact.info.items.email.label') }}</h4>
+                                        <p class="text-subhead">
+                                            <a href="mailto:pedro.ruffo.dev@gmail.com"
+                                                style="color: var(--apple-blue);">
+                                                {{ t('contact.info.items.email.value') }}
+                                            </a>
+                                        </p>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="message" class="form-label">Mensagem</label>
-                                    <textarea id="message" v-model="form.message" class="form-textarea"
-                                        placeholder="Conte-me sobre seu projeto ou dúvida..." rows="5"
-                                        required></textarea>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="bi bi-geo-alt"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4 class="text-callout mb-sm">{{ t('contact.info.items.location.label') }}</h4>
+                                        <p class="text-subhead" style="color: var(--apple-text-secondary);">
+                                            {{ t('contact.info.items.location.value') }}
+                                        </p>
+                                    </div>
                                 </div>
 
-                                <button type="submit" class="btn-apple btn-apple-primary" :disabled="isSubmitting">
-                                    <span v-if="!isSubmitting">
-                                        <i class="bi bi-send"></i> Enviar Mensagem
-                                    </span>
-                                    <span v-else>
-                                        <i class="bi bi-hourglass-split"></i> Enviando...
-                                    </span>
-                                </button>
-                            </form>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="bi bi-clock"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <h4 class="text-callout mb-sm">{{ t('contact.info.items.availability.label') }}
+                                        </h4>
+                                        <p class="text-subhead" style="color: var(--apple-text-secondary);">
+                                            {{ t('contact.info.items.availability.value') }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <div class="contact-form-container scroll-animate">
+                            <div class="glass-card">
+                                <h3 class="text-title-2 mb-lg">{{ t('contact.form.title') }}</h3>
+                                <form @submit.prevent="submitForm" class="contact-form">
+                                    <div class="form-group">
+                                        <label for="name" class="form-label">{{ t('contact.form.labels.name') }}</label>
+                                        <input type="text" id="name" v-model="form.name" class="form-input"
+                                            :placeholder="t('contact.form.placeholders.name')" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">{{ t('contact.form.labels.email')
+                                            }}</label>
+                                        <input type="email" id="email" v-model="form.email" class="form-input"
+                                            :placeholder="t('contact.form.placeholders.email')" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">{{ t('contact.form.labels.phone')
+                                            }}</label>
+                                        <div class="phone-input-container">
+                                            <select v-model="form.countryCode" class="form-input country-select">
+                                                <option value="+55" selected>🇧🇷 +55</option>
+                                                <option value="+1">🇺🇸 +1</option>
+                                                <option value="+44">🇬🇧 +44</option>
+                                                <option value="+33">🇫🇷 +33</option>
+                                                <option value="+49">🇩🇪 +49</option>
+                                                <option value="+34">🇪🇸 +34</option>
+                                                <option value="+39">🇮🇹 +39</option>
+                                                <option value="+351">🇵🇹 +351</option>
+                                                <option value="+54">🇦🇷 +54</option>
+                                                <option value="+52">🇲🇽 +52</option>
+                                            </select>
+                                            <input type="tel" id="phone" v-model="form.phone" @input="formatPhoneNumber"
+                                                @keypress="validatePhoneInput" class="form-input phone-input"
+                                                :placeholder="getPhonePlaceholder()" :maxlength="getMaxLength()"
+                                                required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="subject" class="form-label">{{ t('contact.form.labels.subject')
+                                            }}</label>
+                                        <select id="subject" v-model="form.subject" class="form-input form-select"
+                                            required>
+                                            <option value="" disabled>{{ t('contact.form.subject.placeholder') }}
+                                            </option>
+                                            <option value="projeto">{{ t('contact.form.subject.options.projeto') }}
+                                            </option>
+                                            <option value="consultoria">{{ t('contact.form.subject.options.consultoria')
+                                                }}</option>
+                                            <option value="colaboracao">{{ t('contact.form.subject.options.colaboracao')
+                                                }}</option>
+                                            <option value="outros">{{ t('contact.form.subject.options.outros') }}
+                                            </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="message" class="form-label">{{ t('contact.form.labels.message')
+                                            }}</label>
+                                        <textarea id="message" v-model="form.message" class="form-textarea"
+                                            :placeholder="t('contact.form.placeholders.message')" rows="5"
+                                            required></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn-apple btn-apple-primary" :disabled="isSubmitting">
+                                        <span v-if="!isSubmitting">
+                                            <i class="bi bi-send"></i> {{ t('contact.form.button.submit') }}
+                                        </span>
+                                        <span v-else>
+                                            <i class="bi bi-hourglass-split"></i> {{ t('contact.form.button.submitting')
+                                            }}
+                                        </span>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Social Links -->
-        <section class="social-section section-padding">
-            <div class="container-apple">
-                <div class="social-content text-center scroll-animate">
-                    <h2 class="text-title-1 mb-lg">Conecte-se Comigo</h2>
-                    <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
-                        Acompanhe meu trabalho e conecte-se comigo nas redes sociais
-                    </p>
+            <!-- Social Links -->
+            <section class="social-section section-padding">
+                <div class="container-apple">
+                    <div class="social-content text-center scroll-animate">
+                        <h2 class="text-title-1 mb-lg">{{ t('contact.social.title') }}</h2>
+                        <p class="text-body mb-xl" style="color: var(--apple-text-secondary);">
+                            {{ t('contact.social.description') }}
+                        </p>
 
-                    <div class="social-links">
-                        <a href="https://github.com/pedrinnhooo" target="_blank" rel="noopener noreferrer"
-                            class="social-link">
-                            <div class="social-icon">
-                                <i class="bi bi-github"></i>
-                            </div>
-                            <div class="social-info">
-                                <h4 class="text-callout">GitHub</h4>
-                                <p class="text-subhead">Veja meus projetos</p>
-                            </div>
-                        </a>
+                        <div class="social-links">
+                            <a href="https://github.com/pedrinnhooo" target="_blank" rel="noopener noreferrer"
+                                class="social-link">
+                                <div class="social-icon">
+                                    <i class="bi bi-github"></i>
+                                </div>
+                                <div class="social-info">
+                                    <h4 class="text-callout">{{ t('contact.social.links.github.title') }}</h4>
+                                    <p class="text-subhead">{{ t('contact.social.links.github.subtitle') }}</p>
+                                </div>
+                            </a>
 
-                        <a href="https://linkedin.com/in/pedro-ruffo-501385181" target="_blank"
-                            rel="noopener noreferrer" class="social-link">
-                            <div class="social-icon">
-                                <i class="bi bi-linkedin"></i>
-                            </div>
-                            <div class="social-info">
-                                <h4 class="text-callout">LinkedIn</h4>
-                                <p class="text-subhead">Conecte-se profissionalmente</p>
-                            </div>
-                        </a>
+                            <a href="https://linkedin.com/in/pedro-ruffo-501385181" target="_blank"
+                                rel="noopener noreferrer" class="social-link">
+                                <div class="social-icon">
+                                    <i class="bi bi-linkedin"></i>
+                                </div>
+                                <div class="social-info">
+                                    <h4 class="text-callout">{{ t('contact.social.links.linkedin.title') }}</h4>
+                                    <p class="text-subhead">{{ t('contact.social.links.linkedin.subtitle') }}</p>
+                                </div>
+                            </a>
 
-                        <a href="https://wa.me/5511912117442" target="_blank" rel="noopener noreferrer"
-                            class="social-link">
-                            <div class="social-icon">
-                                <i class="bi bi-whatsapp"></i>
-                            </div>
-                            <div class="social-info">
-                                <h4 class="text-callout">WhatsApp</h4>
-                                <p class="text-subhead">Conversa rápida</p>
-                            </div>
-                        </a>
+                            <a href="https://wa.me/5511912117442" target="_blank" rel="noopener noreferrer"
+                                class="social-link">
+                                <div class="social-icon">
+                                    <i class="bi bi-whatsapp"></i>
+                                </div>
+                                <div class="social-info">
+                                    <h4 class="text-callout">{{ t('contact.social.links.whatsapp.title') }}</h4>
+                                    <p class="text-subhead">{{ t('contact.social.links.whatsapp.subtitle') }}</p>
+                                </div>
+                            </a>
 
-                        <a href="https://discord.gg/NwWySEJF" target="_blank" rel="noopener noreferrer"
-                            class="social-link">
-                            <div class="social-icon">
-                                <i class="bi bi-discord"></i>
-                            </div>
-                            <div class="social-info">
-                                <h4 class="text-callout">Discord</h4>
-                                <p class="text-subhead">Comunidade tech</p>
-                            </div>
-                        </a>
+                            <a href="https://discord.gg/NwWySEJF" target="_blank" rel="noopener noreferrer"
+                                class="social-link">
+                                <div class="social-icon">
+                                    <i class="bi bi-discord"></i>
+                                </div>
+                                <div class="social-info">
+                                    <h4 class="text-callout">{{ t('contact.social.links.discord.title') }}</h4>
+                                    <p class="text-subhead">{{ t('contact.social.links.discord.subtitle') }}</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Success Modal -->
-        <transition name="modal">
-            <div v-if="showSuccessModal" class="modal-overlay" @click="closeSuccessModal">
-                <div class="modal-content glass-card text-center" @click.stop>
-                    <div class="success-icon">
-                        <i class="bi bi-check-circle"></i>
+            <!-- Success Modal -->
+            <transition name="modal">
+                <div v-if="showSuccessModal" class="modal-overlay" @click="closeSuccessModal">
+                    <div class="modal-content glass-card text-center" @click.stop>
+                        <div class="success-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <h3 class="text-title-2 mb-md">{{ t('contact.modal.success.title') }}</h3>
+                        <p class="text-body mb-lg" style="color: var(--apple-text-secondary);">
+                            {{ t('contact.modal.success.description') }}
+                        </p>
+                        <button @click="closeSuccessModal" class="btn-apple btn-apple-primary">
+                            {{ t('contact.modal.success.close') }}
+                        </button>
                     </div>
-                    <h3 class="text-title-2 mb-md">Mensagem Enviada!</h3>
-                    <p class="text-body mb-lg" style="color: var(--apple-text-secondary);">
-                        Sua mensagem foi enviada para meu email e WhatsApp. Retornarei o contato em breve!
-                    </p>
-                    <button @click="closeSuccessModal" class="btn-apple btn-apple-primary">
-                        Fechar
-                    </button>
                 </div>
-            </div>
-        </transition>
-    </div>
-</template>
+            </transition>
+        </div>
+    </template>
 
 <script setup>
 import { ref, watch } from 'vue'
 import { useScrollAnimation } from '~/composables/useAnimations'
+
+const { t } = useI18n()
 
 // Initialize scroll animations
 useScrollAnimation()
@@ -279,12 +292,12 @@ const submitForm = async () => {
 
             showSuccessModal.value = true
         } else {
-            throw new Error('Falha no envio')
+            throw new Error(t('contact.form.feedback.sendFail'))
         }
 
     } catch (error) {
         console.error('Erro ao enviar formulário:', error)
-        alert('Erro ao enviar mensagem. Tente novamente.')
+        alert(t('contact.form.feedback.sendError'))
     } finally {
         isSubmitting.value = false
     }
@@ -294,10 +307,10 @@ const submitForm = async () => {
 
 const getSubjectLabel = (value) => {
     const subjects = {
-        'projeto': 'Novo Projeto',
-        'consultoria': 'Consultoria',
-        'colaboracao': 'Colaboração',
-        'outros': 'Outros'
+        'projeto': t('contact.form.subject.options.projeto'),
+        'consultoria': t('contact.form.subject.options.consultoria'),
+        'colaboracao': t('contact.form.subject.options.colaboracao'),
+        'outros': t('contact.form.subject.options.outros')
     }
     return subjects[value] || value
 }
@@ -426,6 +439,7 @@ watch(() => form.value.countryCode, () => {
             var(--apple-dark-1) 0%,
             var(--apple-dark-2) 50%,
             var(--apple-dark-3) 100%);
+    min-height: 100vh;
 }
 
 .contact-hero {
@@ -794,6 +808,16 @@ select.form-input option:checked {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .contact-grid {
+        gap: var(--spacing-xl);
+    }
+
+    .social-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .contact-grid {
         grid-template-columns: 1fr;
@@ -813,13 +837,102 @@ select.form-input option:checked {
         flex-direction: column;
         text-align: center;
         padding: var(--spacing-xl);
+        min-height: 140px;
+        justify-content: center;
+    }
+
+    .social-info {
+        align-items: center;
+        text-align: center;
+        margin-top: var(--spacing-sm);
+    }
+
+    .social-icon {
+        margin-bottom: var(--spacing-sm);
     }
 }
 
 @media (max-width: 480px) {
+    .apple-contact {
+        padding-top: 80px;
+        /* mantém a compensação do header fixo */
+    }
+
+    .container-apple {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
+    }
+
+    .contact-hero {
+        height: auto;
+        min-height: 60vh;
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .hero-content {
+        padding: 0 var(--spacing-md);
+    }
+
+    .contact-methods {
+        padding: var(--spacing-xl) 0;
+    }
+
+    /* === AQUI ESTÁ O AJUSTE PRINCIPAL === */
     .contact-item {
+        flex-direction: row;
+        /* mantém lado a lado */
+        align-items: center;
+        /* centraliza verticalmente ícone e textos */
+        text-align: left;
+        /* alinha textos à esquerda */
+        gap: var(--spacing-md);
+    }
+
+    .contact-icon {
+        margin: 0;
+        /* remove centralização forçada */
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+    }
+
+    .contact-details h4,
+    .contact-details p {
+        margin: 0;
+    }
+
+    /* inputs de telefone continuam empilhando (ok para mobile) */
+    .phone-input-container {
         flex-direction: column;
-        text-align: center;
+        gap: var(--spacing-sm);
+    }
+
+    .country-select {
+        min-width: auto;
+        width: 100%;
+    }
+
+    /* ajustes da seção social mantidos */
+    .social-section {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .social-content {
+        padding: 0 var(--spacing-md);
+    }
+
+    .social-links {
+        gap: var(--spacing-sm);
+    }
+
+    .social-link {
+        padding: var(--spacing-lg);
+        min-height: 120px;
+        justify-content: center;
+    }
+
+    .social-icon {
+        margin-bottom: var(--spacing-sm);
     }
 
     .modal-overlay {
@@ -829,7 +942,5 @@ select.form-input option:checked {
     .modal-content {
         padding: var(--spacing-xl);
     }
-
-
 }
 </style>

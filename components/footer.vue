@@ -7,60 +7,57 @@
                 <div class="footer-brand-section">
                     <NuxtLink to="/" class="footer-brand">
                         <AppleLogo size="large" variant="blue" />
-                        <span class="brand-text">Pedro Ruffo</span>
+                        <span class="brand-text">{{ t('footer.brand') }}</span>
                     </NuxtLink>
                     <p class="brand-description">
-                        Desenvolvedor especializado em soluções digitais modernas, 
-                        criando experiências excepcionais com Flutter, Vue.js e tecnologias de ponta.
+                        {{ t('footer.description') }}
                     </p>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="footer-nav">
                     <div class="nav-column">
-                        <h4 class="nav-title">Navegação</h4>
+                        <h4 class="nav-title">{{ t('footer.columns.navigation.title') }}</h4>
                         <ul class="nav-list">
-                            <li><NuxtLink to="/" class="nav-link">Início</NuxtLink></li>
-                            <li><NuxtLink to="/sobre" class="nav-link">Sobre</NuxtLink></li>
-                            <li><NuxtLink to="/projetos" class="nav-link">Projetos</NuxtLink></li>
-                            <li><NuxtLink to="/contato" class="nav-link">Contato</NuxtLink></li>
+                            <li><NuxtLink to="/" class="nav-link">{{ t('footer.columns.navigation.links.home') }}</NuxtLink></li>
+                            <li><NuxtLink to="/sobre" class="nav-link">{{ t('footer.columns.navigation.links.about') }}</NuxtLink></li>
+                            <li><NuxtLink to="/projetos" class="nav-link">{{ t('footer.columns.navigation.links.projects') }}</NuxtLink></li>
+                            <li><NuxtLink to="/contato" class="nav-link">{{ t('footer.columns.navigation.links.contact') }}</NuxtLink></li>
                         </ul>
                     </div>
 
                     <div class="nav-column">
-                        <h4 class="nav-title">Serviços</h4>
+                        <h4 class="nav-title">{{ t('footer.columns.services.title') }}</h4>
                         <ul class="nav-list">
-                            <li><span class="nav-link">Desenvolvimento Mobile</span></li>
-                            <li><span class="nav-link">Desenvolvimento Web</span></li>
-                            <li><span class="nav-link">UI/UX Design</span></li>
-                            <li><span class="nav-link">Consultoria Tech</span></li>
+                            <li v-for="service in t('footer.columns.services.items')" :key="service">
+                                <span class="nav-link">{{ service }}</span>
+                            </li>
                         </ul>
                     </div>
 
                     <div class="nav-column">
-                        <h4 class="nav-title">Tecnologias</h4>
+                        <h4 class="nav-title">{{ t('footer.columns.tech.title') }}</h4>
                         <ul class="nav-list">
-                            <li><span class="nav-link">Flutter & Dart</span></li>
-                            <li><span class="nav-link">Vue.js & Nuxt.js</span></li>
-                            <li><span class="nav-link">Firebase</span></li>
-                            <li><span class="nav-link">Clean Architecture</span></li>
+                            <li v-for="tech in t('footer.columns.tech.items')" :key="tech">
+                                <span class="nav-link">{{ tech }}</span>
+                            </li>
                         </ul>
                     </div>
 
                     <div class="nav-column">
-                        <h4 class="nav-title">Contato</h4>
+                        <h4 class="nav-title">{{ t('footer.columns.contact.title') }}</h4>
                         <ul class="nav-list">
                             <li>
                                 <a href="mailto:pedro.ruffo.dev@gmail.com" class="nav-link">
-                                    pedro.ruffo.dev@gmail.com
+                                    {{ t('footer.columns.contact.email') }}
                                 </a>
                             </li>
                             <li>
                                 <a href="tel:+5511912117442" class="nav-link">
-                                    +55 (11) 91211-7442
+                                    {{ t('footer.columns.contact.phone') }}
                                 </a>
                             </li>
-                            <li><span class="nav-link">São Paulo, Brasil</span></li>
+                            <li><span class="nav-link">{{ t('footer.columns.contact.location') }}</span></li>
                         </ul>
                     </div>
                 </div>
@@ -70,7 +67,7 @@
             <div class="footer-bottom">
                 <div class="footer-bottom-content">
                     <div class="copyright">
-                        <p>&copy; {{ currentYear }} Pedro Ruffo. Todos os direitos reservados.</p>
+                        <p>&copy; {{ currentYear }} Pedro Ruffo. {{ t('footer.bottom.copyright') }}</p>
                     </div>
 
                     <div class="social-links">
@@ -79,7 +76,7 @@
                             target="_blank" 
                             rel="noopener noreferrer"
                             class="social-link"
-                            aria-label="GitHub"
+                            :aria-label="t('footer.social.github')"
                         >
                             <i class="bi bi-github"></i>
                         </a>
@@ -88,7 +85,7 @@
                             target="_blank" 
                             rel="noopener noreferrer"
                             class="social-link"
-                            aria-label="LinkedIn"
+                            :aria-label="t('footer.social.linkedin')"
                         >
                             <i class="bi bi-linkedin"></i>
                         </a>
@@ -97,7 +94,7 @@
                             target="_blank" 
                             rel="noopener noreferrer"
                             class="social-link"
-                            aria-label="WhatsApp"
+                            :aria-label="t('footer.social.whatsapp')"
                         >
                             <i class="bi bi-whatsapp"></i>
                         </a>
@@ -106,14 +103,14 @@
                             target="_blank" 
                             rel="noopener noreferrer"
                             class="social-link"
-                            aria-label="Discord"
+                            :aria-label="t('footer.social.discord')"
                         >
                             <i class="bi bi-discord"></i>
                         </a>
                         <a 
                             href="mailto:pedro.ruffo.dev@gmail.com" 
                             class="social-link"
-                            aria-label="Email"
+                            :aria-label="t('footer.social.email')"
                         >
                             <i class="bi bi-envelope"></i>
                         </a>
@@ -128,6 +125,7 @@
 <script setup>
 import { computed } from 'vue'
 
+const { t } = useI18n()
 const currentYear = computed(() => new Date().getFullYear())
 </script>
 

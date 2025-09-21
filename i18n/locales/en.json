@@ -1,0 +1,481 @@
+{
+    "common": {
+        "language": "Language",
+        "buttons": {
+            "submit": "Submit",
+            "close": "Close",
+            "viewAll": "View All",
+            "viewProjects": "View Projects",
+            "contactMe": "Contact Me",
+            "contactNow": "Contact Me Now"
+        },
+        "states": {
+            "loading": "Loading..."
+        }
+    },
+    "contact": {
+        "hero": {
+            "title": "Let's Talk?",
+            "subtitle": "Ready to turn your idea into reality? Get in touch and let's discuss how I can help with your next project."
+        },
+        "info": {
+            "title": "Get in Touch",
+            "description": "I'm always available to discuss new projects, collaboration opportunities, or simply exchange ideas about technology.",
+            "items": {
+                "phone": {
+                    "label": "Phone",
+                    "value": "+55 (11) 91211-7442"
+                },
+                "email": {
+                    "label": "Email",
+                    "value": "pedro.ruffo.dev@gmail.com"
+                },
+                "location": {
+                    "label": "Location",
+                    "value": "São Paulo, Brazil"
+                },
+                "availability": {
+                    "label": "Availability",
+                    "value": "Monday to Friday, 9am–6pm"
+                }
+            }
+        },
+        "form": {
+            "title": "Send a Message",
+            "labels": {
+                "name": "Name",
+                "email": "Email",
+                "phone": "Phone",
+                "countryCode": "Country code",
+                "subject": "Subject",
+                "message": "Message"
+            },
+            "placeholders": {
+                "name": "Your full name",
+                "email": "your@email.com",
+                "message": "Tell me about your project or question..."
+            },
+            "subject": {
+                "placeholder": "Select a subject",
+                "options": {
+                    "projeto": "New Project",
+                    "consultoria": "Consulting",
+                    "colaboracao": "Collaboration",
+                    "outros": "Other"
+                }
+            },
+            "button": {
+                "submit": "Send Message",
+                "submitting": "Sending..."
+            },
+            "feedback": {
+                "sendFail": "Failed to send",
+                "sendError": "Error sending message. Please try again."
+            }
+        },
+        "social": {
+            "title": "Connect with Me",
+            "description": "Follow my work and connect with me on social media",
+            "links": {
+                "github": {
+                    "title": "GitHub",
+                    "subtitle": "See my projects"
+                },
+                "linkedin": {
+                    "title": "LinkedIn",
+                    "subtitle": "Connect professionally"
+                },
+                "whatsapp": {
+                    "title": "WhatsApp",
+                    "subtitle": "Quick chat"
+                },
+                "discord": {
+                    "title": "Discord",
+                    "subtitle": "Tech community"
+                }
+            }
+        },
+        "modal": {
+            "success": {
+                "title": "Message Sent!",
+                "description": "Your message has been sent to my email and WhatsApp. I’ll get back to you soon!",
+                "close": "Close"
+            }
+        }
+    },
+    "home": {
+        "typewriter": "Digital Solutions Developer",
+        "hero": {
+            "subtitle": "Mobile Software Engineer specialized in Flutter, Dart, Firebase and modern web development",
+            "buttons": {
+                "viewProjects": "View Projects",
+                "talkToMe": "Contact Me"
+            }
+        },
+        "stats": {
+            "yearsExperience": "Years of Experience",
+            "projectsDone": "Projects Delivered",
+            "happyClients": "Satisfied Clients"
+        },
+        "projects": {
+            "title": "Featured Projects",
+            "subtitle": "Some of the key projects I've built throughout my career",
+            "viewAll": "View All Projects"
+        },
+        "services": {
+            "title": "Why choose my",
+            "titleHighlight": "services",
+            "titleEnd": "?",
+            "description": "With over 6 years of experience as a Software Engineer, I develop complete and personalized digital solutions — from robust mobile apps to modern web interfaces — combining performance, innovation and intuitive design.",
+            "items": {
+                "mobile": {
+                    "title": "Mobile Development",
+                    "description": "Flutter, Dart, GetX, MobX, MVVM and agile methods for scalable apps"
+                },
+                "web": {
+                    "title": "Web Development",
+                    "description": "Vue.js, Nuxt.js, JavaScript, TypeScript, HTML and CSS for dynamic interfaces"
+                },
+                "architecture": {
+                    "title": "Software Architecture",
+                    "description": "Clean Architecture and Microfrontend for organized and maintainable systems"
+                },
+                "backend": {
+                    "title": "Backend Integrations",
+                    "description": "Firebase, .Net, PHP, BigQuery and SQL for secure, high-performance backends"
+                },
+                "design": {
+                    "title": "UI/UX Design",
+                    "description": "Figma and Marvel App with a strong focus on user experience"
+                }
+            }
+        },
+        "cta": {
+            "title": "Ready to take the next step in your",
+            "titleHighlight": "project",
+            "titleEnd": "?",
+            "subtitle": "Want to build an app from scratch, modernize your platform, or craft a complete digital experience? Let's talk and see how I can help you reach your goals.",
+            "button": "Contact Me Now"
+        },
+        "modal": {
+            "techTitle": "Technologies Used",
+            "appStore": "App Store",
+            "googlePlay": "Google Play"
+        },
+        "projectsData": {
+            "bnb": {
+                "name": "Bnb - Banco do Nordeste",
+                "shortDescription": "Banco do Nordeste card app, allowing invoice control, limits management and much more.",
+                "longDescription": "App developed for Banco do Nordeste, focused on credit card management. Features include invoice control, real-time expense tracking, limit setting, etc. The app was built with Flutter using clean architecture, ensuring scalability and easy maintenance."
+            },
+            "banpara": {
+                "name": "Banpara - Banco do Pará",
+                "shortDescription": "Credit card solution and expense control for Banpara clients, with multiple features.",
+                "longDescription": "Banpara credit card app, developed with Flutter. Features include invoice management, real-time purchase notifications, limit adjustment and digital wallet integration (Apple Pay, Google Pay)."
+            },
+            "losango": {
+                "name": "Losango - Banco Losango",
+                "shortDescription": "Losango app for card management, expense control and flexible installments.",
+                "longDescription": "App development for Banco Losango, offering users expense tracking, installments and direct support. Integrated with a white-label architecture that allowed quick adaptation for other banks."
+            },
+            "h2club": {
+                "name": "H2 Club - Groupe H2",
+                "shortDescription": "App for tournament management, schedule and H2 club information, with push notifications.",
+                "longDescription": "App for H2 Club members, displaying tournament calendar, results, reservations and segmented push notification integration. Implements facial/document recognition for registration and LGPD compliance."
+            },
+            "bluec": {
+                "name": "BlueC - Banco BlueC",
+                "shortDescription": "BlueC Bank app, integrating digital wallets for immediate payment.",
+                "longDescription": "Digital wallet integration (Apple Pay, Google Pay, Samsung Pay) into BlueC app, facilitating contactless payments and real-time transaction management."
+            },
+            "afinz": {
+                "name": "Afinz - Banco Afinz",
+                "shortDescription": "Afinz Bank with digital banking features, card control and intuitive interface.",
+                "longDescription": "Creation of the Afinz Bank app, focused on complete digital banking features: account opening, credit cards, bill payments and service top-ups. Strong emphasis on UI/UX."
+            },
+            "komus": {
+                "name": "Komus - Mobile Insurance",
+                "shortDescription": "Mobile phone insurance app, with plans and integrated support. Brand merged with Pitz Insurance.",
+                "longDescription": "App developed to offer mobile insurance plans, with claim registration features, repair tracking and 24h support channel. Later, the Komus brand was incorporated into Pitz Insurance."
+            },
+            "heiclub": {
+                "name": "HeiClub - Heineken",
+                "shortDescription": "Private project for Heineken clients, with points and digital payment integration.",
+                "longDescription": "Development of internal platform for Heineken, encompassing loyalty program (point redemption) and digital payment method integration. Access restricted to clients and employees."
+            },
+            "prudential": {
+                "name": "BackOffice - Prudential",
+                "shortDescription": "User management system and XLSX/CSV data export/import.",
+                "longDescription": "Internal project for Prudential, including administrative interface for user registration and control. Allows data export to spreadsheets, plus import and automatic mapping of large volumes of information."
+            },
+            "neopdv": {
+                "name": "NeoPDV - Dashboard",
+                "shortDescription": "Sales control dashboard and mobile POS for stores, with real-time metrics.",
+                "longDescription": "Solution focused on sales control, allowing salespeople to serve customers away from the cashier (mobile POS) and track goals and metrics through an intuitive web dashboard."
+            }
+        }
+    },
+    "projects": {
+        "hero": {
+            "title": "My Projects",
+            "subtitle": "A collection of the main projects I’ve developed over my career, from banking apps to complex enterprise solutions."
+        },
+        "modal": {
+            "techTitle": "Technologies Used",
+            "appStore": "App Store",
+            "googlePlay": "Google Play"
+        }
+    },
+    "about": {
+        "hero": {
+            "title": "About Me",
+            "subtitle": "Hi! I’m Pedro Ruffo, a developer with 6 years of experience in Flutter, UI/UX Design and web development. I’m passionate about building modern, functional interfaces that deliver exceptional experiences."
+        },
+        "education": {
+            "title": "Education",
+            "course": "Systems Analysis and Development",
+            "schoolPeriod": "FIAP (2021 - 2023)"
+        },
+        "summary": {
+            "title": "Professional Summary",
+            "content": "Mobile Software Engineer - Flutter | Dart | Firebase | Front-end Developer | UI/UX Designer. I have 6 years of experience, especially with Flutter and a strong focus on UI/UX. I love crafting modern, functional and engaging interfaces, ensuring performance and quality in every project."
+        },
+        "experience": {
+            "title": "Professional Experience",
+            "items": {
+                "h2": {
+                    "company": "H2 Groupe",
+                    "period": "July 2024 – Present (1 year 3 months)",
+                    "bullets": [
+                        "Led the development of the LGPD (General Data Protection Law) compliance project, which included a Responsible Gaming website, cookie policy, and a privacy request form with facial and document recognition — all built from the ground up.",
+                        "Developed the official Grupo H2 Events Website, ensuring a modern, responsive, and user-friendly experience.",
+                        "Built the Responsible Gaming Website, aligning with LGPD compliance and promoting safe gaming practices",
+                        "Created the Seu Bet +18 Website and the H2 Bet +18 Website, focusing on age-restricted access and regulatory requirements.",
+                        "Developed the Unique Poker Tour Website, showcasing tournament details, branding, and registration flows.",
+                        "Responsible for the H2 Club mobile app, providing users with real-time access to club schedules, tournament tracking, and personal account information.",
+                        "Designed and implemented the app’s entire JWT-based authentication and security structure, ensuring secure access and data protection.",
+                        "The app serves H2 Club locations in São Paulo, Curitiba, and Campinas, delivering an integrated and personalized experience for club members.",
+                        "Implemented push notifications in the H2 app using Flutter, with segmented delivery based on BigQuery data, all managed through FCM tokens."
+                    ],
+                    "tags": [
+                        "GitLab",
+                        "PHP",
+                        "Flutter",
+                        "Firebase",
+                        "Nuxt.js",
+                        "Vue.js",
+                        "Docker"
+                    ]
+                },
+                "foursys": {
+                    "company": "Foursys",
+                    "period": "May 2023 – July 2024 (1 year 3 months)",
+                    "bullets": [
+                        "Banpara, BNB, and Losango – White Label Credit Card App",
+                        "Developed a white label credit card application for expense tracking, invoice management, purchase analytics, and limit adjustments, using Clean Architecture.",
+                        "Delivered tailored solutions for each bank, including credit limit control, invoice visualization, and spending categorization.",
+                        "BlueC – Digital Wallet Integration",
+                        "Implemented digital wallet features supporting Apple Pay, Google Pay, and Samsung Pay.",
+                        "Led the full integration of payment methods, focusing on performance, security, and seamless user experience.",
+                        "Heineken – HeiClub Loyalty Program",
+                        "Contributed to the HeiClub project, Heineken’s loyalty platform, developing features for point redemption and digital payments.",
+                        "Collaborated on backend solutions using .NET, ensuring scalability, maintainability, and integration with Heineken’s core systems.",
+                        "Prudential – Internal Back-Office System",
+                        "Developed an internal back-office system focused on user management.",
+                        "Features included exporting user data in XLSX and CSV formats and importing spreadsheets to auto-fill the user database.",
+                        "Built a user-friendly drag-and-drop interface using Flutter Web, enhancing usability and efficiency for administrative tasks."
+                    ],
+                    "tags": [
+                        ".NET",
+                        "Flutter",
+                        "Firebase",
+                        "Docker",
+                        "GitLab"
+                    ]
+                },
+                "ey": {
+                    "company": "Ernst & Young (EY)",
+                    "period": "Aug 2021 – Oct 2022 (1 year 3 months)",
+                    "bullets": [
+                        "Afinz and Bank of Brazil – Mobile Banking Applications",
+                        "Developed a digital banking app for AFINZ Bank, including full implementation of screens with a strong focus on UI/UX and product design to ensure an intuitive user experience.",
+                        "Created a credit card management app for Banco do Brasil, providing users with features to control and monitor their cards efficiently."
+                    ],
+                    "tags": [
+                        "Flutter",
+                        "UI/UX",
+                        "Firebase"
+                    ]
+                },
+                "komus": {
+                    "company": "Komus",
+                    "period": "Aug 2020 – Apr 2021 (9 months)",
+                    "bullets": [
+                        "Komus - Mobile Development",
+                        "Develop mobile applications using Flutter, with focus on performance, scalability, and clean architecture.",
+                        "Created the Komus Mobile App, a cell phone insurance application with features for contract management, claims, and plan tracking.",
+                        "Komus - Web Development",
+                        "Build responsive and scalable websites using Nuxt.js, Vue.js, Node.js, HTML, CSS, JavaScript, and TypeScript.",
+                        "Developed the Komus Insurance Website, offering users detailed information about mobile protection plans, quote requests, and customer support tools."
+                    ],
+                    "tags": [
+                        "Flutter",
+                        "Vue.js",
+                        "Node.js",
+                        "TypeScript"
+                    ]
+                },
+                "neopdv": {
+                    "company": "neoPDV",
+                    "period": "May 2019 – Aug 2020 (1 year 2 months)",
+                    "bullets": [
+                        "neoPDV - Mobile Development",
+                        "Developed a mobile sales application with integrated POS (checkout), allowing sellers to make transactions both at fixed cashier stations and throughout the store.",
+                        "Enabled a more dynamic and customer-focused sales approach by allowing mobility within the store environment.",
+                        "Designed the entire UI/UX of the app, ensuring consistency, usability, and a seamless user experience from checkout to customer interaction.",
+                        "neoPDV - Web Development",
+                        "Developed a web-based sales control dashboard for sellers and managers, focused on performance tracking and decision-making.",
+                        "Implemented interactive charts, metrics, and reports to visualize sales performance and operational data.",
+                        "Built entirely with HTML, CSS, and JavaScript, ensuring accessibility and responsiveness across devices."
+                    ],
+                    "tags": [
+                        "Flutter",
+                        "UI/UX",
+                        "Dashboard"
+                    ]
+                }
+            }
+        },
+        "skills": {
+            "title": "Technical Skills",
+            "categories": {
+                "mobile": {
+                    "title": "Mobile",
+                    "tags": [
+                        "Flutter",
+                        "Dart",
+                        "GetX",
+                        "MobX",
+                        "MVVM",
+                        "Flutter Modular"
+                    ]
+                },
+                "web": {
+                    "title": "Web",
+                    "tags": [
+                        "Vue.js",
+                        "Nuxt.js",
+                        "TypeScript",
+                        "JavaScript",
+                        "HTML/CSS",
+                        "Bootstrap"
+                    ]
+                },
+                "backend": {
+                    "title": "Backend",
+                    "tags": [
+                        "Firebase",
+                        ".NET",
+                        "BigQuery",
+                        "SQL",
+                        "PHP",
+                        "Node.js"
+                    ]
+                },
+                "architecture": {
+                    "title": "Architecture",
+                    "tags": [
+                        "Clean Architecture",
+                        "Microfrontend",
+                        "MVVM",
+                        "Design Patterns"
+                    ]
+                },
+                "design": {
+                    "title": "Design",
+                    "tags": [
+                        "UI/UX",
+                        "Figma",
+                        "Marvel App",
+                        "Prototyping"
+                    ]
+                },
+                "methods": {
+                    "title": "Methodologies",
+                    "tags": [
+                        "Scrum",
+                        "Kanban",
+                        "GitLab",
+                        "Docker"
+                    ]
+                }
+            }
+        },
+        "contactCta": {
+            "title": "Let’s Talk?",
+            "phone": "Phone",
+            "email": "Email",
+            "location": "Location",
+            "github": "GitHub",
+            "button": "Get in Touch"
+        }
+    },
+    "header": {
+        "brand": "Pedro Ruffo",
+        "links": {
+            "home": "Home",
+            "about": "About",
+            "projects": "Projects",
+            "contact": "Contact"
+        }
+    },
+    "footer": {
+        "brand": "Pedro Ruffo",
+        "description": "Developer specialized in modern digital solutions, crafting exceptional experiences with Flutter, Vue.js and cutting-edge technologies.",
+        "columns": {
+            "navigation": {
+                "title": "Navigation",
+                "links": {
+                    "home": "Home",
+                    "about": "About",
+                    "projects": "Projects",
+                    "contact": "Contact"
+                }
+            },
+            "services": {
+                "title": "Services",
+                "items": [
+                    "Mobile Development",
+                    "Web Development",
+                    "UI/UX Design",
+                    "Tech Consulting"
+                ]
+            },
+            "tech": {
+                "title": "Technologies",
+                "items": [
+                    "Flutter & Dart",
+                    "Vue.js & Nuxt.js",
+                    "Firebase",
+                    "Clean Architecture"
+                ]
+            },
+            "contact": {
+                "title": "Contact",
+                "email": "pedro.ruffo.dev@gmail.com",
+                "phone": "+55 (11) 91211-7442",
+                "location": "São Paulo, Brazil"
+            }
+        },
+        "bottom": {
+            "copyright": "All rights reserved."
+        },
+        "social": {
+            "github": "GitHub",
+            "linkedin": "LinkedIn",
+            "whatsapp": "WhatsApp",
+            "discord": "Discord",
+            "email": "Email"
+        }
+    }
+}

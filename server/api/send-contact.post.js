@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
             subject: `Contato do site - ${subject}`,
             html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #007AFF; border-bottom: 2px solid #007AFF; padding-bottom: 10px;">
+          <h2 style="color: #8800ffff; border-bottom: 2px solid #8800ffff; padding-bottom: 10px;">
             🔔 Nova mensagem do site
           </h2>
           <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
             <p><strong>📱 Telefone:</strong> <a href="tel:${phone}">${phone}</a></p>
             <p><strong>📋 Assunto:</strong> ${subject}</p>
           </div>
-          <div style="background: white; padding: 20px; border-left: 4px solid #007AFF; margin: 20px 0;">
+          <div style="background: white; padding: 20px; border-left: 4px solid #8800ffff; margin: 20px 0;">
             <h3>💬 Mensagem:</h3>
             <p style="line-height: 1.6;">${message.replace(/\n/g, '<br>')}</p>
           </div>
