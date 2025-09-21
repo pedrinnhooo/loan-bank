@@ -13,24 +13,15 @@
 
                     <!-- Desktop Navigation -->
                     <div class="nav-links desktop-nav">
-                        <NuxtLink 
-                            v-for="link in navLinks" 
-                            :key="link.path"
-                            :to="link.path" 
-                            class="nav-link"
-                            :class="{ 'active': $route.path === link.path }"
-                        >
+                        <NuxtLink v-for="link in navLinks" :key="link.path" :to="link.path" class="nav-link"
+                            :class="{ 'active': $route.path === link.path }">
                             {{ link.name }}
                         </NuxtLink>
                         <LanguageSelector />
                     </div>
 
-                    <!-- Mobile Menu Button -->
-                    <button 
-                        class="mobile-menu-btn"
-                        @click="toggleMobileMenu"
-                        :class="{ 'active': isMobileMenuOpen }"
-                    >
+                    <!-- Mobile Menu Button (APARECE APENAS COM MENU FECHADO) -->
+                    <button v-if="!isMobileMenuOpen" class="mobile-menu-btn" @click="toggleMobileMenu">
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
@@ -46,36 +37,25 @@
                 <button class="mobile-close-btn" @click="closeMobileMenu">
                     <i class="bi bi-x-lg"></i>
                 </button>
-                
+
                 <div class="mobile-menu-content">
                     <div class="mobile-nav-links">
-                        <NuxtLink 
-                            v-for="link in navLinks" 
-                            :key="link.path"
-                            :to="link.path" 
-                            class="mobile-nav-link"
-                            @click="closeMobileMenu"
-                        >
+                        <NuxtLink v-for="link in navLinks" :key="link.path" :to="link.path" class="mobile-nav-link"
+                            @click="closeMobileMenu">
                             {{ link.name }}
                         </NuxtLink>
-                        
+
                         <!-- Mobile Language Selector -->
                         <div class="mobile-language-section">
                             <h4 class="mobile-language-title">{{ t('common.language') || 'Idioma' }}</h4>
                             <div class="mobile-language-options">
-                                <button 
-                                    class="mobile-language-btn"
-                                    :class="{ 'active': locale === 'pt' }"
-                                    @click="selectLanguage('pt')"
-                                >
+                                <button class="mobile-language-btn" :class="{ 'active': locale === 'pt' }"
+                                    @click="selectLanguage('pt')">
                                     <span class="flag-emoji">🇧🇷</span>
                                     <span>Português</span>
                                 </button>
-                                <button 
-                                    class="mobile-language-btn"
-                                    :class="{ 'active': locale === 'en' }"
-                                    @click="selectLanguage('en')"
-                                >
+                                <button class="mobile-language-btn" :class="{ 'active': locale === 'en' }"
+                                    @click="selectLanguage('en')">
                                     <span class="flag-emoji">🇺🇸</span>
                                     <span>English</span>
                                 </button>
@@ -87,11 +67,7 @@
         </transition>
 
         <!-- Mobile Menu Overlay -->
-        <div 
-            v-if="isMobileMenuOpen" 
-            class="mobile-menu-overlay"
-            @click="closeMobileMenu"
-        ></div>
+        <div v-if="isMobileMenuOpen" class="mobile-menu-overlay" @click="closeMobileMenu"></div>
     </header>
 </template>
 
@@ -112,13 +88,9 @@ const navLinks = computed(() => [
 
 const toggleMobileMenu = () => {
     isMobileMenuOpen.value = !isMobileMenuOpen.value
-    
-    // Prevent body scroll when menu is open
-    if (isMobileMenuOpen.value) {
-        document.body.style.overflow = 'hidden'
-    } else {
-        document.body.style.overflow = ''
-    }
+
+    // travar/destravar scroll do body
+    document.body.style.overflow = isMobileMenuOpen.value ? 'hidden' : ''
 }
 
 const closeMobileMenu = () => {
@@ -152,6 +124,7 @@ onUnmounted(() => {
     left: 0;
     right: 0;
     z-index: 1000;
+    /* header abaixo do menu */
     background: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -160,11 +133,10 @@ onUnmounted(() => {
 }
 
 .apple-header.scrolled {
-    background: linear-gradient(135deg, 
-        rgba(0, 0, 0, 0.9) 0%, 
-        rgba(28, 28, 30, 0.9) 50%, 
-        rgba(44, 44, 46, 0.9) 100%
-    );
+    background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(28, 28, 30, 0.9) 50%,
+            rgba(44, 44, 46, 0.9) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom-color: rgba(255, 255, 255, 0.1);
@@ -192,8 +164,6 @@ onUnmounted(() => {
     align-items: center;
     gap: var(--spacing-md);
 }
-
-/* Logo image styles removed - now using AppleLogo component */
 
 .logo-text {
     font-size: 1.25rem;
@@ -230,6 +200,7 @@ onUnmounted(() => {
     border: 1px solid rgba(0, 122, 255, 0.3);
 }
 
+/* Botão hambúrguer (aparece só quando menu está fechado) */
 .mobile-menu-btn {
     display: none;
     flex-direction: column;
@@ -240,8 +211,6 @@ onUnmounted(() => {
     border: none;
     cursor: pointer;
     padding: 0;
-    position: relative;
-    z-index: 1001;
 }
 
 .hamburger-line {
@@ -253,18 +222,9 @@ onUnmounted(() => {
     border-radius: 1px;
 }
 
-.mobile-menu-btn.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
+/* REMOVIDO: estados .active que transformavam em "X" */
 
-.mobile-menu-btn.active .hamburger-line:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-btn.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-}
-
+/* Menu mobile */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -274,7 +234,8 @@ onUnmounted(() => {
     background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    z-index: 999;
+    z-index: 1100;
+    /* acima do header/hambúrguer */
 }
 
 .mobile-close-btn {
@@ -293,7 +254,8 @@ onUnmounted(() => {
     justify-content: center;
     font-size: 1.25rem;
     transition: all var(--transition-normal);
-    z-index: 1001;
+    z-index: 1101;
+    /* acima do próprio menu */
 }
 
 .mobile-close-btn:hover {
@@ -333,6 +295,7 @@ onUnmounted(() => {
     transform: scale(1.05);
 }
 
+/* Idiomas no mobile */
 .mobile-language-section {
     margin-top: var(--spacing-2xl);
     text-align: center;
@@ -344,7 +307,7 @@ onUnmounted(() => {
     color: var(--apple-text-secondary);
     margin-bottom: var(--spacing-md);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: .5px;
 }
 
 .mobile-language-options {
@@ -386,6 +349,7 @@ onUnmounted(() => {
     font-size: 1.2rem;
 }
 
+/* Overlay */
 .mobile-menu-overlay {
     position: fixed;
     top: 0;
@@ -393,7 +357,8 @@ onUnmounted(() => {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
-    z-index: 998;
+    z-index: 1090;
+    /* entre header e menu */
 }
 
 /* Transitions */
@@ -413,7 +378,7 @@ onUnmounted(() => {
     .desktop-nav {
         display: none;
     }
-    
+
     .mobile-menu-btn {
         display: flex;
     }
