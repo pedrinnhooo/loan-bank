@@ -6,7 +6,7 @@
                 <!-- Brand Section -->
                 <div class="footer-brand-section">
                     <NuxtLink to="/" class="footer-brand">
-                        <AppleLogo size="large" variant="blue" />
+                        <OrangeLogo size="large" variant="gradient" />
                         <span class="brand-text">{{ t('footer.brand') }}</span>
                     </NuxtLink>
                     <p class="brand-description">
@@ -131,10 +131,11 @@ const currentYear = computed(() => new Date().getFullYear())
 
 <style scoped>
 .apple-footer {
-    background: var(--apple-surface);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    border-top: 1px solid rgba(255, 107, 53, 0.2);
     padding: var(--spacing-3xl) 0 var(--spacing-xl);
     margin-top: auto;
+    position: relative;
 }
 
 .footer-content {
@@ -208,7 +209,7 @@ const currentYear = computed(() => new Date().getFullYear())
 }
 
 .nav-link:hover {
-    color: var(--apple-blue);
+    color: var(--accent-orange);
 }
 
 .footer-bottom {
@@ -251,10 +252,11 @@ const currentYear = computed(() => new Date().getFullYear())
 }
 
 .social-link:hover {
-    background: var(--apple-blue);
-    border-color: var(--apple-blue);
+    background: var(--accent-orange);
+    border-color: var(--accent-orange);
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
 }
 
 /* Responsive Design */

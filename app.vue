@@ -26,9 +26,12 @@ import Footer from '~/components/footer.vue'
 <style>
 .apple-app {
   min-height: 100vh;
-  background-color: var(--apple-background);
+  width: 100%;
+  background: transparent;
   color: var(--apple-text-primary);
   font-family: var(--font-system);
+  position: relative;
+  zoom: 0.9;
 }
 
 .main-content {
@@ -71,12 +74,12 @@ import Footer from '~/components/footer.vue'
 
 /* Selection */
 ::selection {
-  background: var(--apple-blue);
+  background: var(--accent-orange);
   color: white;
 }
 
 ::-moz-selection {
-  background: var(--apple-blue);
+  background: var(--accent-orange);
   color: white;
 }
 </style>

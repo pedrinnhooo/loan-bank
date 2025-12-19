@@ -2,6 +2,11 @@
     <div class="apple-about">
         <!-- Hero Section -->
         <section class="about-hero section-padding">
+            <div class="hero-background">
+                <div class="floating-elements">
+                    <div class="floating-element" v-for="i in 6" :key="i" :style="getFloatingStyle(i)"></div>
+                </div>
+            </div>
             <div class="container-apple">
                 <div class="hero-content text-center scroll-animate">
                     <h1 class="text-large-title gradient-text mb-lg">{{ t('about.hero.title') }}</h1>
@@ -43,77 +48,102 @@
                 <h2 class="text-title-1 text-center mb-2xl scroll-animate">{{ t('about.experience.title') }}</h2>
 
                 <div class="experience-timeline">
-                    <div class="experience-item glass-card scroll-animate">
-                        <div class="experience-header">
-                            <h3 class="text-title-2 gradient-text">{{ t('about.experience.items.h2.company') }}</h3>
-                            <span class="experience-period">{{ t('about.experience.items.h2.period') }}</span>
+                    <div class="experience-item linkedin-card scroll-animate">
+                        <div class="company-logo">
+                            <div class="logo-placeholder">H2</div>
                         </div>
-                        <div class="experience-content">
-                            <ul class="experience-list">
-                                <li v-for="bullet in t('about.experience.items.h2.bullets')" :key="bullet">{{ bullet }}</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span v-for="tag in t('about.experience.items.h2.tags')" :key="tag" class="tech-tag">{{ tag }}</span>
+                        <div class="experience-details">
+                            <div class="experience-header">
+                                <h3 class="company-name">{{ t('about.experience.items.h2.company') }}</h3>
+                                <span class="experience-period">{{ t('about.experience.items.h2.period') }}</span>
+                            </div>
+                            <div class="experience-content">
+                                <ul class="experience-list">
+                                    <li v-for="bullet in t('about.experience.items.h2.bullets')" :key="bullet">{{ bullet }}</li>
+                                </ul>
+                                <div class="tech-tags">
+                                    <span v-for="tag in t('about.experience.items.h2.tags')" :key="tag" class="tech-tag">{{ tag }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="experience-item glass-card scroll-animate">
-                        <div class="experience-header">
-                            <h3 class="text-title-2 gradient-text">{{ t('about.experience.items.foursys.company') }}</h3>
-                            <span class="experience-period">{{ t('about.experience.items.foursys.period') }}</span>
+                    <div class="experience-item linkedin-card scroll-animate">
+                        <div class="company-logo">
+                            <div class="logo-placeholder">FS</div>
                         </div>
-                        <div class="experience-content">
-                            <ul class="experience-list">
-                                <li v-for="bullet in t('about.experience.items.foursys.bullets')" :key="bullet">{{ bullet }}</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span v-for="tag in t('about.experience.items.foursys.tags')" :key="tag" class="tech-tag">{{ tag }}</span>
+                        <div class="experience-details">
+                            <div class="experience-header">
+                                <h3 class="company-name">{{ t('about.experience.items.foursys.company') }}</h3>
+                                <span class="experience-period">{{ t('about.experience.items.foursys.period') }}</span>
+                            </div>
+                            <div class="experience-content">
+                                <ul class="experience-list">
+                                    <li v-for="bullet in t('about.experience.items.foursys.bullets')" :key="bullet">{{ bullet }}</li>
+                                </ul>
+                                <div class="tech-tags">
+                                    <span v-for="tag in t('about.experience.items.foursys.tags')" :key="tag" class="tech-tag">{{ tag }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="experience-item glass-card scroll-animate">
-                        <div class="experience-header">
-                            <h3 class="text-title-2 gradient-text">{{ t('about.experience.items.ey.company') }}</h3>
-                            <span class="experience-period">{{ t('about.experience.items.ey.period') }}</span>
+                    <div class="experience-item linkedin-card scroll-animate">
+                        <div class="company-logo">
+                            <div class="logo-placeholder">EY</div>
                         </div>
-                        <div class="experience-content">
-                            <ul class="experience-list">
-                                <li v-for="bullet in t('about.experience.items.ey.bullets')" :key="bullet">{{ bullet }}</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span v-for="tag in t('about.experience.items.ey.tags')" :key="tag" class="tech-tag">{{ tag }}</span>
+                        <div class="experience-details">
+                            <div class="experience-header">
+                                <h3 class="company-name">{{ t('about.experience.items.ey.company') }}</h3>
+                                <span class="experience-period">{{ t('about.experience.items.ey.period') }}</span>
+                            </div>
+                            <div class="experience-content">
+                                <ul class="experience-list">
+                                    <li v-for="bullet in t('about.experience.items.ey.bullets')" :key="bullet">{{ bullet }}</li>
+                                </ul>
+                                <div class="tech-tags">
+                                    <span v-for="tag in t('about.experience.items.ey.tags')" :key="tag" class="tech-tag">{{ tag }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="experience-item glass-card scroll-animate">
-                        <div class="experience-header">
-                            <h3 class="text-title-2 gradient-text">{{ t('about.experience.items.komus.company') }}</h3>
-                            <span class="experience-period">{{ t('about.experience.items.komus.period') }}</span>
+                    <div class="experience-item linkedin-card scroll-animate">
+                        <div class="company-logo">
+                            <div class="logo-placeholder">KM</div>
                         </div>
-                        <div class="experience-content">
-                            <ul class="experience-list">
-                                <li v-for="bullet in t('about.experience.items.komus.bullets')" :key="bullet">{{ bullet }}</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span v-for="tag in t('about.experience.items.komus.tags')" :key="tag" class="tech-tag">{{ tag }}</span>
+                        <div class="experience-details">
+                            <div class="experience-header">
+                                <h3 class="company-name">{{ t('about.experience.items.komus.company') }}</h3>
+                                <span class="experience-period">{{ t('about.experience.items.komus.period') }}</span>
+                            </div>
+                            <div class="experience-content">
+                                <ul class="experience-list">
+                                    <li v-for="bullet in t('about.experience.items.komus.bullets')" :key="bullet">{{ bullet }}</li>
+                                </ul>
+                                <div class="tech-tags">
+                                    <span v-for="tag in t('about.experience.items.komus.tags')" :key="tag" class="tech-tag">{{ tag }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="experience-item glass-card scroll-animate">
-                        <div class="experience-header">
-                            <h3 class="text-title-2 gradient-text">{{ t('about.experience.items.neopdv.company') }}</h3>
-                            <span class="experience-period">{{ t('about.experience.items.neopdv.period') }}</span>
+                    <div class="experience-item linkedin-card scroll-animate">
+                        <div class="company-logo">
+                            <div class="logo-placeholder">NP</div>
                         </div>
-                        <div class="experience-content">
-                            <ul class="experience-list">
-                                <li v-for="bullet in t('about.experience.items.neopdv.bullets')" :key="bullet">{{ bullet }}</li>
-                            </ul>
-                            <div class="tech-tags">
-                                <span v-for="tag in t('about.experience.items.neopdv.tags')" :key="tag" class="tech-tag">{{ tag }}</span>
+                        <div class="experience-details">
+                            <div class="experience-header">
+                                <h3 class="company-name">{{ t('about.experience.items.neopdv.company') }}</h3>
+                                <span class="experience-period">{{ t('about.experience.items.neopdv.period') }}</span>
+                            </div>
+                            <div class="experience-content">
+                                <ul class="experience-list">
+                                    <li v-for="bullet in t('about.experience.items.neopdv.bullets')" :key="bullet">{{ bullet }}</li>
+                                </ul>
+                                <div class="tech-tags">
+                                    <span v-for="tag in t('about.experience.items.neopdv.tags')" :key="tag" class="tech-tag">{{ tag }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -265,14 +295,23 @@ const { t } = useI18n()
 
 // Initialize scroll animations
 useScrollAnimation()
+
+const getFloatingStyle = (index) => {
+    const positions = [
+        { top: '20%', left: '10%', animationDelay: '0s' },
+        { top: '60%', left: '80%', animationDelay: '1s' },
+        { top: '30%', left: '70%', animationDelay: '2s' },
+        { top: '80%', left: '20%', animationDelay: '0.5s' },
+        { top: '10%', left: '60%', animationDelay: '1.5s' },
+        { top: '70%', left: '50%', animationDelay: '2.5s' }
+    ]
+    return positions[index - 1] || {}
+}
 </script>
 
 <style scoped>
 .apple-about {
-    background: linear-gradient(135deg,
-            var(--apple-dark-1) 0%,
-            var(--apple-dark-2) 50%,
-            var(--apple-dark-3) 100%);
+    background: transparent;
 }
 
 .title-gradient {
@@ -284,30 +323,86 @@ useScrollAnimation()
 }
 
 .about-hero {
-    height: 88vh;
-    /* Compensa o zoom 0.8 (100 / 0.8 = 125) */
+    height: 95vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg,
-            var(--apple-dark-1) 0%,
-            var(--apple-dark-2) 50%,
-            var(--apple-dark-3) 100%);
+    background: transparent;
 }
 
-.about-hero::before {
-    content: '';
+.hero-background {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at center,
-            rgba(0, 122, 255, 0.1) 0%,
-            rgba(175, 82, 222, 0.05) 50%,
-            transparent 70%);
+    background: transparent;
+}
+
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.floating-element {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, 
+        var(--accent-orange), 
+        var(--warm-orange), 
+        rgba(255, 255, 255, 0.1));
+    border-radius: 50%;
+    opacity: 0.08;
+    animation: float 12s ease-in-out infinite, holographicSpin 25s linear infinite;
+    filter: blur(40px);
+    box-shadow: 
+        0 0 40px rgba(255, 107, 53, 0.2),
+        0 0 80px rgba(255, 140, 66, 0.1);
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% { 
+        transform: translateY(-20px) rotate(5deg);
+    }
+    50% { 
+        transform: translateY(-10px) rotate(10deg);
+    }
+    75% { 
+        transform: translateY(-30px) rotate(-5deg);
+    }
+}
+
+@keyframes holographicSpin {
+    0% { 
+        transform: rotate(0deg) scale(1);
+        filter: blur(60px) hue-rotate(0deg);
+    }
+    25% { 
+        transform: rotate(90deg) scale(1.1);
+        filter: blur(50px) hue-rotate(90deg);
+    }
+    50% { 
+        transform: rotate(180deg) scale(1);
+        filter: blur(60px) hue-rotate(180deg);
+    }
+    75% { 
+        transform: rotate(270deg) scale(1.1);
+        filter: blur(50px) hue-rotate(270deg);
+    }
+    100% { 
+        transform: rotate(360deg) scale(1);
+        filter: blur(60px) hue-rotate(360deg);
+    }
 }
 
 .hero-content {
@@ -316,10 +411,7 @@ useScrollAnimation()
 }
 
 .education-summary-section {
-    background: linear-gradient(135deg,
-            var(--apple-dark-1) 0%,
-            var(--apple-dark-2) 50%,
-            var(--apple-dark-3) 100%);
+    background: transparent;
 }
 
 .education-summary-grid {
@@ -329,39 +421,103 @@ useScrollAnimation()
 }
 
 .experience-section {
-    background: linear-gradient(135deg,
-            var(--apple-dark-1) 0%,
-            var(--apple-dark-2) 50%,
-            var(--apple-dark-3) 100%);
+    background: transparent;
 }
 
 .experience-timeline {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-lg);
 }
 
-.experience-item {
-    transition: all var(--transition-normal);
+.linkedin-card {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.experience-item:hover {
+.linkedin-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        var(--accent-orange), 
+        var(--warm-orange), 
+        rgba(255, 255, 255, 0.3));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.linkedin-card:hover {
     transform: translateY(-4px);
+    border-color: rgba(255, 107, 53, 0.2);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(255, 107, 53, 0.1);
+}
+
+.linkedin-card:hover::before {
+    opacity: 1;
+}
+
+.company-logo {
+    flex-shrink: 0;
+}
+
+.logo-placeholder {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, 
+        var(--accent-orange) 0%, 
+        var(--warm-orange) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.experience-details {
+    flex: 1;
+    min-width: 0;
 }
 
 .experience-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     flex-wrap: wrap;
     gap: var(--spacing-sm);
 }
 
+.company-name {
+    color: var(--apple-text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+}
+
 .experience-period {
-    color: var(--apple-blue);
+    color: var(--accent-orange);
     font-size: 0.875rem;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .experience-list {
@@ -406,10 +562,7 @@ useScrollAnimation()
 }
 
 .skills-section {
-    background: linear-gradient(135deg,
-            var(--apple-dark-1) 0%,
-            var(--apple-dark-2) 50%,
-            var(--apple-dark-3) 100%);
+    background: transparent;
 }
 
 .skills-grid {
@@ -456,10 +609,7 @@ useScrollAnimation()
 }
 
 .contact-section {
-    background: linear-gradient(135deg,
-            var(--apple-dark-1) 0%,
-            var(--apple-dark-2) 50%,
-            var(--apple-dark-3) 100%);
+    background: transparent;
 }
 
 .contact-card {
@@ -510,9 +660,24 @@ useScrollAnimation()
         gap: var(--spacing-lg);
     }
 
+    .linkedin-card {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-md);
+    }
+
+    .company-logo {
+        align-self: center;
+    }
+
     .experience-header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
+    }
+
+    .experience-content {
+        text-align: left;
     }
 
     .skills-grid {

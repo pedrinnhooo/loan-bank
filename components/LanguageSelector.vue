@@ -55,6 +55,7 @@ onUnmounted(() => {
 .language-selector {
     position: relative;
     display: inline-block;
+    z-index: 1002;
 }
 
 .language-btn {
@@ -68,35 +69,75 @@ onUnmounted(() => {
     border-radius: var(--radius-lg);
     color: var(--apple-text-secondary);
     cursor: pointer;
-    transition: all var(--transition-normal);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.language-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 107, 53, 0.2), 
+        transparent);
+    transition: left 0.5s;
 }
 
 .language-btn:hover {
     color: var(--apple-text-primary);
-    background: rgba(0, 122, 255, 0.1);
-    border-color: rgba(0, 122, 255, 0.2);
+    background: rgba(255, 107, 53, 0.1);
+    border-color: rgba(255, 107, 53, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2);
+}
+
+.language-btn:hover::before {
+    left: 100%;
 }
 
 .language-btn.active {
     color: var(--apple-text-primary);
-    background: rgba(0, 122, 255, 0.2);
-    border-color: rgba(0, 122, 255, 0.3);
+    background: rgba(255, 107, 53, 0.2);
+    border-color: rgba(255, 107, 53, 0.3);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
 }
 
 .language-dropdown {
     position: absolute;
-    top: calc(100% + 15px);
+    top: calc(100% + 8px);
     right: 0;
     min-width: 160px;
-    background: rgba(28, 28, 30, 0.95);
+    background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 107, 53, 0.3);
     border-radius: var(--radius-lg);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(255, 107, 53, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     overflow: hidden;
-    z-index: 1001;
+    z-index: 10001;
+}
+
+.language-dropdown::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--accent-orange), 
+        var(--warm-orange), 
+        transparent);
 }
 
 .language-option {
@@ -115,13 +156,14 @@ onUnmounted(() => {
 }
 
 .language-option:hover {
-    background: rgba(0, 122, 255, 0.1);
+    background: rgba(255, 107, 53, 0.1);
     color: var(--apple-text-primary);
 }
 
 .language-option.active {
-    background: rgba(0, 122, 255, 0.2);
+    background: rgba(255, 107, 53, 0.2);
     color: var(--apple-text-primary);
+    border-left: 3px solid var(--accent-orange);
 }
 
 .flag-emoji {
@@ -132,13 +174,20 @@ onUnmounted(() => {
 /* Dropdown transition */
 .dropdown-enter-active,
 .dropdown-leave-active {
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: top center;
 }
 
 .dropdown-enter-from,
 .dropdown-leave-to {
     opacity: 0;
-    transform: translateY(-8px) scale(0.95);
+    transform: translateY(-10px) scale(0.9);
+}
+
+.dropdown-enter-to,
+.dropdown-leave-from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 /* Mobile adjustments */

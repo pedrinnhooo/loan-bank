@@ -2,6 +2,11 @@
         <div class="apple-contact">
             <!-- Hero Section -->
             <section class="contact-hero section-padding">
+                <div class="hero-background">
+                    <div class="floating-elements">
+                        <div class="floating-element" v-for="i in 6" :key="i" :style="getFloatingStyle(i)"></div>
+                    </div>
+                </div>
                 <div class="container-apple">
                     <div class="hero-content text-center scroll-animate">
                         <h1 class="text-large-title gradient-text mb-lg">{{ t('contact.hero.title') }}</h1>
@@ -430,43 +435,108 @@ watch(() => form.value.countryCode, () => {
     form.value.phone = ''
 })
 
+const getFloatingStyle = (index) => {
+    const positions = [
+        { top: '20%', left: '10%', animationDelay: '0s' },
+        { top: '60%', left: '80%', animationDelay: '1s' },
+        { top: '30%', left: '70%', animationDelay: '2s' },
+        { top: '80%', left: '20%', animationDelay: '0.5s' },
+        { top: '10%', left: '60%', animationDelay: '1.5s' },
+        { top: '70%', left: '50%', animationDelay: '2.5s' }
+    ]
+    return positions[index - 1] || {}
+}
+
 
 </script>
 
 <style scoped>
 .apple-contact {
-    background: linear-gradient(135deg,
-            var(--apple-dark-1) 0%,
-            var(--apple-dark-2) 50%,
-            var(--apple-dark-3) 100%);
+    background: transparent;
     min-height: 100vh;
 }
 
 .contact-hero {
-    height: 88vh;
-    /* Compensa o zoom 0.8 (100 / 0.8 = 125) */
+    height: 95vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg,
-            var(--apple-dark-1) 0%,
-            var(--apple-dark-2) 50%,
-            var(--apple-dark-3) 100%);
+    background: transparent;
 }
 
-.contact-hero::before {
-    content: '';
+.hero-background {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(ellipse at center,
-            rgba(0, 122, 255, 0.1) 0%,
-            rgba(175, 82, 222, 0.05) 50%,
-            transparent 70%);
+    background: transparent;
+}
+
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.floating-element {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, 
+        var(--accent-orange), 
+        var(--warm-orange), 
+        rgba(255, 255, 255, 0.1));
+    border-radius: 50%;
+    opacity: 0.08;
+    animation: float 12s ease-in-out infinite, holographicSpin 25s linear infinite;
+    filter: blur(40px);
+    box-shadow: 
+        0 0 40px rgba(255, 107, 53, 0.2),
+        0 0 80px rgba(255, 140, 66, 0.1);
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% { 
+        transform: translateY(-20px) rotate(5deg);
+    }
+    50% { 
+        transform: translateY(-10px) rotate(10deg);
+    }
+    75% { 
+        transform: translateY(-30px) rotate(-5deg);
+    }
+}
+
+@keyframes holographicSpin {
+    0% { 
+        transform: rotate(0deg) scale(1);
+        filter: blur(60px) hue-rotate(0deg);
+    }
+    25% { 
+        transform: rotate(90deg) scale(1.1);
+        filter: blur(50px) hue-rotate(90deg);
+    }
+    50% { 
+        transform: rotate(180deg) scale(1);
+        filter: blur(60px) hue-rotate(180deg);
+    }
+    75% { 
+        transform: rotate(270deg) scale(1.1);
+        filter: blur(50px) hue-rotate(270deg);
+    }
+    100% { 
+        transform: rotate(360deg) scale(1);
+        filter: blur(60px) hue-rotate(360deg);
+    }
 }
 
 .hero-content {
@@ -475,10 +545,7 @@ watch(() => form.value.countryCode, () => {
 }
 
 .contact-methods {
-    background: linear-gradient(135deg,
-            var(--apple-dark-1) 0%,
-            var(--apple-dark-2) 50%,
-            var(--apple-dark-3) 100%);
+    background: transparent;
 }
 
 .contact-grid {
@@ -655,6 +722,75 @@ select.form-input option:checked {
     min-height: 120px;
 }
 
+/* Holographic Buttons */
+.btn-apple {
+    position: relative;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-apple::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: left 0.6s;
+}
+
+.btn-apple:hover::before {
+    left: 100%;
+}
+
+.btn-apple-primary {
+    background: linear-gradient(135deg, 
+        var(--accent-orange) 0%, 
+        var(--warm-orange) 100%);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-apple-primary:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+        0 20px 40px rgba(255, 107, 53, 0.4),
+        0 0 60px rgba(255, 140, 66, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-apple-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--pure-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+}
+
+.btn-apple-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 107, 53, 0.4);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(255, 107, 53, 0.2);
+}
+
 .btn-apple:disabled {
     opacity: 0.6;
     cursor: not-allowed;
@@ -665,10 +801,7 @@ select.form-input option:checked {
 }
 
 .social-section {
-    background: linear-gradient(135deg,
-            var(--apple-dark-1) 0%,
-            var(--apple-dark-2) 50%,
-            var(--apple-dark-3) 100%);
+    background: transparent;
 }
 
 .social-links {
