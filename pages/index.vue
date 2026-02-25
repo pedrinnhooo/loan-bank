@@ -208,9 +208,9 @@ const { displayText, isComplete: isTypewriterComplete, startTypewriter, cleanup 
 
 // Stats with count up animation
 const statsData = [
-    { key: 'yearsExperience', value: 6, displayValue: ref(0) },
-    { key: 'projectsDone', value: 50, displayValue: ref(0) },
-    { key: 'happyClients', value: 200, displayValue: ref(0) }
+    { key: 'yearsExperience', value: 7, displayValue: ref(0) },
+    { key: 'projectsDone', value: 80, displayValue: ref(0) },
+    { key: 'happyClients', value: 700, displayValue: ref(0) }
 ]
 
 const stats = computed(() =>
